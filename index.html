@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompareX — Compare. Choose. Save.</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#101b3d;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:26px;font-weight:800}.logo span{color:#39d98a}
+.tag{font-size:13px;color:#cbd3e8}
+.hero{text-align:center;padding:55px 20px;background:linear-gradient(135deg,#101b3d,#243b80);color:white}
+.hero h1{font-size:42px;margin-bottom:12px}.hero p{color:#dbe2f5;margin-bottom:25px}
+.search{max-width:650px;margin:auto;display:flex;background:white;border-radius:12px;overflow:hidden}
+.search input{flex:1;border:0;padding:17px;font-size:16px;outline:0}.search button{border:0;background:#39d98a;padding:0 22px;font-weight:bold;cursor:pointer}
+main{max-width:1100px;margin:35px auto;padding:0 20px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0 30px}.cat{border:0;background:white;padding:10px 15px;border-radius:20px;cursor:pointer;box-shadow:0 2px 8px #00000010}.cat:hover{background:#eafbf3}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:white;border-radius:16px;padding:18px;box-shadow:0 5px 18px #00000010}.product-img{height:150px;background:#eef1f7;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:65px;margin-bottom:15px}
+.card h3{margin-bottom:8px}.rating{font-size:13px;color:#777;margin-bottom:12px}
+.offer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee;padding:10px 0;font-size:14px}.price{font-weight:bold}.lowest{color:#087a48;font-weight:bold}
+.buy{background:#101b3d;color:white;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}.buy:hover{background:#243b80}
+.noresult{text-align:center;padding:40px;color:#777;grid-column:1/-1}
+footer{text-align:center;padding:30px;color:#777;font-size:13px}
+@media(max-width:600px){.hero h1{font-size:32px}.tag{display:none}.search button{padding:0 14px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Compare<span>X</span></div>
+  <div class="tag">Compare. Choose. Save.</div>
+</header>
+
+<section class="hero">
+  <h1>Find the best price</h1>
+  <p>Compare products across stores in one place.</p>
+  <div class="search">
+    <input id="search" type="search" placeholder="Search products..." oninput="render()">
+    <button onclick="render()">Search</button>
+  </div>
+</section>
+
+<main>
+  <h2>Popular Categories</h2>
+  <div class="categories">
+    <button class="cat" onclick="filterCat('All')">All</button>
+    <button class="cat" onclick="filterCat('Mobiles')">📱 Mobiles</button>
+    <button class="cat" onclick="filterCat('Audio')">🎧 Audio</button>
+    <button class="cat" onclick="filterCat('Laptops')">💻 Laptops</button>
+    <button class="cat" onclick="filterCat('Gaming')">🎮 Gaming</button>
+    <button class="cat" onclick="filterCat('Home')">🏠 Home</button>
+    <button class="cat" onclick="filterCat('Books')">📚 Books</button>
+  </div>
+
+  <h2 style="margin-bottom:15px">Products</h2>
+  <div id="products" class="grid"></div>
+</main>
+
+<footer>
+  <p>CompareX may earn a commission from qualifying affiliate purchases.</p>
+  <p style="margin-top:8px">Prices shown here are demo prices for this prototype and may change.</p>
+</footer>
+
+<script>
+const products=[
+ {name:"Nova 5G Smartphone 128GB",cat:"Mobiles",icon:"📱",rating:"⭐ 4.3",offers:[
+  ["Amazon",15799,"https://example.com"],["Flipkart",15499,"https://example.com"],["Croma",16199,"https://example.com"]]},
+ {name:"Wireless Earbuds X1",cat:"Audio",icon:"🎧",rating:"⭐ 4.2",offers:[
+  ["Amazon",1299,"https://example.com"],["Flipkart",1199,"https://example.com"],["Croma",1349,"https://example.com"]]},
+ {name:"Mechanical Gaming Keyboard",cat:"Gaming",icon:"⌨️",rating:"⭐ 4.5",offers:[
+  ["Amazon",2499,"https://example.com"],["Flipkart",2299,"https://example.com"]]},
+ {name:"USB-C Fast Charger",cat:"Home",icon:"🔌",rating:"⭐ 4.4",offers:[
+  ["Amazon",899,"https://example.com"],["Flipkart",799,"https://example.com"]]},
+ {name:"Laptop Stand",cat:"Laptops",icon:"💻",rating:"⭐ 4.1",offers:[
+  ["Amazon",1199,"https://example.com"],["Flipkart",999,"https://example.com"]]},
+ {name:"Beginner Java Programming",cat:"Books",icon:"📚",rating:"⭐ 4.6",offers:[
+  ["Amazon",499,"https://example.com"],["Flipkart",459,"https://example.com"]]}
+];
+
+let selected="All";
+function filterCat(cat){selected=cat;render()}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const box=document.getElementById("products");
+ const list=products.filter(p=>(selected==="All"||p.cat===selected)&&p.name.toLowerCase().includes(q));
+ if(!list.length){box.innerHTML='<div class="noresult">No products found.</div>';return}
+ box.innerHTML=list.map(p=>{
+   const min=Math.min(...p.offers.map(o=>o[1]));
+   return `<article class="card">
+     <div class="product-img">${p.icon}</div>
+     <h3>${p.name}</h3>
+     <div class="rating">${p.rating} · ${p.cat}</div>
+     ${p.offers.sort((a,b)=>a[1]-b[1]).map(o=>`
+       <div class="offer">
+         <div><strong>${o[0]}</strong><br><span class="${o[1]===min?'lowest':''}">₹${o[1].toLocaleString('en-IN')}${o[1]===min?' · Lowest':''}</span></div>
+         <button class="buy" onclick="window.open('${o[2]}','_blank')">Buy Now</button>
+       </div>`).join("")}
+   </article>`
+ }).join("");
+}
+render();
+</script>
+</body>
+</html>

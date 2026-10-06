@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>CompareX - Compare. Choose. Save.</title>
 
+
 <style>
+
+/* =========================
+   BASIC
+========================= */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,7 +29,11 @@ body{
   color:#172033;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
+
 header{
   background:#101b3d;
   color:white;
@@ -30,7 +44,7 @@ header{
 }
 
 .logo{
-  font-size:25px;
+  font-size:26px;
   font-weight:800;
 }
 
@@ -43,11 +57,19 @@ header{
   color:#cbd3e8;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
   text-align:center;
   padding:55px 20px;
-  background:linear-gradient(135deg,#101b3d,#243b80);
+  background:linear-gradient(
+    135deg,
+    #101b3d,
+    #243b80
+  );
   color:white;
 }
 
@@ -61,9 +83,14 @@ header{
   margin-bottom:25px;
 }
 
-/* SEARCH */
+
+/* =========================
+   SEARCH
+========================= */
+
 .search{
   max-width:650px;
+  width:100%;
   margin:auto;
   display:flex;
   background:white;
@@ -73,6 +100,7 @@ header{
 
 .search input{
   flex:1;
+  min-width:0;
   border:0;
   outline:none;
   padding:16px;
@@ -86,16 +114,25 @@ header{
   padding:0 22px;
   font-weight:bold;
   cursor:pointer;
+  white-space:nowrap;
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
+
 main{
   max-width:1100px;
   margin:35px auto;
   padding:0 15px;
 }
 
-/* CATEGORIES */
+
+/* =========================
+   CATEGORIES
+========================= */
+
 .categories{
   display:flex;
   gap:10px;
@@ -110,18 +147,30 @@ main{
   border-radius:20px;
   cursor:pointer;
   box-shadow:0 2px 8px #00000012;
+  font-size:14px;
 }
 
 .cat:hover{
   background:#39d98a;
+  color:#101b3d;
 }
 
-/* PRODUCTS */
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:
+    repeat(auto-fit,minmax(270px,1fr));
   gap:20px;
 }
+
+
+/* =========================
+   PRODUCT CARD
+========================= */
 
 .card{
   background:white;
@@ -134,6 +183,11 @@ main{
 .card:hover{
   transform:translateY(-4px);
 }
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
 
 .product-img{
   height:150px;
@@ -148,36 +202,70 @@ main{
 
 .card h3{
   margin-bottom:8px;
+  font-size:18px;
 }
+
+
+/* =========================
+   RATING
+========================= */
 
 .rating{
   color:#f5a623;
   margin-bottom:12px;
+  font-size:14px;
 }
+
+
+/* =========================
+   OFFERS
+========================= */
 
 .offer{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
   border-top:1px solid #eee;
   padding:12px 0;
 }
 
 .store{
   font-weight:bold;
+  font-size:14px;
 }
 
 .price{
   font-weight:bold;
+  font-size:16px;
+  margin-bottom:5px;
 }
+
+
+/* =========================
+   LOWEST PRICE
+========================= */
+
+.lowest{
+  color:#15945d;
+  font-size:11px;
+  font-weight:bold;
+  margin-top:3px;
+}
+
+
+/* =========================
+   BUY BUTTON
+========================= */
 
 .buy{
   background:#101b3d;
   color:white;
   border:0;
   border-radius:8px;
-  padding:9px 14px;
+  padding:8px 12px;
   cursor:pointer;
+  font-size:12px;
 }
 
 .buy:hover{
@@ -185,11 +273,21 @@ main{
   color:#101b3d;
 }
 
-.lowest{
-  color:#15945d;
-  font-size:12px;
-  font-weight:bold;
+
+/* =========================
+   STORE BADGE
+========================= */
+
+.store-name{
+  display:flex;
+  align-items:center;
+  gap:5px;
 }
+
+
+/* =========================
+   NO RESULT
+========================= */
 
 .noresult{
   text-align:center;
@@ -198,7 +296,11 @@ main{
   grid-column:1/-1;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   text-align:center;
   padding:30px;
@@ -206,29 +308,93 @@ footer{
   font-size:13px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px){
 
   header{
     padding:15px;
   }
 
+  .logo{
+    font-size:23px;
+  }
+
   .tag{
     display:none;
+  }
+
+  .hero{
+    padding:45px 15px;
   }
 
   .hero h1{
     font-size:32px;
   }
 
-  .search button{
-    padding:0 14px;
+  .hero p{
+    font-size:14px;
   }
+
+  .search{
+    width:100%;
+  }
+
+  .search input{
+    min-width:0;
+    width:100%;
+    padding:14px;
+    font-size:14px;
+  }
+
+  .search button{
+    padding:0 12px;
+    font-size:14px;
+    white-space:nowrap;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .offer{
+    gap:8px;
+  }
+
 }
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:380px){
+
+  .search button{
+    padding:0 9px;
+    font-size:12px;
+  }
+
+  .search input{
+    font-size:13px;
+  }
+
+}
+
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -243,13 +409,21 @@ footer{
 </header>
 
 
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
 
-  <h1>Find the Best Price</h1>
+  <h1>
+    Find the Best Price
+  </h1>
 
   <p>
     Compare products across stores in one place.
   </p>
+
 
   <div class="search">
 
@@ -269,139 +443,376 @@ footer{
 </section>
 
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main>
 
-  <h2>Popular Categories</h2>
+
+  <h2>
+    Popular Categories
+  </h2>
+
 
   <div class="categories">
 
-    <button class="cat" onclick="filterCat('All')">
+
+    <button
+      class="cat"
+      onclick="filterCat('All')">
+
       All
+
     </button>
 
-    <button class="cat" onclick="filterCat('Mobiles')">
+
+    <button
+      class="cat"
+      onclick="filterCat('Mobiles')">
+
       📱 Mobiles
+
     </button>
 
-    <button class="cat" onclick="filterCat('Audio')">
+
+    <button
+      class="cat"
+      onclick="filterCat('Audio')">
+
       🎧 Audio
+
     </button>
 
-    <button class="cat" onclick="filterCat('Laptops')">
+
+    <button
+      class="cat"
+      onclick="filterCat('Laptops')">
+
       💻 Laptops
+
     </button>
 
-    <button class="cat" onclick="filterCat('Gaming')">
+
+    <button
+      class="cat"
+      onclick="filterCat('Gaming')">
+
       🎮 Gaming
+
     </button>
 
-    <button class="cat" onclick="filterCat('Home')">
+
+    <button
+      class="cat"
+      onclick="filterCat('Home')">
+
       🏠 Home
+
     </button>
 
-    <button class="cat" onclick="filterCat('Books')">
+
+    <button
+      class="cat"
+      onclick="filterCat('Books')">
+
       📚 Books
+
     </button>
+
+
+    <button
+      class="cat"
+      onclick="filterCat('Fashion')">
+
+      👕 Fashion
+
+    </button>
+
+
+    <button
+      class="cat"
+      onclick="filterCat('Beauty')">
+
+      💄 Beauty
+
+    </button>
+
 
   </div>
+
 
 
   <h2 style="margin-bottom:15px">
     Products
   </h2>
 
-  <div id="products" class="grid"></div>
+
+  <div
+    id="products"
+    class="grid">
+  </div>
+
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
   <p>
-    CompareX may earn a commission from qualifying affiliate purchases.
+    CompareX may earn a commission from qualifying
+    affiliate purchases.
   </p>
 
   <p style="margin-top:8px">
-    Prices shown are demo prices for this prototype and may change.
+    Prices shown are demo prices and may change.
   </p>
 
 </footer>
 
 
+
 <script>
 
+
+/* =========================
+   PRODUCT DATA
+========================= */
+
 const products = [
+
+
+/* MOBILE */
 
 {
   name:"Nova 5G Smartphone 128GB",
   cat:"Mobiles",
   icon:"📱",
   rating:4.3,
+
   offers:[
+
     ["Amazon",15799,"https://www.amazon.in/"],
+
     ["Flipkart",15499,"https://www.flipkart.com/"],
-    ["Croma",16199,"https://www.croma.com/"]
+
+    ["Croma",16199,"https://www.croma.com/"],
+
+    ["Tata CLiQ",15999,"https://www.tatacliq.com/"]
+
   ]
+
 },
+
+
+
+/* AUDIO */
 
 {
   name:"Wireless Earbuds X1",
   cat:"Audio",
   icon:"🎧",
   rating:4.2,
+
   offers:[
+
     ["Amazon",1299,"https://www.amazon.in/"],
+
     ["Flipkart",1199,"https://www.flipkart.com/"],
+
     ["Croma",1349,"https://www.croma.com/"]
+
   ]
+
 },
+
+
+
+/* GAMING */
 
 {
   name:"Mechanical Gaming Keyboard",
   cat:"Gaming",
   icon:"⌨️",
   rating:4.5,
+
   offers:[
+
     ["Amazon",2499,"https://www.amazon.in/"],
-    ["Flipkart",2299,"https://www.flipkart.com/"]
+
+    ["Flipkart",2299,"https://www.flipkart.com/"],
+
+    ["Croma",2599,"https://www.croma.com/"]
+
   ]
+
 },
+
+
+
+/* HOME */
 
 {
   name:"USB-C Fast Charger",
   cat:"Home",
   icon:"🔌",
   rating:4.4,
+
   offers:[
+
     ["Amazon",899,"https://www.amazon.in/"],
-    ["Flipkart",799,"https://www.flipkart.com/"]
+
+    ["Flipkart",799,"https://www.flipkart.com/"],
+
+    ["Croma",949,"https://www.croma.com/"]
+
   ]
+
 },
+
+
+
+/* LAPTOP */
 
 {
   name:"Laptop Stand",
   cat:"Laptops",
   icon:"💻",
   rating:4.1,
+
   offers:[
+
     ["Amazon",1199,"https://www.amazon.in/"],
-    ["Flipkart",999,"https://www.flipkart.com/"]
+
+    ["Flipkart",999,"https://www.flipkart.com/"],
+
+    ["Croma",1299,"https://www.croma.com/"]
+
   ]
+
 },
+
+
+
+/* BOOK */
 
 {
   name:"Beginner Java Programming",
   cat:"Books",
   icon:"📚",
   rating:4.6,
+
   offers:[
+
     ["Amazon",499,"https://www.amazon.in/"],
+
     ["Flipkart",459,"https://www.flipkart.com/"]
+
   ]
+
+},
+
+
+
+/* FASHION */
+
+{
+  name:"Men's Casual Sneakers",
+  cat:"Fashion",
+  icon:"👟",
+  rating:4.4,
+
+  offers:[
+
+    ["Myntra",1499,"https://www.myntra.com/"],
+
+    ["AJIO",1399,"https://www.ajio.com/"],
+
+    ["Meesho",899,"https://www.meesho.com/"]
+
+  ]
+
+},
+
+
+
+/* FASHION */
+
+{
+  name:"Classic Cotton T-Shirt",
+  cat:"Fashion",
+  icon:"👕",
+  rating:4.2,
+
+  offers:[
+
+    ["Myntra",699,"https://www.myntra.com/"],
+
+    ["AJIO",649,"https://www.ajio.com/"],
+
+    ["Meesho",399,"https://www.meesho.com/"]
+
+  ]
+
+},
+
+
+
+/* BEAUTY */
+
+{
+  name:"Daily Face Care Kit",
+  cat:"Beauty",
+  icon:"🧴",
+  rating:4.3,
+
+  offers:[
+
+    ["Nykaa",799,"https://www.nykaa.com/"],
+
+    ["Amazon",749,"https://www.amazon.in/"],
+
+    ["Meesho",599,"https://www.meesho.com/"]
+
+  ]
+
+},
+
+
+
+/* BEAUTY */
+
+{
+  name:"Perfume Collection",
+  cat:"Beauty",
+  icon:"🌸",
+  rating:4.4,
+
+  offers:[
+
+    ["Nykaa",999,"https://www.nykaa.com/"],
+
+    ["Amazon",899,"https://www.amazon.in/"],
+
+    ["Myntra",949,"https://www.myntra.com/"]
+
+  ]
+
 }
 
 ];
 
+
+
+/* =========================
+   CATEGORY
+========================= */
 
 let selected="All";
 
@@ -415,7 +826,13 @@ function filterCat(cat){
 }
 
 
+
+/* =========================
+   RENDER
+========================= */
+
 function render(){
+
 
   const q=document
     .getElementById("search")
@@ -423,16 +840,30 @@ function render(){
     .toLowerCase()
     .trim();
 
-  const box=document.getElementById("products");
 
-  const list=products.filter(p=>
+  const box=
+    document.getElementById("products");
 
-    (selected==="All" || p.cat===selected) &&
 
-    p.name.toLowerCase().includes(q)
+  const list=
+    products.filter(p=>
 
-  );
+      (
+        selected==="All" ||
+        p.cat===selected
+      )
 
+      &&
+
+      p.name
+        .toLowerCase()
+        .includes(q)
+
+    );
+
+
+
+  /* NO RESULTS */
 
   if(list.length===0){
 
@@ -444,75 +875,142 @@ function render(){
   }
 
 
-  box.innerHTML=list.map(p=>{
 
-    const sorted=[...p.offers]
-      .sort((a,b)=>a[1]-b[1]);
+  /* PRODUCT CARDS */
 
-    const min=sorted[0][1];
+  box.innerHTML=
+    list.map(p=>{
 
 
-    return `
+      const sorted=
+        [...p.offers]
+        .sort((a,b)=>a[1]-b[1]);
 
-      <article class="card">
 
-        <div class="product-img">
-          ${p.icon}
-        </div>
+      const min=
+        sorted[0][1];
 
-        <h3>${p.name}</h3>
 
-        <div class="rating">
-          ⭐ ${p.rating}
-        </div>
 
-        ${
-          sorted.map(o=>`
+      return `
 
-            <div class="offer">
+        <article class="card">
 
-              <div>
-                <div class="store">
-                  ${o[0]}
+
+          <div class="product-img">
+
+            ${p.icon}
+
+          </div>
+
+
+
+          <h3>
+
+            ${p.name}
+
+          </h3>
+
+
+
+          <div class="rating">
+
+            ⭐ ${p.rating}
+
+          </div>
+
+
+
+          ${
+
+            sorted.map(o=>`
+
+              <div class="offer">
+
+
+                <div>
+
+                  <div class="store-name">
+
+                    <div class="store">
+
+                      ${o[0]}
+
+                    </div>
+
+                  </div>
+
+
+                  ${
+
+                    o[1]===min
+
+                    ?
+
+                    '<div class="lowest">🟢 LOWEST PRICE</div>'
+
+                    :
+
+                    ''
+
+                  }
+
+
                 </div>
 
-                ${
-                  o[1]===min
-                  ? '<div class="lowest">LOWEST PRICE</div>'
-                  : ''
-                }
+
+
+                <div>
+
+                  <div class="price">
+
+                    ₹${o[1].toLocaleString('en-IN')}
+
+                  </div>
+
+
+                  <button
+
+                    class="buy"
+
+                    onclick="window.open('${o[2]}','_blank')">
+
+                    Buy Now
+
+                  </button>
+
+
+                </div>
+
 
               </div>
 
-              <div>
-                <div class="price">
-                  ₹${o[1].toLocaleString('en-IN')}
-                </div>
+            `).join("")
 
-                <button
-                  class="buy"
-                  onclick="window.open('${o[2]}','_blank')">
-                  Buy Now
-                </button>
-              </div>
+          }
 
-            </div>
 
-          `).join("")
-        }
+        </article>
 
-      </article>
+      `;
 
-    `;
 
-  }).join("");
+    }).join("");
 
 }
 
 
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
 render();
+
 
 </script>
 
+
 </body>
+
 </html>

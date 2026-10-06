@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CompareX - Compare. Choose. Save.</title>
@@ -187,7 +186,7 @@ main{
 }
 
 
-/* VIEW PRODUCT */
+/* VIEW */
 
 .view-btn{
   width:100%;
@@ -203,6 +202,25 @@ main{
 
 .view-btn:hover{
   background:#39d98a;
+}
+
+
+/* COMPARE BUTTON */
+
+.compare-btn{
+  width:100%;
+  border:0;
+  background:#39d98a;
+  color:#101b3d;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.compare-btn:hover{
+  background:#101b3d;
+  color:white;
 }
 
 
@@ -335,6 +353,39 @@ main{
 }
 
 
+/* COMPARE BAR */
+
+.compare-bar{
+  display:none;
+  position:sticky;
+  bottom:15px;
+  z-index:500;
+  max-width:700px;
+  margin:20px auto;
+  background:#101b3d;
+  color:white;
+  padding:15px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 5px 20px #00000030;
+}
+
+.compare-now{
+  margin-left:12px;
+  padding:9px 15px;
+  border:0;
+  border-radius:8px;
+  background:#39d98a;
+  color:#101b3d;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.compare-now:hover{
+  background:white;
+}
+
+
 /* FOOTER */
 
 footer{
@@ -400,6 +451,15 @@ footer{
     padding:18px;
   }
 
+  .compare-bar{
+    margin:10px;
+  }
+
+  .compare-now{
+    margin-left:5px;
+    padding:8px 10px;
+  }
+
 }
 
 
@@ -426,6 +486,8 @@ footer{
 <body>
 
 
+<!-- HEADER -->
+
 <header>
 
   <div class="logo">
@@ -439,6 +501,7 @@ footer{
 </header>
 
 
+<!-- HERO -->
 
 <section class="hero">
 
@@ -466,6 +529,24 @@ footer{
 </section>
 
 
+<!-- COMPARE BAR -->
+
+<div id="compareBar" class="compare-bar">
+
+  <span id="compareText"></span>
+
+  <button
+    class="compare-now"
+    onclick="compareProducts()">
+
+    ⚖️ Compare Now
+
+  </button>
+
+</div>
+
+
+<!-- MAIN -->
 
 <main>
 
@@ -476,39 +557,48 @@ footer{
 
   <div class="categories">
 
-    <button class="cat active" onclick="filterCat('All',this)">
+    <button class="cat active"
+      onclick="filterCat('All',this)">
       All
     </button>
 
-    <button class="cat" onclick="filterCat('Mobiles',this)">
+    <button class="cat"
+      onclick="filterCat('Mobiles',this)">
       📱 Mobiles
     </button>
 
-    <button class="cat" onclick="filterCat('Audio',this)">
+    <button class="cat"
+      onclick="filterCat('Audio',this)">
       🎧 Audio
     </button>
 
-    <button class="cat" onclick="filterCat('Laptops',this)">
+    <button class="cat"
+      onclick="filterCat('Laptops',this)">
       💻 Laptops
     </button>
 
-    <button class="cat" onclick="filterCat('Gaming',this)">
+    <button class="cat"
+      onclick="filterCat('Gaming',this)">
       🎮 Gaming
     </button>
 
-    <button class="cat" onclick="filterCat('Home',this)">
+    <button class="cat"
+      onclick="filterCat('Home',this)">
       🏠 Home
     </button>
 
-    <button class="cat" onclick="filterCat('Books',this)">
+    <button class="cat"
+      onclick="filterCat('Books',this)">
       📚 Books
     </button>
 
-    <button class="cat" onclick="filterCat('Fashion',this)">
+    <button class="cat"
+      onclick="filterCat('Fashion',this)">
       👕 Fashion
     </button>
 
-    <button class="cat" onclick="filterCat('Beauty',this)">
+    <button class="cat"
+      onclick="filterCat('Beauty',this)">
       💄 Beauty
     </button>
 
@@ -525,6 +615,7 @@ footer{
 </main>
 
 
+<!-- FOOTER -->
 
 <footer>
 
@@ -538,7 +629,6 @@ footer{
   </p>
 
 </footer>
-
 
 
 <!-- PRODUCT MODAL -->
@@ -558,7 +648,6 @@ footer{
 </div>
 
 
-
 <script>
 
 
@@ -568,7 +657,7 @@ footer{
 
 const products = [
 
-/* ================= MOBILES ================= */
+/* MOBILES */
 
 {
   id:"mobile-1",
@@ -642,7 +731,7 @@ const products = [
 },
 
 
-/* ================= AUDIO ================= */
+/* AUDIO */
 
 {
   id:"audio-1",
@@ -716,7 +805,7 @@ const products = [
 },
 
 
-/* ================= LAPTOPS ================= */
+/* LAPTOPS */
 
 {
   id:"laptop-1",
@@ -768,7 +857,7 @@ const products = [
 },
 
 
-/* ================= GAMING ================= */
+/* GAMING */
 
 {
   id:"gaming-1",
@@ -815,7 +904,7 @@ const products = [
 },
 
 
-/* ================= HOME ================= */
+/* HOME */
 
 {
   id:"home-1",
@@ -862,7 +951,7 @@ const products = [
 },
 
 
-/* ================= BOOKS ================= */
+/* BOOKS */
 
 {
   id:"book-1",
@@ -909,7 +998,7 @@ const products = [
 },
 
 
-/* ================= FASHION ================= */
+/* FASHION */
 
 {
   id:"fashion-1",
@@ -988,7 +1077,7 @@ const products = [
 },
 
 
-/* ================= BEAUTY ================= */
+/* BEAUTY */
 
 {
   id:"beauty-1",
@@ -1042,13 +1131,18 @@ const products = [
 ];
 
 
-
 /* =====================================================
-   CATEGORY
+   VARIABLES
 ===================================================== */
 
 let selected="All";
 
+let compareList=[];
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
 
 function filterCat(cat,button){
 
@@ -1067,6 +1161,284 @@ function filterCat(cat,button){
 }
 
 
+/* =====================================================
+   TOGGLE COMPARE
+===================================================== */
+
+function toggleCompare(id){
+
+  if(compareList.includes(id)){
+
+    compareList=
+      compareList.filter(item=>item!==id);
+
+  }
+
+  else{
+
+    if(compareList.length>=3){
+
+      alert("You can compare up to 3 products.");
+
+      return;
+
+    }
+
+    compareList.push(id);
+
+  }
+
+  updateCompareBar();
+
+  render();
+
+}
+
+
+/* =====================================================
+   UPDATE COMPARE BAR
+===================================================== */
+
+function updateCompareBar(){
+
+  const bar=
+    document.getElementById("compareBar");
+
+  const text=
+    document.getElementById("compareText");
+
+
+  if(compareList.length===0){
+
+    bar.style.display="none";
+
+    return;
+
+  }
+
+
+  bar.style.display="block";
+
+
+  text.innerText=
+    compareList.length+
+    " product"+
+    (compareList.length>1 ? "s" : "")+
+    " selected";
+
+}
+
+
+/* =====================================================
+   COMPARE PRODUCTS
+===================================================== */
+
+function compareProducts(){
+
+  if(compareList.length<2){
+
+    alert("Please select at least 2 products.");
+
+    return;
+
+  }
+
+
+  const selectedProducts=
+    products.filter(product =>
+      compareList.includes(product.id)
+    );
+
+
+  let html=`
+
+    <div
+      class="compare-overlay"
+      style="
+        position:fixed;
+        inset:0;
+        z-index:2000;
+        background:#00000099;
+        overflow:auto;
+        padding:20px;
+      "
+    >
+
+      <div
+        style="
+          background:white;
+          max-width:1000px;
+          margin:30px auto;
+          padding:25px;
+          border-radius:18px;
+        "
+      >
+
+        <h2 style="margin-bottom:20px">
+          ⚖️ Product Comparison
+        </h2>
+
+        <div
+          style="
+            display:grid;
+            grid-template-columns:repeat(${selectedProducts.length},1fr);
+            gap:15px;
+          "
+        >
+  `;
+
+
+  selectedProducts.forEach(product=>{
+
+    const lowest=
+      Math.min(
+        ...product.offers.map(
+          offer=>offer.price
+        )
+      );
+
+
+    html+=`
+
+      <div
+        style="
+          border:1px solid #eee;
+          padding:18px;
+          border-radius:12px;
+        "
+      >
+
+        <div
+          style="
+            font-size:55px;
+            text-align:center;
+            background:#f1f4fa;
+            padding:15px;
+            border-radius:10px;
+          "
+        >
+          ${product.icon}
+        </div>
+
+
+        <h3 style="margin-top:15px">
+          ${product.name}
+        </h3>
+
+
+        <p style="margin-top:8px">
+          ⭐ ${product.rating}
+        </p>
+
+
+        <p
+          style="
+            margin-top:12px;
+            color:#15945d;
+            font-weight:bold;
+          "
+        >
+          Lowest Price
+        </p>
+
+
+        <h2 style="margin-top:5px">
+          ₹${lowest.toLocaleString('en-IN')}
+        </h2>
+
+
+        <p
+          style="
+            margin-top:12px;
+            color:#666;
+          "
+        >
+          ${product.offers.length}
+          stores available
+        </p>
+
+
+        <div
+          style="
+            margin-top:15px;
+            border-top:1px solid #eee;
+            padding-top:10px;
+          "
+        >
+
+          ${
+            product.offers.map(offer=>`
+
+              <div
+                style="
+                  display:flex;
+                  justify-content:space-between;
+                  padding:7px 0;
+                  font-size:13px;
+                "
+              >
+
+                <span>
+                  ${offer.store}
+                </span>
+
+                <strong>
+                  ₹${offer.price.toLocaleString('en-IN')}
+                </strong>
+
+              </div>
+
+            `).join("")
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  html+=`
+
+        </div>
+
+
+        <button
+          onclick="this.closest('.compare-overlay').remove()"
+          style="
+            margin-top:20px;
+            width:100%;
+            padding:12px;
+            border:0;
+            border-radius:8px;
+            background:#101b3d;
+            color:white;
+            font-weight:bold;
+            cursor:pointer;
+          "
+        >
+
+          Close Comparison
+
+        </button>
+
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    html
+  );
+
+}
+
 
 /* =====================================================
    OPEN PRODUCT
@@ -1079,31 +1451,45 @@ function openProduct(id){
 
   if(!product) return;
 
+
   const sorted=
     [...product.offers]
     .sort((a,b)=>a.price-b.price);
+
 
   const min=
     sorted[0].price;
 
 
-  document.getElementById("modalContent").innerHTML=`
+  document.getElementById(
+    "modalContent"
+  ).innerHTML=`
 
     <div class="modal-icon">
       ${product.icon}
     </div>
 
+
     <h2>
       ${product.name}
     </h2>
+
 
     <div class="modal-rating">
       ⭐ ${product.rating} / 5
     </div>
 
-    <p style="margin-bottom:18px;color:#666">
-      Compare prices for this product across stores.
+
+    <p
+      style="
+        margin-bottom:18px;
+        color:#666;
+      "
+    >
+      Compare prices for this product
+      across stores.
     </p>
+
 
     ${
       sorted.map(offer=>`
@@ -1116,15 +1502,22 @@ function openProduct(id){
               ${offer.store}
             </div>
 
+
             ${
               offer.price===min
+
               ?
+
               '<div class="lowest">🟢 LOWEST PRICE</div>'
+
               :
+
               ''
+
             }
 
           </div>
+
 
           <div>
 
@@ -1132,9 +1525,11 @@ function openProduct(id){
               ₹${offer.price.toLocaleString('en-IN')}
             </div>
 
+
             <button
               class="buy"
-              onclick="goToProduct('${offer.url}')">
+              onclick="goToProduct('${offer.url}')"
+            >
 
               Buy Now
 
@@ -1150,10 +1545,11 @@ function openProduct(id){
   `;
 
 
-  document.getElementById("productModal").style.display="block";
+  document.getElementById(
+    "productModal"
+  ).style.display="block";
 
 }
-
 
 
 /* =====================================================
@@ -1162,7 +1558,9 @@ function openProduct(id){
 
 function closeModal(){
 
-  document.getElementById("productModal").style.display="none";
+  document.getElementById(
+    "productModal"
+  ).style.display="none";
 
 }
 
@@ -1170,7 +1568,10 @@ function closeModal(){
 window.onclick=function(event){
 
   const modal=
-    document.getElementById("productModal");
+    document.getElementById(
+      "productModal"
+    );
+
 
   if(event.target===modal){
 
@@ -1181,21 +1582,22 @@ window.onclick=function(event){
 };
 
 
-
 /* =====================================================
-   GO TO PRODUCT
+   GO TO STORE
 ===================================================== */
 
 function goToProduct(url){
 
-  window.open(url,"_blank");
+  window.open(
+    url,
+    "_blank"
+  );
 
 }
 
 
-
 /* =====================================================
-   RENDER
+   RENDER PRODUCTS
 ===================================================== */
 
 function render(){
@@ -1216,16 +1618,33 @@ function render(){
     products.filter(product=>
 
       (
+
         selected==="All" ||
+
         product.cat===selected
+
       )
 
       &&
 
       (
-        product.name.toLowerCase().includes(q) ||
-        product.brand.toLowerCase().includes(q) ||
-        product.cat.toLowerCase().includes(q)
+
+        product.name
+          .toLowerCase()
+          .includes(q)
+
+        ||
+
+        product.brand
+          .toLowerCase()
+          .includes(q)
+
+        ||
+
+        product.cat
+          .toLowerCase()
+          .includes(q)
+
       )
 
     );
@@ -1237,10 +1656,13 @@ function render(){
 
       <div class="noresult">
 
-        <h3>No products found 😕</h3>
+        <h3>
+          No products found 😕
+        </h3>
 
         <p style="margin-top:8px">
-          Try searching another product or category.
+          Try searching another product
+          or category.
         </p>
 
       </div>
@@ -1252,17 +1674,25 @@ function render(){
   }
 
 
-
   box.innerHTML=
 
     list.map(product=>{
 
       const sorted=
         [...product.offers]
-        .sort((a,b)=>a.price-b.price);
+        .sort(
+          (a,b)=>a.price-b.price
+        );
+
 
       const min=
         sorted[0].price;
+
+
+      const isSelected=
+        compareList.includes(
+          product.id
+        );
 
 
       return `
@@ -1272,7 +1702,8 @@ function render(){
 
           <div
             class="product-img"
-            onclick="openProduct('${product.id}')">
+            onclick="openProduct('${product.id}')"
+          >
 
             ${product.icon}
 
@@ -1280,7 +1711,8 @@ function render(){
 
 
           <h3
-            onclick="openProduct('${product.id}')">
+            onclick="openProduct('${product.id}')"
+          >
 
             ${product.name}
 
@@ -1296,9 +1728,26 @@ function render(){
 
           <button
             class="view-btn"
-            onclick="openProduct('${product.id}')">
+            onclick="openProduct('${product.id}')"
+          >
 
             View Product & Compare Prices
+
+          </button>
+
+
+          <button
+            class="compare-btn"
+            onclick="toggleCompare('${product.id}')"
+          >
+
+            ${
+              isSelected
+              ?
+              "✓ Added to Compare"
+              :
+              "⚖️ Add to Compare"
+            }
 
           </button>
 
@@ -1338,12 +1787,13 @@ function render(){
 }
 
 
-
 /* =====================================================
    INITIAL LOAD
 ===================================================== */
 
 render();
+
+updateCompareBar();
 
 </script>
 

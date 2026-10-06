@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +7,6 @@
 <title>CompareX - Compare. Choose. Save.</title>
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -20,15 +14,12 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#f5f7fb;
     color:#172033;
 }
 
-/* =========================
-   HEADER
-========================= */
-
+/* HEADER */
 header{
     background:linear-gradient(135deg,#111827,#2563eb);
     color:white;
@@ -42,7 +33,7 @@ header{
 }
 
 .logo{
-    font-size:26px;
+    font-size:28px;
     font-weight:bold;
 }
 
@@ -55,10 +46,7 @@ header{
     opacity:.85;
 }
 
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero{
     background:linear-gradient(135deg,#1d4ed8,#7c3aed);
     color:white;
@@ -74,7 +62,6 @@ header{
 .hero p{
     font-size:17px;
     margin-bottom:28px;
-    opacity:.9;
 }
 
 .search-box{
@@ -105,10 +92,7 @@ header{
     font-weight:bold;
 }
 
-/* =========================
-   CATEGORY
-========================= */
-
+/* CATEGORIES */
 .categories{
     padding:25px 7%;
     display:flex;
@@ -131,12 +115,9 @@ header{
     color:white;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
-
+/* PRODUCTS */
 .products-section{
-    padding:15px 7% 100px;
+    padding:15px 7% 120px;
 }
 
 .section-title{
@@ -162,16 +143,13 @@ header{
     padding:15px;
     box-shadow:0 5px 20px rgba(0,0,0,.08);
     transition:.3s;
-    position:relative;
 }
 
 .product-card:hover{
     transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
 }
 
 .product-img{
-    width:100%;
     height:210px;
     background:#f5f7fb;
     border-radius:14px;
@@ -208,7 +186,6 @@ header{
 
 .rating{
     color:#f59e0b;
-    font-size:14px;
 }
 
 .price-box{
@@ -224,17 +201,12 @@ header{
 .lowest-price{
     font-size:24px;
     font-weight:bold;
-    color:#111827;
 }
 
 .store-count{
     color:#6b7280;
     font-size:13px;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .button-row{
     display:flex;
@@ -267,15 +239,12 @@ header{
     color:white;
 }
 
-/* =========================
-   MODAL
-========================= */
-
+/* MODALS */
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
+    background:rgba(0,0,0,.7);
     z-index:3000;
     align-items:center;
     justify-content:center;
@@ -289,7 +258,7 @@ header{
 .modal-content{
     background:white;
     width:100%;
-    max-width:650px;
+    max-width:700px;
     max-height:90vh;
     overflow-y:auto;
     border-radius:20px;
@@ -300,8 +269,8 @@ header{
 .close{
     position:absolute;
     right:20px;
-    top:15px;
-    font-size:28px;
+    top:12px;
+    font-size:30px;
     cursor:pointer;
 }
 
@@ -311,8 +280,8 @@ header{
     background:#f5f7fb;
     border-radius:15px;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     overflow:hidden;
     margin-bottom:20px;
 }
@@ -324,10 +293,35 @@ header{
     padding:20px;
 }
 
-.modal-content h2{
-    margin-bottom:8px;
+/* SPECS */
+.specs{
+    margin-top:20px;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    overflow:hidden;
 }
 
+.spec-row{
+    display:grid;
+    grid-template-columns:40% 60%;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.spec-row:last-child{
+    border-bottom:none;
+}
+
+.spec-name{
+    background:#f8fafc;
+    padding:12px;
+    font-weight:bold;
+}
+
+.spec-value{
+    padding:12px;
+}
+
+/* OFFERS */
 .offer{
     display:flex;
     justify-content:space-between;
@@ -352,10 +346,7 @@ header{
     font-weight:bold;
 }
 
-/* =========================
-   COMPARE BAR
-========================= */
-
+/* COMPARE BAR */
 .compare-bar{
     position:fixed;
     bottom:0;
@@ -368,15 +359,10 @@ header{
     justify-content:space-between;
     align-items:center;
     z-index:2000;
-    box-shadow:0 -5px 20px rgba(0,0,0,.2);
 }
 
 .compare-bar.show{
     display:flex;
-}
-
-.compare-info{
-    font-weight:bold;
 }
 
 .compare-now{
@@ -389,12 +375,9 @@ header{
     cursor:pointer;
 }
 
-/* =========================
-   COMPARE MODAL
-========================= */
-
+/* COMPARE MODAL */
 .compare-modal-content{
-    max-width:1000px;
+    max-width:1100px;
 }
 
 .compare-grid{
@@ -420,7 +403,6 @@ header{
 }
 
 .compare-product h3{
-    font-size:16px;
     margin:12px 0 5px;
 }
 
@@ -431,18 +413,30 @@ header{
     margin:8px 0;
 }
 
-.compare-store{
-    display:flex;
-    justify-content:space-between;
-    border-top:1px solid #e5e7eb;
-    padding:8px 0;
-    font-size:14px;
+/* COMPARISON TABLE */
+.comparison-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:25px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+.comparison-table th,
+.comparison-table td{
+    border:1px solid #e5e7eb;
+    padding:12px;
+    text-align:center;
+}
 
+.comparison-table th{
+    background:#eef2ff;
+}
+
+.comparison-table td:first-child{
+    font-weight:bold;
+    background:#f8fafc;
+}
+
+/* FOOTER */
 footer{
     background:#111827;
     color:white;
@@ -452,13 +446,10 @@ footer{
 
 footer p{
     opacity:.75;
-    font-size:14px;
+    margin-top:8px;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media(max-width:700px){
 
     header{
@@ -515,11 +506,11 @@ footer p{
         padding:12px 5%;
     }
 
-}
+    .comparison-table{
+        font-size:12px;
+    }
 
-/* =========================
-   SMALL MOBILE
-========================= */
+}
 
 @media(max-width:430px){
 
@@ -531,20 +522,11 @@ footer p{
         height:200px;
     }
 
-    .search-box button{
-        padding:0 18px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
@@ -561,23 +543,19 @@ footer p{
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
 
     <h1>Compare Before You Buy 🔍</h1>
 
     <p>
-        Find the best price from multiple stores in one place.
+        Find products, compare specifications and check prices.
     </p>
 
     <div class="search-box">
 
         <input
-            type="text"
             id="searchInput"
+            type="text"
             placeholder="Search products..."
             oninput="searchProducts()"
         >
@@ -590,10 +568,6 @@ footer p{
 
 </section>
 
-
-<!-- =========================
-     CATEGORIES
-========================= -->
 
 <div class="categories">
 
@@ -645,10 +619,6 @@ footer p{
 </div>
 
 
-<!-- =========================
-     PRODUCTS
-========================= -->
-
 <section class="products-section">
 
     <div class="section-title">
@@ -667,15 +637,12 @@ footer p{
 </section>
 
 
-<!-- =========================
-     COMPARE BAR
-========================= -->
-
 <div
     class="compare-bar"
     id="compareBar">
 
-    <div class="compare-info">
+    <div>
+        ⚖️
         <span id="compareCount">0</span>
         products selected
     </div>
@@ -691,10 +658,6 @@ footer p{
 </div>
 
 
-<!-- =========================
-     PRODUCT MODAL
-========================= -->
-
 <div
     class="modal"
     id="productModal">
@@ -707,18 +670,12 @@ footer p{
             ×
         </span>
 
-        <div
-            id="modalBody">
-        </div>
+        <div id="modalBody"></div>
 
     </div>
 
 </div>
 
-
-<!-- =========================
-     COMPARE MODAL
-========================= -->
 
 <div
     class="modal"
@@ -735,32 +692,23 @@ footer p{
         <h2>⚖️ Compare Products</h2>
 
         <p style="margin-top:6px;color:#6b7280;">
-            Compare prices and stores before buying.
+            Compare specifications, ratings and prices.
         </p>
 
-        <div
-            class="compare-grid"
-            id="compareGrid">
-        </div>
+        <div id="compareGrid"></div>
 
     </div>
 
 </div>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     <h3>CompareX</h3>
 
-    <p>
-        Compare. Choose. Save.
-    </p>
+    <p>Compare. Choose. Save.</p>
 
-    <p style="margin-top:10px;">
+    <p>
         © 2026 CompareX. All rights reserved.
     </p>
 
@@ -782,13 +730,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600",
     rating:4.5,
 
+    specs:{
+        "Display":"6.6 inch AMOLED",
+        "Processor":"Exynos 1380",
+        "RAM":"6 GB",
+        "Storage":"128 GB",
+        "Battery":"6000 mAh",
+        "Camera":"50 MP"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:16999,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:17499,
@@ -804,13 +760,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600",
     rating:4.4,
 
+    specs:{
+        "Display":"6.7 inch AMOLED",
+        "Processor":"Snapdragon",
+        "RAM":"8 GB",
+        "Storage":"128 GB",
+        "Battery":"5000 mAh",
+        "Camera":"50 MP"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:18999,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:19499,
@@ -826,13 +790,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
     rating:4.6,
 
+    specs:{
+        "Type":"Over-Ear",
+        "Connectivity":"Bluetooth",
+        "Battery":"30 Hours",
+        "Noise Cancellation":"Yes",
+        "Microphone":"Yes",
+        "Weight":"250 g"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:2999,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:3199,
@@ -848,13 +820,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600",
     rating:4.3,
 
+    specs:{
+        "Type":"TWS",
+        "Connectivity":"Bluetooth 5.3",
+        "Battery":"40 Hours",
+        "Noise Cancellation":"Yes",
+        "Water Resistance":"IPX5",
+        "Charging":"USB-C"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:1299,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:1399,
@@ -870,13 +850,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600",
     rating:4.5,
 
+    specs:{
+        "Type":"Portable Speaker",
+        "Connectivity":"Bluetooth",
+        "Battery":"12 Hours",
+        "Water Resistance":"IP67",
+        "Power":"20 W",
+        "Charging":"USB-C"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:2499,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:2699,
@@ -892,13 +880,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600",
     rating:4.4,
 
+    specs:{
+        "Display":"15.6 inch",
+        "Processor":"Intel Core i5",
+        "RAM":"8 GB",
+        "Storage":"512 GB SSD",
+        "Graphics":"Intel Graphics",
+        "OS":"Windows 11"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:45999,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:46999,
@@ -914,13 +910,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600",
     rating:4.3,
 
+    specs:{
+        "Display":"15.6 inch",
+        "Processor":"AMD Ryzen 5",
+        "RAM":"8 GB",
+        "Storage":"512 GB SSD",
+        "Graphics":"AMD Radeon",
+        "OS":"Windows 11"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:48999,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:49999,
@@ -936,13 +940,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600",
     rating:4.4,
 
+    specs:{
+        "Type":"Mechanical",
+        "Switch":"Blue Switch",
+        "Connectivity":"USB",
+        "Backlight":"RGB",
+        "Keys":"104",
+        "Compatibility":"Windows / Mac"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:1499,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:1599,
@@ -958,13 +970,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=600",
     rating:4.3,
 
+    specs:{
+        "DPI":"7200 DPI",
+        "Connectivity":"USB",
+        "Buttons":"7",
+        "Lighting":"RGB",
+        "Sensor":"Optical",
+        "Compatibility":"Windows / Mac"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:899,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:949,
@@ -980,13 +1000,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600",
     rating:4.2,
 
+    specs:{
+        "Power":"33 W",
+        "Port":"USB-C",
+        "Fast Charging":"Yes",
+        "Protection":"Over Voltage",
+        "Compatibility":"Universal",
+        "Cable":"Included"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:799,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:849,
@@ -1002,13 +1030,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600",
     rating:4.3,
 
+    specs:{
+        "Material":"Aluminium",
+        "Adjustable":"Yes",
+        "Foldable":"Yes",
+        "Weight":"1.2 kg",
+        "Compatibility":"Up to 17 inch",
+        "Cooling":"Ventilated"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:999,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:1099,
@@ -1024,13 +1060,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600",
     rating:4.5,
 
+    specs:{
+        "Language":"English",
+        "Level":"Beginner",
+        "Pages":"500+",
+        "Format":"Paperback",
+        "Subject":"Java",
+        "Edition":"Latest"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:599,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:649,
@@ -1046,13 +1090,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600",
     rating:4.6,
 
+    specs:{
+        "Language":"English",
+        "Level":"Beginner",
+        "Pages":"450+",
+        "Format":"Paperback",
+        "Subject":"Python",
+        "Edition":"Latest"
+    },
+
     stores:[
         {
             name:"Amazon",
             price:499,
             url:"https://www.amazon.in/"
         },
-
         {
             name:"Flipkart",
             price:549,
@@ -1068,13 +1120,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600",
     rating:4.5,
 
+    specs:{
+        "Type":"Running",
+        "Material":"Mesh",
+        "Sole":"Rubber",
+        "Gender":"Men",
+        "Closure":"Lace-Up",
+        "Use":"Sports"
+    },
+
     stores:[
         {
             name:"Myntra",
             price:2999,
             url:"https://www.myntra.com/"
         },
-
         {
             name:"Amazon",
             price:3199,
@@ -1090,13 +1150,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600",
     rating:4.4,
 
+    specs:{
+        "Type":"Casual",
+        "Material":"Synthetic",
+        "Sole":"Rubber",
+        "Gender":"Men",
+        "Closure":"Lace-Up",
+        "Use":"Casual"
+    },
+
     stores:[
         {
             name:"Myntra",
             price:2799,
             url:"https://www.myntra.com/"
         },
-
         {
             name:"Amazon",
             price:2999,
@@ -1112,13 +1180,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600",
     rating:4.2,
 
+    specs:{
+        "Material":"Cotton",
+        "Fit":"Regular",
+        "Sleeve":"Half Sleeve",
+        "Pattern":"Solid",
+        "Gender":"Men",
+        "Wash":"Machine Wash"
+    },
+
     stores:[
         {
             name:"Myntra",
             price:599,
             url:"https://www.myntra.com/"
         },
-
         {
             name:"AJIO",
             price:649,
@@ -1134,13 +1210,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=600",
     rating:4.3,
 
+    specs:{
+        "Type":"Skin Care",
+        "Skin Type":"All Skin Types",
+        "Items":"4",
+        "Usage":"Daily",
+        "Gender":"Unisex",
+        "Paraben Free":"Yes"
+    },
+
     stores:[
         {
             name:"Nykaa",
             price:899,
             url:"https://www.nykaa.com/"
         },
-
         {
             name:"Amazon",
             price:949,
@@ -1156,13 +1240,21 @@ const products = [
     image:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=600",
     rating:4.4,
 
+    specs:{
+        "Type":"Eau de Parfum",
+        "Volume":"100 ml",
+        "Fragrance":"Fresh",
+        "Longevity":"Long Lasting",
+        "Gender":"Unisex",
+        "Set":"1"
+    },
+
     stores:[
         {
             name:"Nykaa",
             price:1299,
             url:"https://www.nykaa.com/"
         },
-
         {
             name:"Amazon",
             price:1399,
@@ -1174,74 +1266,76 @@ const products = [
 ];
 
 
-/* =========================
-   VARIABLES
-========================= */
+/* VARIABLES */
 
-let currentCategory = "All";
-
-let compareList = [];
+let currentCategory="All";
+let compareList=[];
 
 
-/* =========================
-   GET LOWEST PRICE
-========================= */
+/* LOWEST PRICE */
 
 function getLowestPrice(product){
 
     return Math.min(
-        ...product.stores.map(store => store.price)
+        ...product.stores.map(store=>store.price)
     );
 
 }
 
 
-/* =========================
-   DISPLAY PRODUCTS
-========================= */
+/* DISPLAY PRODUCTS */
 
 function displayProducts(list){
 
-    const grid =
+    const grid=
         document.getElementById("productGrid");
 
-    grid.innerHTML = "";
+    grid.innerHTML="";
 
-    document.getElementById("productCount").textContent =
+    document.getElementById("productCount")
+        .textContent=
         `${list.length} products`;
 
 
-    if(list.length === 0){
+    if(list.length===0){
 
-        grid.innerHTML = `
-            <div style="
-                grid-column:1/-1;
-                text-align:center;
-                padding:50px;
-                background:white;
-                border-radius:15px;
+        grid.innerHTML=`
+
+        <div style="
+            grid-column:1/-1;
+            text-align:center;
+            padding:50px;
+            background:white;
+            border-radius:15px;
+        ">
+
+            <h2>No products found 😕</h2>
+
+            <p style="
+                margin-top:8px;
+                color:#6b7280;
             ">
-                <h2>No products found 😕</h2>
-                <p style="margin-top:8px;color:#6b7280;">
-                    Try another search.
-                </p>
-            </div>
+                Try another search.
+            </p>
+
+        </div>
+
         `;
 
         return;
     }
 
 
-    list.forEach(product => {
+    list.forEach(product=>{
 
-        const lowest =
+        const lowest=
             getLowestPrice(product);
 
-        const isCompared =
+        const isCompared=
             compareList.includes(product.id);
 
 
-        grid.innerHTML += `
+        grid.innerHTML+=`
 
         <div class="product-card">
 
@@ -1294,16 +1388,16 @@ function displayProducts(list){
                     class="view-btn"
                     onclick="openProduct(${product.id})">
 
-                    View Offers
+                    View Details
 
                 </button>
 
 
                 <button
-                    class="compare-btn ${isCompared ? "added" : ""}"
+                    class="compare-btn ${isCompared?"added":""}"
                     onclick="toggleCompare(${product.id})">
 
-                    ${isCompared ? "✓ Added" : "⚖️ Compare"}
+                    ${isCompared?"✓ Added":"⚖️ Compare"}
 
                 </button>
 
@@ -1318,42 +1412,38 @@ function displayProducts(list){
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 function searchProducts(){
 
-    const search =
-        document
-        .getElementById("searchInput")
+    const search=
+        document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
 
-    let result = products;
+    let result=products;
 
 
-    if(currentCategory !== "All"){
+    if(currentCategory!=="All"){
 
-        result =
-            result.filter(
-                product =>
-                product.category === currentCategory
-            );
+        result=result.filter(
+            product =>
+            product.category===currentCategory
+        );
 
     }
 
 
     if(search){
 
-        result =
-            result.filter(product =>
-                product.name
-                .toLowerCase()
-                .includes(search)
-            );
+        result=result.filter(
+            product =>
+            product.name
+            .toLowerCase()
+            .includes(search)
+        );
 
     }
 
@@ -1363,13 +1453,11 @@ function searchProducts(){
 }
 
 
-/* =========================
-   CATEGORY FILTER
-========================= */
+/* CATEGORY */
 
 function filterCategory(category,button){
 
-    currentCategory = category;
+    currentCategory=category;
 
 
     document
@@ -1381,102 +1469,126 @@ function filterCategory(category,button){
 
     button.classList.add("active");
 
-
     searchProducts();
 
 }
 
 
-/* =========================
-   PRODUCT MODAL
-========================= */
+/* PRODUCT DETAILS */
 
 function openProduct(id){
 
-    const product =
-        products.find(p => p.id === id);
+    const product=
+        products.find(
+            p=>p.id===id
+        );
 
 
-    if(!product) return;
-
-
-    const lowest =
+    const lowest=
         getLowestPrice(product);
 
 
-    const modalBody =
-        document.getElementById("modalBody");
+    document.getElementById("modalBody")
+    .innerHTML=`
+
+    <div class="modal-image">
+
+        <img
+            src="${product.image}"
+            alt="${product.name}"
+        >
+
+    </div>
 
 
-    modalBody.innerHTML = `
-
-        <div class="modal-image">
-
-            <img
-                src="${product.image}"
-                alt="${product.name}"
-            >
-
-        </div>
+    <div class="product-category">
+        ${product.category}
+    </div>
 
 
-        <div class="product-category">
-            ${product.category}
-        </div>
+    <h2>
+        ${product.name}
+    </h2>
 
 
-        <h2>${product.name}</h2>
+    <div class="rating">
+        ⭐ ${product.rating}
+    </div>
 
 
-        <div class="rating">
-            ⭐ ${product.rating}
-        </div>
+    <p style="
+        margin-top:10px;
+        color:#16a34a;
+        font-weight:bold;
+    ">
+        Lowest Price:
+        ₹${lowest.toLocaleString("en-IN")}
+    </p>
 
 
-        <p style="
-            margin-top:10px;
-            color:#16a34a;
-            font-weight:bold;
-        ">
-            Lowest price: ₹${lowest.toLocaleString("en-IN")}
-        </p>
+    <h3 style="margin-top:20px;">
+        📋 Specifications
+    </h3>
 
 
-        <h3 style="margin-top:20px;">
-            Compare Store Prices
-        </h3>
+    <div class="specs">
 
+        ${Object.entries(product.specs)
+            .map(([key,value])=>`
 
-        ${product.stores.map(store => `
+            <div class="spec-row">
 
-            <div class="offer">
-
-                <div>
-
-                    <strong>
-                        ${store.name}
-                    </strong>
-
-                    <div class="offer-price">
-                        ₹${store.price.toLocaleString("en-IN")}
-                    </div>
-
+                <div class="spec-name">
+                    ${key}
                 </div>
 
-
-                <a
-                    class="buy-btn"
-                    href="${store.url}"
-                    target="_blank"
-                    rel="noopener">
-
-                    Buy Now
-
-                </a>
+                <div class="spec-value">
+                    ${value}
+                </div>
 
             </div>
 
-        `).join("")}
+            `)
+            .join("")}
+
+    </div>
+
+
+    <h3 style="margin-top:25px;">
+        🛒 Store Offers
+    </h3>
+
+
+    ${product.stores.map(store=>`
+
+        <div class="offer">
+
+            <div>
+
+                <strong>
+                    ${store.name}
+                </strong>
+
+                <div class="offer-price">
+                    ₹${store.price.toLocaleString("en-IN")}
+                </div>
+
+            </div>
+
+
+            <a
+                href="${store.url}"
+                target="_blank"
+                rel="noopener"
+                class="buy-btn">
+
+                Buy Now
+
+            </a>
+
+        </div>
+
+    `).join("")}
 
     `;
 
@@ -1488,9 +1600,7 @@ function openProduct(id){
 }
 
 
-/* =========================
-   CLOSE PRODUCT MODAL
-========================= */
+/* CLOSE PRODUCT */
 
 function closeProductModal(){
 
@@ -1501,27 +1611,23 @@ function closeProductModal(){
 }
 
 
-/* =========================
-   COMPARE
-========================= */
+/* TOGGLE COMPARE */
 
 function toggleCompare(id){
 
     if(compareList.includes(id)){
 
-        compareList =
+        compareList=
             compareList.filter(
-                item => item !== id
+                item=>item!==id
             );
 
-    }
+    }else{
 
-    else{
-
-        if(compareList.length >= 3){
+        if(compareList.length>=3){
 
             alert(
-                "You can compare maximum 3 products."
+                "Maximum 3 products can be compared."
             );
 
             return;
@@ -1539,28 +1645,24 @@ function toggleCompare(id){
 }
 
 
-/* =========================
-   UPDATE COMPARE BAR
-========================= */
+/* UPDATE BAR */
 
 function updateCompareBar(){
 
-    const bar =
+    const bar=
         document.getElementById("compareBar");
 
 
     document.getElementById("compareCount")
-        .textContent =
+        .textContent=
         compareList.length;
 
 
-    if(compareList.length > 0){
+    if(compareList.length>0){
 
         bar.classList.add("show");
 
-    }
-
-    else{
+    }else{
 
         bar.classList.remove("show");
 
@@ -1569,98 +1671,194 @@ function updateCompareBar(){
 }
 
 
-/* =========================
-   OPEN COMPARE
-========================= */
+/* OPEN COMPARE */
 
 function openCompare(){
 
-    if(compareList.length < 2){
+    if(compareList.length<2){
 
         alert(
-            "Select at least 2 products to compare."
+            "Select at least 2 products."
         );
 
         return;
-
     }
 
 
-    const selected =
+    const selected=
         compareList.map(
-            id =>
+            id=>
             products.find(
-                product =>
-                product.id === id
+                product=>product.id===id
             )
         );
 
 
-    const grid =
-        document.getElementById("compareGrid");
+    let html="";
 
 
-    grid.innerHTML = selected.map(product => {
+    /* PRODUCT HEADER */
 
-        const lowest =
-            getLowestPrice(product);
+    html+=`
 
+    <table class="comparison-table">
 
-        return `
+        <tr>
 
-        <div class="compare-product">
+            <th>Feature</th>
 
-            <img
-                src="${product.image}"
-                alt="${product.name}"
-            >
+            ${selected.map(product=>`
 
-
-            <h3>
-                ${product.name}
-            </h3>
-
-
-            <div>
-                ⭐ ${product.rating}
-            </div>
-
-
-            <div class="compare-price">
-                ₹${lowest.toLocaleString("en-IN")}
-            </div>
-
-
-            <div style="
-                color:#6b7280;
-                font-size:13px;
-                margin-bottom:8px;
-            ">
-                Lowest available price
-            </div>
-
-
-            ${product.stores.map(store => `
-
-                <div class="compare-store">
-
-                    <span>
-                        ${store.name}
-                    </span>
-
-                    <strong>
-                        ₹${store.price.toLocaleString("en-IN")}
-                    </strong>
-
-                </div>
+                <th>
+                    ${product.name}
+                </th>
 
             `).join("")}
 
-        </div>
+        </tr>
+
+
+        <tr>
+
+            <td>Image</td>
+
+            ${selected.map(product=>`
+
+                <td>
+
+                    <img
+                        src="${product.image}"
+                        style="
+                            width:120px;
+                            height:100px;
+                            object-fit:contain;
+                        "
+                    >
+
+                </td>
+
+            `).join("")}
+
+        </tr>
+
+
+        <tr>
+
+            <td>Rating</td>
+
+            ${selected.map(product=>`
+
+                <td>
+                    ⭐ ${product.rating}
+                </td>
+
+            `).join("")}
+
+        </tr>
+
+
+        <tr>
+
+            <td>Lowest Price</td>
+
+            ${selected.map(product=>`
+
+                <td style="
+                    color:#16a34a;
+                    font-weight:bold;
+                ">
+
+                    ₹${getLowestPrice(product)
+                        .toLocaleString("en-IN")}
+
+                </td>
+
+            `).join("")}
+
+        </tr>
+
+    `;
+
+
+    /* GET ALL SPEC KEYS */
+
+    const allSpecs=
+        [...new Set(
+            selected.flatMap(
+                product =>
+                Object.keys(product.specs)
+            )
+        )];
+
+
+    allSpecs.forEach(spec=>{
+
+        html+=`
+
+        <tr>
+
+            <td>
+                ${spec}
+            </td>
+
+            ${selected.map(product=>`
+
+                <td>
+                    ${product.specs[spec] || "—"}
+                </td>
+
+            `).join("")}
+
+        </tr>
 
         `;
 
-    }).join("");
+    });
+
+
+    /* STORE PRICES */
+
+    html+=`
+
+    <tr>
+
+        <td>
+            Store Prices
+        </td>
+
+        ${selected.map(product=>`
+
+            <td>
+
+                ${product.stores.map(store=>`
+
+                    <div style="
+                        margin:5px 0;
+                    ">
+
+                        ${store.name}:
+                        <strong>
+                            ₹${store.price.toLocaleString("en-IN")}
+                        </strong>
+
+                    </div>
+
+                `).join("")}
+
+            </td>
+
+        `).join("")}
+
+    </tr>
+
+
+    </table>
+
+    `;
+
+
+    document.getElementById("compareGrid")
+        .innerHTML=html;
 
 
     document
@@ -1670,9 +1868,7 @@ function openCompare(){
 }
 
 
-/* =========================
-   CLOSE COMPARE
-========================= */
+/* CLOSE COMPARE */
 
 function closeCompare(){
 
@@ -1683,27 +1879,25 @@ function closeCompare(){
 }
 
 
-/* =========================
-   CLOSE MODALS ON BACKGROUND
-========================= */
+/* BACKGROUND CLICK */
 
-window.onclick = function(event){
+window.onclick=function(event){
 
-    const productModal =
+    const productModal=
         document.getElementById("productModal");
 
-    const compareModal =
+    const compareModal=
         document.getElementById("compareModal");
 
 
-    if(event.target === productModal){
+    if(event.target===productModal){
 
         closeProductModal();
 
     }
 
 
-    if(event.target === compareModal){
+    if(event.target===compareModal){
 
         closeCompare();
 
@@ -1712,9 +1906,7 @@ window.onclick = function(event){
 };
 
 
-/* =========================
-   INITIAL LOAD
-========================= */
+/* INITIAL LOAD */
 
 displayProducts(products);
 

@@ -5,17 +5,11 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CompareX - Compare. Choose. Save.</title>
 
-
 <style>
-
-/* =========================
-   BASIC
-========================= */
 
 *{
   box-sizing:border-box;
@@ -30,9 +24,7 @@ body{
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
   background:#101b3d;
@@ -58,18 +50,12 @@ header{
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   text-align:center;
   padding:55px 20px;
-  background:linear-gradient(
-    135deg,
-    #101b3d,
-    #243b80
-  );
+  background:linear-gradient(135deg,#101b3d,#243b80);
   color:white;
 }
 
@@ -84,9 +70,7 @@ header{
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 .search{
   max-width:650px;
@@ -114,13 +98,10 @@ header{
   padding:0 22px;
   font-weight:bold;
   cursor:pointer;
-  white-space:nowrap;
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main{
   max-width:1100px;
@@ -129,9 +110,7 @@ main{
 }
 
 
-/* =========================
-   CATEGORIES
-========================= */
+/* CATEGORIES */
 
 .categories{
   display:flex;
@@ -150,27 +129,23 @@ main{
   font-size:14px;
 }
 
-.cat:hover{
+.cat:hover,
+.cat.active{
   background:#39d98a;
   color:#101b3d;
 }
 
 
-/* =========================
-   PRODUCT GRID
-========================= */
+/* GRID */
 
 .grid{
   display:grid;
-  grid-template-columns:
-    repeat(auto-fit,minmax(270px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
   gap:20px;
 }
 
 
-/* =========================
-   PRODUCT CARD
-========================= */
+/* CARD */
 
 .card{
   background:white;
@@ -185,30 +160,25 @@ main{
 }
 
 
-/* =========================
-   PRODUCT IMAGE
-========================= */
+/* IMAGE */
 
 .product-img{
-  height:150px;
+  height:160px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:70px;
+  font-size:75px;
   background:#f1f4fa;
   border-radius:12px;
   margin-bottom:15px;
+  cursor:pointer;
 }
 
 .card h3{
   margin-bottom:8px;
   font-size:18px;
+  cursor:pointer;
 }
-
-
-/* =========================
-   RATING
-========================= */
 
 .rating{
   color:#f5a623;
@@ -217,9 +187,26 @@ main{
 }
 
 
-/* =========================
-   OFFERS
-========================= */
+/* VIEW PRODUCT */
+
+.view-btn{
+  width:100%;
+  border:0;
+  background:#eef2f8;
+  color:#101b3d;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.view-btn:hover{
+  background:#39d98a;
+}
+
+
+/* OFFERS */
 
 .offer{
   display:flex;
@@ -241,11 +228,6 @@ main{
   margin-bottom:5px;
 }
 
-
-/* =========================
-   LOWEST PRICE
-========================= */
-
 .lowest{
   color:#15945d;
   font-size:11px;
@@ -254,9 +236,7 @@ main{
 }
 
 
-/* =========================
-   BUY BUTTON
-========================= */
+/* BUY */
 
 .buy{
   background:#101b3d;
@@ -274,20 +254,7 @@ main{
 }
 
 
-/* =========================
-   STORE BADGE
-========================= */
-
-.store-name{
-  display:flex;
-  align-items:center;
-  gap:5px;
-}
-
-
-/* =========================
-   NO RESULT
-========================= */
+/* NO RESULT */
 
 .noresult{
   text-align:center;
@@ -297,9 +264,78 @@ main{
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  z-index:1000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:#00000099;
+  padding:20px;
+  overflow:auto;
+}
+
+.modal-box{
+  background:white;
+  max-width:600px;
+  margin:50px auto;
+  border-radius:18px;
+  padding:25px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:12px;
+  font-size:28px;
+  cursor:pointer;
+  color:#777;
+}
+
+.modal-icon{
+  height:180px;
+  background:#f1f4fa;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:85px;
+  margin-bottom:20px;
+}
+
+.modal-box h2{
+  margin-bottom:8px;
+}
+
+.modal-rating{
+  color:#f5a623;
+  margin-bottom:20px;
+}
+
+.modal-offer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid #eee;
+  padding:15px 0;
+}
+
+.modal-store{
+  font-weight:bold;
+}
+
+.modal-price{
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+
+/* FOOTER */
 
 footer{
   text-align:center;
@@ -309,9 +345,7 @@ footer{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -344,8 +378,6 @@ footer{
   }
 
   .search input{
-    min-width:0;
-    width:100%;
     padding:14px;
     font-size:14px;
   }
@@ -353,23 +385,25 @@ footer{
   .search button{
     padding:0 12px;
     font-size:14px;
-    white-space:nowrap;
   }
 
   .grid{
     grid-template-columns:1fr;
   }
 
-  .offer{
-    gap:8px;
+  .modal{
+    padding:10px;
+  }
+
+  .modal-box{
+    margin:25px auto;
+    padding:18px;
   }
 
 }
 
 
-/* =========================
-   SMALL PHONES
-========================= */
+/* SMALL PHONES */
 
 @media(max-width:380px){
 
@@ -392,10 +426,6 @@ footer{
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
   <div class="logo">
@@ -410,20 +440,13 @@ footer{
 
 
 
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
 
-  <h1>
-    Find the Best Price
-  </h1>
+  <h1>Find the Best Price</h1>
 
   <p>
     Compare products across stores in one place.
   </p>
-
 
   <div class="search">
 
@@ -444,12 +467,7 @@ footer{
 
 
 
-<!-- =========================
-     MAIN
-========================= -->
-
 <main>
-
 
   <h2>
     Popular Categories
@@ -458,90 +476,43 @@ footer{
 
   <div class="categories">
 
-
-    <button
-      class="cat"
-      onclick="filterCat('All')">
-
+    <button class="cat active" onclick="filterCat('All',this)">
       All
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Mobiles')">
-
+    <button class="cat" onclick="filterCat('Mobiles',this)">
       📱 Mobiles
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Audio')">
-
+    <button class="cat" onclick="filterCat('Audio',this)">
       🎧 Audio
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Laptops')">
-
+    <button class="cat" onclick="filterCat('Laptops',this)">
       💻 Laptops
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Gaming')">
-
+    <button class="cat" onclick="filterCat('Gaming',this)">
       🎮 Gaming
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Home')">
-
+    <button class="cat" onclick="filterCat('Home',this)">
       🏠 Home
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Books')">
-
+    <button class="cat" onclick="filterCat('Books',this)">
       📚 Books
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Fashion')">
-
+    <button class="cat" onclick="filterCat('Fashion',this)">
       👕 Fashion
-
     </button>
 
-
-    <button
-      class="cat"
-      onclick="filterCat('Beauty')">
-
+    <button class="cat" onclick="filterCat('Beauty',this)">
       💄 Beauty
-
     </button>
-
 
   </div>
-
 
 
   <h2 style="margin-bottom:15px">
@@ -549,19 +520,11 @@ footer{
   </h2>
 
 
-  <div
-    id="products"
-    class="grid">
-  </div>
-
+  <div id="products" class="grid"></div>
 
 </main>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -571,255 +534,533 @@ footer{
   </p>
 
   <p style="margin-top:8px">
-    Prices shown are demo prices and may change.
+    Product prices and availability may change.
   </p>
 
 </footer>
 
 
 
+<!-- PRODUCT MODAL -->
+
+<div id="productModal" class="modal">
+
+  <div class="modal-box">
+
+    <span class="close" onclick="closeModal()">
+      ×
+    </span>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+
+
 <script>
 
 
-/* =========================
-   PRODUCT DATA
-========================= */
+/* =====================================================
+   PRODUCT DATABASE
+===================================================== */
 
 const products = [
 
-
-/* MOBILE */
+/* ================= MOBILES ================= */
 
 {
-  name:"Nova 5G Smartphone 128GB",
+  id:"mobile-1",
+  name:"Samsung Galaxy M35 5G",
+  brand:"Samsung",
+  cat:"Mobiles",
+  icon:"📱",
+  rating:4.4,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:16999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:16499,
+      url:"https://www.flipkart.com/"
+    },
+    {
+      store:"Croma",
+      price:17199,
+      url:"https://www.croma.com/"
+    }
+  ]
+},
+
+{
+  id:"mobile-2",
+  name:"OnePlus Nord CE",
+  brand:"OnePlus",
   cat:"Mobiles",
   icon:"📱",
   rating:4.3,
 
   offers:[
-
-    ["Amazon",15799,"https://www.amazon.in/"],
-
-    ["Flipkart",15499,"https://www.flipkart.com/"],
-
-    ["Croma",16199,"https://www.croma.com/"],
-
-    ["Tata CLiQ",15999,"https://www.tatacliq.com/"]
-
+    {
+      store:"Amazon",
+      price:18999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:18499,
+      url:"https://www.flipkart.com/"
+    }
   ]
-
 },
 
-
-
-/* AUDIO */
-
 {
-  name:"Wireless Earbuds X1",
-  cat:"Audio",
-  icon:"🎧",
+  id:"mobile-3",
+  name:"Redmi Note Series",
+  brand:"Redmi",
+  cat:"Mobiles",
+  icon:"📱",
   rating:4.2,
 
   offers:[
-
-    ["Amazon",1299,"https://www.amazon.in/"],
-
-    ["Flipkart",1199,"https://www.flipkart.com/"],
-
-    ["Croma",1349,"https://www.croma.com/"]
-
+    {
+      store:"Amazon",
+      price:14999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:14499,
+      url:"https://www.flipkart.com/"
+    }
   ]
-
 },
 
 
-
-/* GAMING */
+/* ================= AUDIO ================= */
 
 {
+  id:"audio-1",
+  name:"Sony Wireless Headphones",
+  brand:"Sony",
+  cat:"Audio",
+  icon:"🎧",
+  rating:4.5,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:4999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:4799,
+      url:"https://www.flipkart.com/"
+    },
+    {
+      store:"Croma",
+      price:5099,
+      url:"https://www.croma.com/"
+    }
+  ]
+},
+
+{
+  id:"audio-2",
+  name:"Boat Wireless Earbuds",
+  brand:"boAt",
+  cat:"Audio",
+  icon:"🎧",
+  rating:4.3,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:1299,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:1199,
+      url:"https://www.flipkart.com/"
+    }
+  ]
+},
+
+{
+  id:"audio-3",
+  name:"JBL Bluetooth Speaker",
+  brand:"JBL",
+  cat:"Audio",
+  icon:"🔊",
+  rating:4.6,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:2999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:2899,
+      url:"https://www.flipkart.com/"
+    }
+  ]
+},
+
+
+/* ================= LAPTOPS ================= */
+
+{
+  id:"laptop-1",
+  name:"HP 15 Laptop",
+  brand:"HP",
+  cat:"Laptops",
+  icon:"💻",
+  rating:4.3,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:48999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:47999,
+      url:"https://www.flipkart.com/"
+    },
+    {
+      store:"Croma",
+      price:49599,
+      url:"https://www.croma.com/"
+    }
+  ]
+},
+
+{
+  id:"laptop-2",
+  name:"Lenovo IdeaPad",
+  brand:"Lenovo",
+  cat:"Laptops",
+  icon:"💻",
+  rating:4.4,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:52999,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:51999,
+      url:"https://www.flipkart.com/"
+    }
+  ]
+},
+
+
+/* ================= GAMING ================= */
+
+{
+  id:"gaming-1",
   name:"Mechanical Gaming Keyboard",
+  brand:"Gaming",
   cat:"Gaming",
   icon:"⌨️",
   rating:4.5,
 
   offers:[
-
-    ["Amazon",2499,"https://www.amazon.in/"],
-
-    ["Flipkart",2299,"https://www.flipkart.com/"],
-
-    ["Croma",2599,"https://www.croma.com/"]
-
+    {
+      store:"Amazon",
+      price:2499,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:2299,
+      url:"https://www.flipkart.com/"
+    }
   ]
+},
 
+{
+  id:"gaming-2",
+  name:"Gaming Mouse",
+  brand:"Gaming",
+  cat:"Gaming",
+  icon:"🖱️",
+  rating:4.4,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:1499,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:1399,
+      url:"https://www.flipkart.com/"
+    }
+  ]
 },
 
 
-
-/* HOME */
+/* ================= HOME ================= */
 
 {
+  id:"home-1",
   name:"USB-C Fast Charger",
+  brand:"Accessories",
   cat:"Home",
   icon:"🔌",
   rating:4.4,
 
   offers:[
-
-    ["Amazon",899,"https://www.amazon.in/"],
-
-    ["Flipkart",799,"https://www.flipkart.com/"],
-
-    ["Croma",949,"https://www.croma.com/"]
-
+    {
+      store:"Amazon",
+      price:899,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:799,
+      url:"https://www.flipkart.com/"
+    }
   ]
-
 },
 
-
-
-/* LAPTOP */
-
 {
+  id:"home-2",
   name:"Laptop Stand",
-  cat:"Laptops",
-  icon:"💻",
-  rating:4.1,
+  brand:"Accessories",
+  cat:"Home",
+  icon:"🖥️",
+  rating:4.2,
 
   offers:[
-
-    ["Amazon",1199,"https://www.amazon.in/"],
-
-    ["Flipkart",999,"https://www.flipkart.com/"],
-
-    ["Croma",1299,"https://www.croma.com/"]
-
+    {
+      store:"Amazon",
+      price:1199,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:999,
+      url:"https://www.flipkart.com/"
+    }
   ]
-
 },
 
 
-
-/* BOOK */
+/* ================= BOOKS ================= */
 
 {
-  name:"Beginner Java Programming",
+  id:"book-1",
+  name:"Java Programming Book",
+  brand:"Programming",
   cat:"Books",
   icon:"📚",
   rating:4.6,
 
   offers:[
-
-    ["Amazon",499,"https://www.amazon.in/"],
-
-    ["Flipkart",459,"https://www.flipkart.com/"]
-
+    {
+      store:"Amazon",
+      price:499,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:459,
+      url:"https://www.flipkart.com/"
+    }
   ]
+},
 
+{
+  id:"book-2",
+  name:"Python Programming Book",
+  brand:"Programming",
+  cat:"Books",
+  icon:"📚",
+  rating:4.7,
+
+  offers:[
+    {
+      store:"Amazon",
+      price:599,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Flipkart",
+      price:549,
+      url:"https://www.flipkart.com/"
+    }
+  ]
 },
 
 
-
-/* FASHION */
+/* ================= FASHION ================= */
 
 {
-  name:"Men's Casual Sneakers",
+  id:"fashion-1",
+  name:"Nike Running Shoes",
+  brand:"Nike",
+  cat:"Fashion",
+  icon:"👟",
+  rating:4.5,
+
+  offers:[
+    {
+      store:"Myntra",
+      price:2999,
+      url:"https://www.myntra.com/"
+    },
+    {
+      store:"AJIO",
+      price:2899,
+      url:"https://www.ajio.com/"
+    },
+    {
+      store:"Amazon",
+      price:3099,
+      url:"https://www.amazon.in/"
+    }
+  ]
+},
+
+{
+  id:"fashion-2",
+  name:"Adidas Casual Shoes",
+  brand:"Adidas",
   cat:"Fashion",
   icon:"👟",
   rating:4.4,
 
   offers:[
-
-    ["Myntra",1499,"https://www.myntra.com/"],
-
-    ["AJIO",1399,"https://www.ajio.com/"],
-
-    ["Meesho",899,"https://www.meesho.com/"]
-
+    {
+      store:"Myntra",
+      price:3499,
+      url:"https://www.myntra.com/"
+    },
+    {
+      store:"AJIO",
+      price:3299,
+      url:"https://www.ajio.com/"
+    }
   ]
-
 },
 
-
-
-/* FASHION */
-
 {
-  name:"Classic Cotton T-Shirt",
+  id:"fashion-3",
+  name:"Men's Cotton T-Shirt",
+  brand:"Fashion",
   cat:"Fashion",
   icon:"👕",
   rating:4.2,
 
   offers:[
-
-    ["Myntra",699,"https://www.myntra.com/"],
-
-    ["AJIO",649,"https://www.ajio.com/"],
-
-    ["Meesho",399,"https://www.meesho.com/"]
-
+    {
+      store:"Myntra",
+      price:699,
+      url:"https://www.myntra.com/"
+    },
+    {
+      store:"AJIO",
+      price:649,
+      url:"https://www.ajio.com/"
+    },
+    {
+      store:"Meesho",
+      price:399,
+      url:"https://www.meesho.com/"
+    }
   ]
-
 },
 
 
-
-/* BEAUTY */
+/* ================= BEAUTY ================= */
 
 {
-  name:"Daily Face Care Kit",
+  id:"beauty-1",
+  name:"Face Care Kit",
+  brand:"Beauty",
   cat:"Beauty",
   icon:"🧴",
   rating:4.3,
 
   offers:[
-
-    ["Nykaa",799,"https://www.nykaa.com/"],
-
-    ["Amazon",749,"https://www.amazon.in/"],
-
-    ["Meesho",599,"https://www.meesho.com/"]
-
+    {
+      store:"Nykaa",
+      price:799,
+      url:"https://www.nykaa.com/"
+    },
+    {
+      store:"Amazon",
+      price:749,
+      url:"https://www.amazon.in/"
+    }
   ]
-
 },
 
-
-
-/* BEAUTY */
-
 {
+  id:"beauty-2",
   name:"Perfume Collection",
+  brand:"Beauty",
   cat:"Beauty",
   icon:"🌸",
   rating:4.4,
 
   offers:[
-
-    ["Nykaa",999,"https://www.nykaa.com/"],
-
-    ["Amazon",899,"https://www.amazon.in/"],
-
-    ["Myntra",949,"https://www.myntra.com/"]
-
+    {
+      store:"Nykaa",
+      price:999,
+      url:"https://www.nykaa.com/"
+    },
+    {
+      store:"Amazon",
+      price:899,
+      url:"https://www.amazon.in/"
+    },
+    {
+      store:"Myntra",
+      price:949,
+      url:"https://www.myntra.com/"
+    }
   ]
-
 }
 
 ];
 
 
 
-/* =========================
+/* =====================================================
    CATEGORY
-========================= */
+===================================================== */
 
 let selected="All";
 
 
-function filterCat(cat){
+function filterCat(cat,button){
 
   selected=cat;
+
+  document
+    .querySelectorAll(".cat")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
+
+  button.classList.add("active");
 
   render();
 
@@ -827,18 +1068,144 @@ function filterCat(cat){
 
 
 
-/* =========================
+/* =====================================================
+   OPEN PRODUCT
+===================================================== */
+
+function openProduct(id){
+
+  const product=
+    products.find(p=>p.id===id);
+
+  if(!product) return;
+
+  const sorted=
+    [...product.offers]
+    .sort((a,b)=>a.price-b.price);
+
+  const min=
+    sorted[0].price;
+
+
+  document.getElementById("modalContent").innerHTML=`
+
+    <div class="modal-icon">
+      ${product.icon}
+    </div>
+
+    <h2>
+      ${product.name}
+    </h2>
+
+    <div class="modal-rating">
+      ⭐ ${product.rating} / 5
+    </div>
+
+    <p style="margin-bottom:18px;color:#666">
+      Compare prices for this product across stores.
+    </p>
+
+    ${
+      sorted.map(offer=>`
+
+        <div class="modal-offer">
+
+          <div>
+
+            <div class="modal-store">
+              ${offer.store}
+            </div>
+
+            ${
+              offer.price===min
+              ?
+              '<div class="lowest">🟢 LOWEST PRICE</div>'
+              :
+              ''
+            }
+
+          </div>
+
+          <div>
+
+            <div class="modal-price">
+              ₹${offer.price.toLocaleString('en-IN')}
+            </div>
+
+            <button
+              class="buy"
+              onclick="goToProduct('${offer.url}')">
+
+              Buy Now
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `).join("")
+    }
+
+  `;
+
+
+  document.getElementById("productModal").style.display="block";
+
+}
+
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal(){
+
+  document.getElementById("productModal").style.display="none";
+
+}
+
+
+window.onclick=function(event){
+
+  const modal=
+    document.getElementById("productModal");
+
+  if(event.target===modal){
+
+    closeModal();
+
+  }
+
+};
+
+
+
+/* =====================================================
+   GO TO PRODUCT
+===================================================== */
+
+function goToProduct(url){
+
+  window.open(url,"_blank");
+
+}
+
+
+
+/* =====================================================
    RENDER
-========================= */
+===================================================== */
 
 function render(){
 
-
-  const q=document
-    .getElementById("search")
-    .value
-    .toLowerCase()
-    .trim();
+  const q=
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase()
+      .trim();
 
 
   const box=
@@ -846,29 +1213,39 @@ function render(){
 
 
   const list=
-    products.filter(p=>
+    products.filter(product=>
 
       (
         selected==="All" ||
-        p.cat===selected
+        product.cat===selected
       )
 
       &&
 
-      p.name
-        .toLowerCase()
-        .includes(q)
+      (
+        product.name.toLowerCase().includes(q) ||
+        product.brand.toLowerCase().includes(q) ||
+        product.cat.toLowerCase().includes(q)
+      )
 
     );
 
 
-
-  /* NO RESULTS */
-
   if(list.length===0){
 
-    box.innerHTML=
-      '<div class="noresult">No products found 😕</div>';
+    box.innerHTML=`
+
+      <div class="noresult">
+
+        <h3>No products found 😕</h3>
+
+        <p style="margin-top:8px">
+          Try searching another product or category.
+        </p>
+
+      </div>
+
+    `;
 
     return;
 
@@ -876,20 +1253,16 @@ function render(){
 
 
 
-  /* PRODUCT CARDS */
-
   box.innerHTML=
-    list.map(p=>{
 
+    list.map(product=>{
 
       const sorted=
-        [...p.offers]
-        .sort((a,b)=>a[1]-b[1]);
-
+        [...product.offers]
+        .sort((a,b)=>a.price-b.price);
 
       const min=
-        sorted[0][1];
-
+        sorted[0].price;
 
 
       return `
@@ -897,103 +1270,68 @@ function render(){
         <article class="card">
 
 
-          <div class="product-img">
+          <div
+            class="product-img"
+            onclick="openProduct('${product.id}')">
 
-            ${p.icon}
+            ${product.icon}
 
           </div>
 
 
+          <h3
+            onclick="openProduct('${product.id}')">
 
-          <h3>
-
-            ${p.name}
+            ${product.name}
 
           </h3>
 
 
-
           <div class="rating">
 
-            ⭐ ${p.rating}
+            ⭐ ${product.rating}
 
           </div>
 
 
+          <button
+            class="view-btn"
+            onclick="openProduct('${product.id}')">
 
-          ${
+            View Product & Compare Prices
 
-            sorted.map(o=>`
-
-              <div class="offer">
-
-
-                <div>
-
-                  <div class="store-name">
-
-                    <div class="store">
-
-                      ${o[0]}
-
-                    </div>
-
-                  </div>
+          </button>
 
 
-                  ${
+          <div class="offer">
 
-                    o[1]===min
+            <div>
 
-                    ?
-
-                    '<div class="lowest">🟢 LOWEST PRICE</div>'
-
-                    :
-
-                    ''
-
-                  }
-
-
-                </div>
-
-
-
-                <div>
-
-                  <div class="price">
-
-                    ₹${o[1].toLocaleString('en-IN')}
-
-                  </div>
-
-
-                  <button
-
-                    class="buy"
-
-                    onclick="window.open('${o[2]}','_blank')">
-
-                    Buy Now
-
-                  </button>
-
-
-                </div>
-
-
+              <div class="store">
+                Best Price
               </div>
 
-            `).join("")
+              <div class="lowest">
+                🟢 FROM
+              </div>
 
-          }
+            </div>
+
+
+            <div>
+
+              <div class="price">
+                ₹${min.toLocaleString('en-IN')}
+              </div>
+
+            </div>
+
+          </div>
 
 
         </article>
 
       `;
-
 
     }).join("");
 
@@ -1001,12 +1339,11 @@ function render(){
 
 
 
-/* =========================
+/* =====================================================
    INITIAL LOAD
-========================= */
+===================================================== */
 
 render();
-
 
 </script>
 

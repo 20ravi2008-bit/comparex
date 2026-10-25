@@ -87,10 +87,6 @@ header{
   font-size:16px;
 }
 
-.icon-btn:hover{
-  background:rgba(255,255,255,.3);
-}
-
 /* HERO */
 
 .hero{
@@ -125,7 +121,7 @@ header{
 
 .search-box input{
   width:100%;
-  padding:17px 20px;
+  padding:17px 50px 17px 20px;
   border:2px solid var(--border);
   border-radius:14px;
   font-size:16px;
@@ -134,8 +130,11 @@ header{
   color:var(--text);
 }
 
-.search-box input:focus{
-  border-color:var(--primary);
+.search-icon{
+  position:absolute;
+  right:18px;
+  top:15px;
+  font-size:21px;
 }
 
 /* CATEGORIES */
@@ -146,11 +145,10 @@ header{
   overflow-x:auto;
   padding:20px 6%;
   background:var(--card);
-  scrollbar-width:none;
 }
 
 .categories::-webkit-scrollbar{
-  display:none;
+  height:4px;
 }
 
 .categories button{
@@ -202,7 +200,7 @@ header{
 /* PRODUCTS */
 
 .container{
-  padding:10px 6% 110px;
+  padding:10px 6% 100px;
 }
 
 .result-count{
@@ -249,7 +247,6 @@ header{
   cursor:pointer;
   font-size:20px;
   box-shadow:0 2px 8px rgba(0,0,0,.15);
-  z-index:2;
 }
 
 .wishlist.active{
@@ -270,7 +267,7 @@ header{
 .product-info h3{
   margin:6px 0;
   font-size:17px;
-  min-height:40px;
+  line-height:1.3;
 }
 
 .rating{
@@ -290,12 +287,6 @@ header{
   font-weight:bold;
 }
 
-.best-store{
-  margin-top:5px;
-  color:var(--muted);
-  font-size:11px;
-}
-
 .card-buttons{
   display:flex;
   gap:8px;
@@ -312,18 +303,9 @@ header{
   color:white;
 }
 
-.card-buttons button:hover{
-  opacity:.9;
-}
-
 .card-buttons button.compare-btn{
   background:transparent;
   color:var(--primary);
-}
-
-.card-buttons button.compare-btn.selected{
-  background:var(--primary);
-  color:white;
 }
 
 /* MODAL */
@@ -402,20 +384,18 @@ header{
   margin-top:10px;
 }
 
-.offer.best{
-  border:2px solid var(--success);
-  background:rgba(22,163,74,.08);
+.offer-info{
+  flex:1;
+}
+
+.store{
+  font-weight:bold;
 }
 
 .offer-price{
-  font-size:18px;
-  font-weight:bold;
-}
-
-.best-label{
   color:var(--success);
-  font-size:11px;
   font-weight:bold;
+  margin-top:4px;
 }
 
 .buy{
@@ -445,11 +425,6 @@ header{
   gap:15px;
 }
 
-.compare-actions{
-  display:flex;
-  gap:10px;
-}
-
 .compare-bar button{
   background:#2563eb;
   color:white;
@@ -459,10 +434,6 @@ header{
   cursor:pointer;
 }
 
-.compare-bar .clear-btn{
-  background:#374151;
-}
-
 /* COMPARE */
 
 .compare-table{
@@ -470,6 +441,10 @@ header{
   border-collapse:collapse;
   margin-top:15px;
   min-width:600px;
+}
+
+.compare-wrapper{
+  overflow-x:auto;
 }
 
 .compare-table th,
@@ -488,11 +463,70 @@ header{
   height:80px;
   object-fit:cover;
   border-radius:8px;
-  margin-bottom:7px;
 }
 
-.compare-wrapper{
-  overflow-x:auto;
+.best-price{
+  color:var(--success);
+  font-weight:bold;
+}
+
+/* WISHLIST MODAL */
+
+.wishlist-list{
+  display:grid;
+  gap:12px;
+  margin-top:20px;
+}
+
+.wishlist-item{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:12px;
+}
+
+.wishlist-item img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.wishlist-item-info{
+  flex:1;
+}
+
+.wishlist-remove{
+  border:0;
+  background:var(--danger);
+  color:white;
+  padding:8px 12px;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:#111827;
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:3000;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
 /* FOOTER */
@@ -509,28 +543,12 @@ footer p{
   margin-top:8px;
 }
 
-/* EMPTY */
-
-.empty{
-  grid-column:1/-1;
-  text-align:center;
-  padding:50px 20px;
-}
-
-.empty h2{
-  margin-bottom:10px;
-}
-
-.empty p{
-  color:var(--muted);
-}
-
 /* RESPONSIVE */
 
 @media(max-width:650px){
 
   header{
-    padding:15px 5%;
+    padding:15px 4%;
   }
 
   .nav{
@@ -549,14 +567,26 @@ footer p{
     font-size:30px;
   }
 
+  .categories{
+    padding:15px 4%;
+  }
+
   .filters{
-    padding:15px 5%;
+    padding:15px 4%;
   }
 
   .filters select,
   .filters input{
     flex:1;
-    min-width:120px;
+    min-width:130px;
+  }
+
+  .container{
+    padding:10px 4% 100px;
+  }
+
+  .modal-product{
+    grid-template-columns:1fr;
   }
 
   .product-grid{
@@ -574,7 +604,6 @@ footer p{
 
   .product-info h3{
     font-size:14px;
-    min-height:34px;
   }
 
   .price{
@@ -588,26 +617,18 @@ footer p{
   .compare-bar{
     flex-direction:column;
     text-align:center;
-    padding:12px 5%;
   }
 
-  .modal-product{
-    grid-template-columns:1fr;
-  }
-
-  .modal-box{
-    padding:20px 15px;
-  }
-
-  .offer{
+  .wishlist-item{
     flex-wrap:wrap;
   }
-
 }
 </style>
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <header>
 
@@ -620,11 +641,17 @@ footer p{
 
 <div class="header-buttons">
 
-<button class="icon-btn" onclick="toggleDark()" title="Dark Mode">
+<button
+class="icon-btn"
+onclick="toggleDark()"
+title="Dark Mode">
 🌙
 </button>
 
-<button class="icon-btn" onclick="showWishlist()" title="Wishlist">
+<button
+class="icon-btn"
+onclick="showWishlist()"
+title="Wishlist">
 ❤️
 </button>
 
@@ -633,6 +660,9 @@ footer p{
 </div>
 
 </header>
+
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -652,13 +682,22 @@ id="search"
 placeholder="Search phones, laptops, shoes, perfume..."
 oninput="applyFilters()">
 
+<span class="search-icon">
+🔍
+</span>
+
 </div>
 
 </section>
 
+
+<!-- CATEGORIES -->
+
 <div class="categories" id="categories">
 
-<button class="active" onclick="setCategory('All',this)">
+<button
+class="active"
+onclick="setCategory('All',this)">
 All
 </button>
 
@@ -716,6 +755,9 @@ All
 
 </div>
 
+
+<!-- FILTERS -->
+
 <div class="filters">
 
 <select id="sort" onchange="applyFilters()">
@@ -750,27 +792,45 @@ id="maxPrice"
 placeholder="Max ₹"
 oninput="applyFilters()">
 
-<button class="reset" onclick="resetFilters()">
+<button
+class="reset"
+onclick="resetFilters()">
 Reset
 </button>
 
 </div>
 
+
+<!-- PRODUCTS -->
+
 <main class="container">
 
-<div class="result-count" id="resultCount"></div>
+<div
+class="result-count"
+id="resultCount">
+</div>
 
-<div class="product-grid" id="productGrid"></div>
+<div
+class="product-grid"
+id="productGrid">
+</div>
 
 </main>
 
+
 <!-- PRODUCT MODAL -->
 
-<div class="modal" id="productModal">
+<div
+class="modal"
+id="productModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeProduct()">×</button>
+<button
+class="close"
+onclick="closeProduct()">
+×
+</button>
 
 <div id="productDetails"></div>
 
@@ -778,15 +838,24 @@ Reset
 
 </div>
 
+
 <!-- COMPARE MODAL -->
 
-<div class="modal" id="compareModal">
+<div
+class="modal"
+id="compareModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeCompare()">×</button>
+<button
+class="close"
+onclick="closeCompare()">
+×
+</button>
 
-<h2>⚖️ Compare Products</h2>
+<h2>
+⚖️ Compare Products
+</h2>
 
 <div id="compareContent"></div>
 
@@ -794,19 +863,44 @@ Reset
 
 </div>
 
+
+<!-- WISHLIST MODAL -->
+
+<div
+class="modal"
+id="wishlistModal">
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeWishlist()">
+×
+</button>
+
+<h2>
+❤️ My Wishlist
+</h2>
+
+<div
+class="wishlist-list"
+id="wishlistContent">
+</div>
+
+</div>
+
+</div>
+
+
 <!-- COMPARE BAR -->
 
-<div class="compare-bar" id="compareBar">
+<div
+class="compare-bar"
+id="compareBar">
 
 <span id="compareText">
 0 products selected
 </span>
-
-<div class="compare-actions">
-
-<button class="clear-btn" onclick="clearCompare()">
-Clear
-</button>
 
 <button onclick="openCompare()">
 Compare Now
@@ -814,13 +908,26 @@ Compare Now
 
 </div>
 
+
+<!-- TOAST -->
+
+<div
+class="toast"
+id="toast">
 </div>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-<h2>CompareX</h2>
+<h2>
+CompareX
+</h2>
 
-<p>Compare. Choose. Save.</p>
+<p>
+Compare. Choose. Save.
+</p>
 
 <p>
 Find products. Compare prices. Make smarter choices.
@@ -832,11 +939,12 @@ Prices and availability may change on store websites.
 
 </footer>
 
+
 <script>
 
-/* ================================
+/* ==========================================
    PRODUCT DATABASE
-================================ */
+========================================== */
 
 const products = [
 
@@ -937,7 +1045,7 @@ Camera:"50 MP",
 Video:"4K"
 },
 offers:[
-["Amazon",36700,"https://link.amazon/B06cFijEC"]
+["Amazon",36700,"https://www.amazon.in/s?k=Nothing+Phone+4a+12GB+256GB+White"]
 ]
 },
 
@@ -1077,7 +1185,7 @@ Waterproof:"Yes"
 },
 offers:[
 ["Amazon",2999,"https://www.amazon.in/s?k=JBL+Bluetooth+Speaker"],
-["Flipkart",3199,"https://www.flipkart.com/search?q=JBL+Bluetooth+Speaker"]
+["Flipkart",3199,"https://www.flipkart.com/search?q=JBL%20Bluetooth%20Speaker"]
 ]
 },
 
@@ -1504,13 +1612,16 @@ offers:[
 ];
 
 
-/* ================================
+/* ==========================================
    VARIABLES
-================================ */
+========================================== */
 
 let currentCategory="All";
 
-let compareList=[];
+let compareList=
+JSON.parse(
+localStorage.getItem("comparexCompare") || "[]"
+);
 
 let wishlist=
 JSON.parse(
@@ -1518,9 +1629,9 @@ localStorage.getItem("comparexWishlist") || "[]"
 );
 
 
-/* ================================
+/* ==========================================
    LOWEST PRICE
-================================ */
+========================================== */
 
 function getLowestPrice(product){
 
@@ -1531,23 +1642,31 @@ return Math.min(
 }
 
 
-/* ================================
-   BEST STORE
-================================ */
+/* ==========================================
+   TOAST
+========================================== */
 
-function getBestOffer(product){
+function showToast(message){
 
-return product.offers.reduce(
-(best,current)=>
-current[1] < best[1] ? current : best
-);
+const toast=
+document.getElementById("toast");
+
+toast.innerText=message;
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},2000);
 
 }
 
 
-/* ================================
+/* ==========================================
    DISPLAY PRODUCTS
-================================ */
+========================================== */
 
 function displayProducts(list){
 
@@ -1555,18 +1674,25 @@ const grid=
 document.getElementById("productGrid");
 
 document.getElementById("resultCount").innerText=
-`${list.length} product${list.length!==1?"s":""} found`;
+`${list.length} products found`;
 
 if(list.length===0){
 
 grid.innerHTML=`
 
-<div class="empty">
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:50px">
 
 <h2>😕 No products found</h2>
 
-<p>
+<p style="
+margin-top:10px;
+color:var(--muted)">
+
 Try another search, category or price range.
+
 </p>
 
 </div>
@@ -1577,7 +1703,9 @@ return;
 
 }
 
+
 grid.innerHTML=
+
 list.map(p=>{
 
 const isWish=
@@ -1586,21 +1714,18 @@ wishlist.includes(p.id);
 const added=
 compareList.includes(p.id);
 
-const best=
-getBestOffer(p);
-
 return `
 
 <div class="product-card">
 
 <button
 class="wishlist ${isWish?'active':''}"
-onclick="toggleWishlist(${p.id})"
-title="Wishlist">
+onclick="toggleWishlist(${p.id})">
 
 ${isWish?'♥':'♡'}
 
 </button>
+
 
 <img
 class="product-img"
@@ -1608,6 +1733,7 @@ src="${p.image}"
 alt="${p.name}"
 loading="lazy"
 onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
+
 
 <div class="product-info">
 
@@ -1631,18 +1757,18 @@ ${p.name}
 ✓ Lowest price
 </div>
 
-<div class="best-store">
-Best deal: ${best[0]}
-</div>
-
 <div class="card-buttons">
 
-<button onclick="openProduct(${p.id})">
+<button
+onclick="openProduct(${p.id})">
+
 View Details
+
 </button>
 
+
 <button
-class="compare-btn ${added?'selected':''}"
+class="compare-btn"
 onclick="toggleCompare(${p.id})">
 
 ${added?"✓ Added":"⚖️ Compare"}
@@ -1662,9 +1788,9 @@ ${added?"✓ Added":"⚖️ Compare"}
 }
 
 
-/* ================================
-   SEARCH / FILTER / SORT
-================================ */
+/* ==========================================
+   SEARCH + FILTER + SORT
+========================================== */
 
 function applyFilters(){
 
@@ -1674,21 +1800,26 @@ document.getElementById("search")
 .toLowerCase()
 .trim();
 
+
 const min=
 Number(
 document.getElementById("minPrice").value
 ) || 0;
 
+
 const maxInput=
 document.getElementById("maxPrice").value;
+
 
 const max=
 maxInput
 ? Number(maxInput)
 : Infinity;
 
+
 const sort=
 document.getElementById("sort").value;
+
 
 let result=
 products.filter(p=>{
@@ -1697,23 +1828,25 @@ const matchesCategory=
 currentCategory==="All" ||
 p.category===currentCategory;
 
+
 const matchesSearch=
 (
 p.name+
 " "+
 p.brand+
 " "+
-p.category+
-" "+
-Object.values(p.specs).join(" ")
+p.category
 )
 .toLowerCase()
 .includes(search);
 
+
 const price=
 getLowestPrice(p);
 
-return matchesCategory &&
+
+return
+matchesCategory &&
 matchesSearch &&
 price>=min &&
 price<=max;
@@ -1758,13 +1891,14 @@ displayProducts(result);
 }
 
 
-/* ================================
+/* ==========================================
    CATEGORY
-================================ */
+========================================== */
 
 function setCategory(category,button){
 
 currentCategory=category;
+
 
 document
 .querySelectorAll(".categories button")
@@ -1772,16 +1906,18 @@ document
 b=>b.classList.remove("active")
 );
 
+
 button.classList.add("active");
+
 
 applyFilters();
 
 }
 
 
-/* ================================
+/* ==========================================
    RESET
-================================ */
+========================================== */
 
 function resetFilters(){
 
@@ -1795,24 +1931,29 @@ document.getElementById("sort").value="default";
 
 currentCategory="All";
 
+
 document
 .querySelectorAll(".categories button")
 .forEach(
 b=>b.classList.remove("active")
 );
 
+
 document
 .querySelector(".categories button")
 .classList.add("active");
 
+
 displayProducts(products);
+
+showToast("Filters reset");
 
 }
 
 
-/* ================================
+/* ==========================================
    PRODUCT DETAILS
-================================ */
+========================================== */
 
 function openProduct(id){
 
@@ -1821,13 +1962,13 @@ products.find(x=>x.id===id);
 
 if(!p)return;
 
+
 const lowest=
 getLowestPrice(p);
 
-const best=
-getBestOffer(p);
 
 let specs="";
+
 
 Object.entries(p.specs)
 .forEach(([key,value])=>{
@@ -1849,31 +1990,30 @@ specs+=`
 
 let offers="";
 
-p.offers
-.slice()
-.sort((a,b)=>a[1]-b[1])
-.forEach(o=>{
 
-const isBest=
+p.offers.forEach(o=>{
+
+const isLowest=
 o[1]===lowest;
+
 
 offers+=`
 
-<div class="offer ${isBest?'best':''}">
+<div class="offer">
 
-<div>
+<div class="offer-info">
 
-<strong>${o[0]}</strong>
-
-${isBest
-?`<div class="best-label">✓ BEST PRICE</div>`
-:""}
+<div class="store">
+${o[0]}
+</div>
 
 <div class="offer-price">
 ₹${o[1].toLocaleString("en-IN")}
+${isLowest?" • Lowest":""}
 </div>
 
 </div>
+
 
 <a
 class="buy"
@@ -1901,6 +2041,7 @@ src="${p.image}"
 alt="${p.name}"
 onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
 
+
 <div>
 
 <div class="brand">
@@ -1920,22 +2061,25 @@ ${p.name}
 </h2>
 
 <p style="color:var(--muted)">
-Lowest listed price at ${best[0]}
+Lowest listed price
 </p>
 
 </div>
 
 </div>
 
+
 <h3 style="margin-top:25px">
 Specifications
 </h3>
+
 
 <table class="spec-table">
 
 ${specs}
 
 </table>
+
 
 <div class="offers">
 
@@ -1949,15 +2093,12 @@ ${offers}
 
 `;
 
+
 document.getElementById("productModal")
 .style.display="flex";
 
 }
 
-
-/* ================================
-   CLOSE PRODUCT
-================================ */
 
 function closeProduct(){
 
@@ -1967,9 +2108,9 @@ document.getElementById("productModal")
 }
 
 
-/* ================================
+/* ==========================================
    COMPARE
-================================ */
+========================================== */
 
 function toggleCompare(id){
 
@@ -1980,13 +2121,13 @@ compareList.filter(
 x=>x!==id
 );
 
+showToast("Removed from comparison");
+
 }else{
 
 if(compareList.length>=3){
 
-alert(
-"You can compare maximum 3 products."
-);
+showToast("Maximum 3 products allowed");
 
 return;
 
@@ -1994,7 +2135,16 @@ return;
 
 compareList.push(id);
 
+showToast("Added to comparison");
+
 }
+
+
+localStorage.setItem(
+"comparexCompare",
+JSON.stringify(compareList)
+);
+
 
 updateCompareBar();
 
@@ -2003,10 +2153,15 @@ applyFilters();
 }
 
 
+/* ==========================================
+   COMPARE BAR
+========================================== */
+
 function updateCompareBar(){
 
 const bar=
 document.getElementById("compareBar");
+
 
 if(compareList.length===0){
 
@@ -2015,6 +2170,7 @@ bar.style.display="none";
 }else{
 
 bar.style.display="flex";
+
 
 document.getElementById("compareText")
 .innerText=
@@ -2025,37 +2181,27 @@ document.getElementById("compareText")
 }
 
 
-/* CLEAR COMPARE */
-
-function clearCompare(){
-
-compareList=[];
-
-updateCompareBar();
-
-applyFilters();
-
-}
-
-
-/* OPEN COMPARE */
+/* ==========================================
+   OPEN COMPARE
+========================================== */
 
 function openCompare(){
 
 if(compareList.length<2){
 
-alert(
-"Please select at least 2 products to compare."
-);
+showToast("Select at least 2 products");
 
 return;
 
 }
 
+
 const selected=
-compareList.map(
-id=>products.find(p=>p.id===id)
-);
+compareList
+.map(id=>
+products.find(p=>p.id===id)
+)
+.filter(Boolean);
 
 
 const allSpecs=[
@@ -2080,6 +2226,7 @@ let html=`
 <th>
 Feature
 </th>
+
 
 ${selected.map(p=>`
 
@@ -2106,6 +2253,7 @@ ${p.name}
 Rating
 </td>
 
+
 ${selected.map(p=>`
 
 <td>
@@ -2123,19 +2271,20 @@ ${selected.map(p=>`
 Lowest Price
 </td>
 
+
 ${selected.map(p=>`
 
-<td>
+<td class="${
+getLowestPrice(p)===
+Math.min(
+...selected.map(x=>getLowestPrice(x))
+)
+?"best-price":""
+}">
 
-<strong style="color:var(--success)">
+<strong>
 ₹${getLowestPrice(p).toLocaleString("en-IN")}
 </strong>
-
-<br>
-
-<small>
-${getBestOffer(p)[0]}
-</small>
 
 </td>
 
@@ -2155,6 +2304,7 @@ html+=`
 <td>
 ${spec}
 </td>
+
 
 ${selected.map(p=>`
 
@@ -2179,6 +2329,7 @@ html+=`
 Stores
 </td>
 
+
 ${selected.map(p=>`
 
 <td>
@@ -2193,28 +2344,34 @@ ${p.offers.map(o=>o[0]).join(" / ")}
 <tr>
 
 <td>
-Buy
+Action
 </td>
+
 
 ${selected.map(p=>`
 
 <td>
 
-<a
-class="buy"
-href="${getBestOffer(p)[2]}"
-target="_blank"
-rel="noopener noreferrer">
+<button
+onclick="openProduct(${p.id})"
+style="
+border:0;
+background:var(--primary);
+color:white;
+padding:8px 12px;
+border-radius:7px;
+cursor:pointer">
 
-Best Deal ↗
+View
 
-</a>
+</button>
 
 </td>
 
 `).join("")}
 
 </tr>
+
 
 </table>
 
@@ -2226,15 +2383,12 @@ Best Deal ↗
 document.getElementById("compareContent")
 .innerHTML=html;
 
+
 document.getElementById("compareModal")
 .style.display="flex";
 
 }
 
-
-/* ================================
-   CLOSE COMPARE
-================================ */
 
 function closeCompare(){
 
@@ -2244,9 +2398,9 @@ document.getElementById("compareModal")
 }
 
 
-/* ================================
+/* ==========================================
    WISHLIST
-================================ */
+========================================== */
 
 function toggleWishlist(id){
 
@@ -2257,72 +2411,170 @@ wishlist.filter(
 x=>x!==id
 );
 
+showToast("Removed from wishlist");
+
 }else{
 
 wishlist.push(id);
 
+showToast("❤️ Added to wishlist");
+
 }
+
 
 localStorage.setItem(
 "comparexWishlist",
 JSON.stringify(wishlist)
 );
 
+
 applyFilters();
 
 }
 
 
-/* SHOW WISHLIST */
-
 function showWishlist(){
+
+const modal=
+document.getElementById("wishlistModal");
+
+const content=
+document.getElementById("wishlistContent");
+
 
 if(wishlist.length===0){
 
-alert(
-"❤️ Your wishlist is empty."
-);
+content.innerHTML=`
 
-return;
+<div style="
+text-align:center;
+padding:40px 10px">
 
-}
+<h3>
+❤️ Wishlist is empty
+</h3>
+
+<p style="
+margin-top:10px;
+color:var(--muted)">
+
+Add products using the heart button.
+
+</p>
+
+</div>
+
+`;
+
+}else{
 
 const list=
 products.filter(
 p=>wishlist.includes(p.id)
 );
 
-displayProducts(list);
 
-window.scrollTo({
+content.innerHTML=
+list.map(p=>`
 
-top:
-document.querySelector(".container")
-.offsetTop-80,
+<div class="wishlist-item">
 
-behavior:"smooth"
+<img
+src="${p.image}"
+alt="${p.name}">
 
-});
+
+<div class="wishlist-item-info">
+
+<strong>
+${p.name}
+</strong>
+
+<div style="
+margin-top:5px;
+color:var(--success);
+font-weight:bold">
+
+₹${getLowestPrice(p).toLocaleString("en-IN")}
+
+</div>
+
+</div>
+
+
+<button
+class="wishlist-remove"
+onclick="removeWishlist(${p.id})">
+
+Remove
+
+</button>
+
+</div>
+
+`).join("");
 
 }
 
 
-/* ================================
+modal.style.display="flex";
+
+}
+
+
+function removeWishlist(id){
+
+wishlist=
+wishlist.filter(
+x=>x!==id
+);
+
+
+localStorage.setItem(
+"comparexWishlist",
+JSON.stringify(wishlist)
+);
+
+
+showWishlist();
+
+applyFilters();
+
+showToast("Removed from wishlist");
+
+}
+
+
+function closeWishlist(){
+
+document.getElementById("wishlistModal")
+.style.display="none";
+
+}
+
+
+/* ==========================================
    DARK MODE
-================================ */
+========================================== */
 
 function toggleDark(){
 
 document.body
 .classList.toggle("dark");
 
+
 localStorage.setItem(
 "comparexDark",
 document.body.classList.contains("dark")
 );
 
+
 }
 
+
+/* ==========================================
+   LOAD DARK MODE
+========================================== */
 
 if(
 localStorage.getItem("comparexDark")==="true"
@@ -2333,9 +2585,9 @@ document.body.classList.add("dark");
 }
 
 
-/* ================================
-   MODAL OUTSIDE CLICK
-================================ */
+/* ==========================================
+   CLOSE MODALS
+========================================== */
 
 window.onclick=function(e){
 
@@ -2348,6 +2600,7 @@ closeProduct();
 
 }
 
+
 if(
 e.target===
 document.getElementById("compareModal")
@@ -2357,12 +2610,22 @@ closeCompare();
 
 }
 
+
+if(
+e.target===
+document.getElementById("wishlistModal")
+){
+
+closeWishlist();
+
+}
+
 };
 
 
-/* ================================
+/* ==========================================
    ESC KEY
-================================ */
+========================================== */
 
 document.addEventListener(
 "keydown",
@@ -2374,14 +2637,16 @@ closeProduct();
 
 closeCompare();
 
+closeWishlist();
+
 }
 
 });
 
 
-/* ================================
+/* ==========================================
    START
-================================ */
+========================================== */
 
 displayProducts(products);
 

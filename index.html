@@ -1,443 +1,443 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>CompareX - Compare. Choose. Save.</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
+
 :root{
- --bg:#f4f7fb;--card:#fff;--text:#172033;
- --muted:#64748b;--primary:#2563eb;
- --accent:#7c3aed;--border:#e2e8f0;
+ --bg:#f4f7fb;
+ --card:#fff;
+ --text:#172033;
+ --muted:#64748b;
+ --primary:#2563eb;
+ --accent:#7c3aed;
+ --border:#e2e8f0;
+ --success:#16a34a;
 }
+
 body.dark{
- --bg:#0f172a;--card:#1e293b;--text:#f1f5f9;
- --muted:#94a3b8;--border:#334155;
+ --bg:#0f172a;
+ --card:#1e293b;
+ --text:#f1f5f9;
+ --muted:#94a3b8;
+ --border:#334155;
 }
+
 body{
- font-family:Arial,sans-serif;background:var(--bg);
- color:var(--text);transition:.2s;
+ font-family:Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ transition:.2s;
 }
+
+/* HEADER */
+
 header{
  background:linear-gradient(120deg,#101b3d,#2563eb);
- color:white;padding:22px 5%;
+ color:white;
+ padding:22px 5%;
 }
-.top{display:flex;justify-content:space-between;
- align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:28px;font-weight:800}
-.logo span{color:#39d98a}
-.tagline{font-size:12px;margin-top:5px;color:#dbeafe}
-.controls{display:flex;gap:8px;flex-wrap:wrap}
-button,select,input{font:inherit}
+
+.top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ flex-wrap:wrap;
+}
+
+.logo{
+ font-size:28px;
+ font-weight:800;
+}
+
+.logo span{
+ color:#39d98a;
+}
+
+.tagline{
+ font-size:12px;
+ margin-top:5px;
+ color:#dbeafe;
+}
+
+.controls{
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+}
+
+button,select,input{
+ font:inherit;
+}
+
 .btn{
- border:0;border-radius:9px;padding:10px 14px;
- cursor:pointer;font-weight:600;
+ border:0;
+ border-radius:9px;
+ padding:10px 14px;
+ cursor:pointer;
+ font-weight:600;
 }
-.light-btn{background:white;color:#172033}
-.search-area{display:flex;gap:8px;margin-top:22px}
+
+.light-btn{
+ background:white;
+ color:#172033;
+}
+
+.search-area{
+ display:flex;
+ gap:8px;
+ margin-top:22px;
+}
+
 .search-area input{
- flex:1;min-width:0;padding:14px;border:0;
- border-radius:10px;outline:none;
+ flex:1;
+ min-width:0;
+ padding:14px;
+ border:0;
+ border-radius:10px;
+ outline:none;
 }
-.hero{padding:28px 5% 12px}
-.hero h1{font-size:30px;margin-bottom:9px}
-.hero p{color:var(--muted);line-height:1.6}
+
+/* HERO */
+
+.hero{
+ padding:28px 5% 12px;
+}
+
+.hero h1{
+ font-size:30px;
+ margin-bottom:9px;
+}
+
+.hero p{
+ color:var(--muted);
+ line-height:1.6;
+}
+
+/* CATEGORIES */
+
 .categories{
- display:flex;gap:9px;overflow-x:auto;padding:16px 5%;
+ display:flex;
+ gap:9px;
+ overflow-x:auto;
+ padding:16px 5%;
 }
+
 .cat{
- white-space:nowrap;border:1px solid var(--border);
- background:var(--card);color:var(--text);
- padding:10px 15px;border-radius:22px;cursor:pointer;
+ white-space:nowrap;
+ border:1px solid var(--border);
+ background:var(--card);
+ color:var(--text);
+ padding:10px 15px;
+ border-radius:22px;
+ cursor:pointer;
 }
-.cat.active{background:var(--primary);color:white}
+
+.cat.active{
+ background:var(--primary);
+ color:white;
+}
+
+/* FILTERS */
+
 .filters{
- display:flex;gap:10px;flex-wrap:wrap;
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
  padding:0 5% 20px;
 }
-.filters input,.filters select{
- padding:10px;border:1px solid var(--border);
- border-radius:8px;background:var(--card);
- color:var(--text);max-width:100%;
+
+.filters input,
+.filters select{
+ padding:10px;
+ border:1px solid var(--border);
+ border-radius:8px;
+ background:var(--card);
+ color:var(--text);
+ max-width:100%;
 }
-main{padding:0 5% 35px}
-.section-title{margin:10px 0 18px}
+
+main{
+ padding:0 5% 35px;
+}
+
+.section-title{
+ margin:10px 0 18px;
+}
+
+/* PRODUCTS */
+
 .products{
- display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
  gap:18px;
 }
+
 .product{
- background:var(--card);border:1px solid var(--border);
- border-radius:14px;overflow:hidden;position:relative;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:14px;
+ overflow:hidden;
+ position:relative;
+ transition:.2s;
 }
+
+.product:hover{
+ transform:translateY(-3px);
+ box-shadow:0 8px 25px #0001;
+}
+
 .product-img{
- height:190px;display:flex;align-items:center;
- justify-content:center;background:#fff;padding:12px;
+ height:190px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#fff;
+ padding:12px;
 }
-.product-img img{max-width:100%;max-height:165px;object-fit:contain}
+
+.product-img img{
+ max-width:100%;
+ max-height:165px;
+ object-fit:contain;
+}
+
 .placeholder{
- color:#64748b;text-align:center;padding:20px;
- font-size:14px;line-height:1.6;
+ color:#64748b;
+ text-align:center;
+ padding:20px;
+ font-size:14px;
+ line-height:1.6;
 }
-.product-info{padding:15px}
-.product-info h3{font-size:16px;line-height:1.45;margin-bottom:9px}
-.price{font-size:21px;font-weight:800;margin:10px 0}
-.muted{font-size:12px;color:var(--muted);line-height:1.6}
-.actions{display:flex;gap:8px;margin-top:13px}
-.actions button{flex:1}
-.primary{background:var(--primary);color:white}
+
+.product-info{
+ padding:15px;
+}
+
+.product-info h3{
+ font-size:16px;
+ line-height:1.45;
+ margin-bottom:9px;
+}
+
+.price{
+ font-size:21px;
+ font-weight:800;
+ margin:10px 0;
+}
+
+.price.loading{
+ font-size:14px;
+ font-weight:600;
+ color:var(--muted);
+}
+
+.muted{
+ font-size:12px;
+ color:var(--muted);
+ line-height:1.6;
+}
+
+.actions{
+ display:flex;
+ gap:8px;
+ margin-top:13px;
+}
+
+.actions button{
+ flex:1;
+}
+
+.primary{
+ background:var(--primary);
+ color:white;
+}
+
+.primary:hover{
+ opacity:.9;
+}
+
 .secondary{
- background:transparent;color:var(--text);
+ background:transparent;
+ color:var(--text);
  border:1px solid var(--border);
 }
+
 .heart{
- position:absolute;right:10px;top:10px;
- border:0;border-radius:50%;padding:9px;
- background:white;cursor:pointer;font-size:17px;
+ position:absolute;
+ right:10px;
+ top:10px;
+ border:0;
+ border-radius:50%;
+ padding:9px;
+ background:white;
+ cursor:pointer;
+ font-size:17px;
+ z-index:2;
 }
+
+/* BADGE */
+
+.amazon-badge{
+ display:inline-block;
+ font-size:10px;
+ font-weight:bold;
+ background:#fff7ed;
+ color:#c2410c;
+ padding:5px 8px;
+ border-radius:6px;
+ margin-top:5px;
+}
+
+/* FOOTER */
+
 footer{
- padding:25px 5%;background:var(--card);
+ padding:25px 5%;
+ background:var(--card);
  border-top:1px solid var(--border);
- color:var(--muted);font-size:13px;line-height:1.8;
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.8;
 }
+
+/* MODAL */
+
 .modal{
- display:none;position:fixed;inset:0;background:#0009;
- z-index:10;align-items:center;justify-content:center;padding:18px;
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#0009;
+ z-index:10;
+ align-items:center;
+ justify-content:center;
+ padding:18px;
 }
+
 .modal-box{
- width:100%;max-width:480px;max-height:90vh;overflow:auto;
- background:var(--card);color:var(--text);
- padding:22px;border-radius:16px;
+ width:100%;
+ max-width:480px;
+ max-height:90vh;
+ overflow:auto;
+ background:var(--card);
+ color:var(--text);
+ padding:22px;
+ border-radius:16px;
 }
-.modal-box h2{margin-bottom:15px}
-.modal-box p{margin:10px 0;line-height:1.6}
-.close{float:right;cursor:pointer;border:0;background:none;
- color:var(--text);font-size:25px}
-.empty{padding:25px;color:var(--muted)}
+
+.modal-box h2{
+ margin-bottom:15px;
+}
+
+.modal-box p{
+ margin:10px 0;
+ line-height:1.6;
+}
+
+.close{
+ float:right;
+ cursor:pointer;
+ border:0;
+ background:none;
+ color:var(--text);
+ font-size:25px;
+}
+
+.empty{
+ padding:25px;
+ color:var(--muted);
+}
+
+/* LOADING */
+
+.loading-box{
+ text-align:center;
+ padding:35px;
+ color:var(--muted);
+}
+
+/* MOBILE */
+
 @media(max-width:950px){
- .products{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .products{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+ }
 }
+
 @media(max-width:650px){
- .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .product-img{height:145px}
- .product-img img{max-height:125px}
- .product-info{padding:10px}
- .product-info h3{font-size:14px}
- .price{font-size:18px}
- .actions{flex-direction:column}
- .actions button{padding:10px 6px;font-size:12px}
- .hero h1{font-size:25px}
+
+ .products{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+ }
+
+ .product-img{
+  height:145px;
+ }
+
+ .product-img img{
+  max-height:125px;
+ }
+
+ .product-info{
+  padding:10px;
+ }
+
+ .product-info h3{
+  font-size:14px;
+ }
+
+ .price{
+  font-size:18px;
+ }
+
+ .actions{
+  flex-direction:column;
+ }
+
+ .actions button{
+  padding:10px 6px;
+  font-size:12px;
+ }
+
+ .hero h1{
+  font-size:25px;
+ }
+
+ .logo{
+  font-size:24px;
+ }
 }
 </style>
 </head>
 
 <body>
+
+<!-- HEADER -->
+
 <header>
+
  <div class="top">
+
   <div>
-   <div class="logo">Compare<span>X</span></div>
-   <div class="tagline">Compare. Choose. Save.</div>
-  </div>
-  <div class="controls">
-   <button class="btn light-btn" onclick="showWishlist()">
-    ♡ Wishlist (<span id="wishCount">0</span>)
-   </button>
-   <button class="btn light-btn" onclick="toggleDark()">🌙 Theme</button>
-  </div>
- </div>
+   <div class="logo">
+    Compare<span>X</span>
+   </div>
 
- <div class="search-area">
-  <input id="search" placeholder="Search phones, laptops, shoes, perfume..."
-   oninput="renderProducts()">
- </div>
-</header>
-
-<section class="hero">
- <h1>Find the Best Price 🔍</h1>
- <p>Discover products and shop through trusted stores.
- Always confirm the latest price and availability at the retailer.</p>
-</section>
-
-<nav class="categories" id="categories"></nav>
-
-<div class="filters">
- <select id="sort" onchange="renderProducts()">
-  <option value="default">Sort: Recommended</option>
-  <option value="low">Price: Low to High</option>
-  <option value="high">Price: High to Low</option>
-  <option value="name">Name: A to Z</option>
- </select>
- <input id="minPrice" type="number" min="0"
-  placeholder="Min ₹" oninput="renderProducts()">
- <input id="maxPrice" type="number" min="0"
-  placeholder="Max ₹" oninput="renderProducts()">
- <button class="btn secondary" onclick="resetFilters()">Reset</button>
-</div>
-
-<main>
- <h2 class="section-title" id="listTitle">All Products</h2>
- <div class="products" id="products"></div>
- <p class="muted" style="margin-top:20px">
-  Product prices and availability may change. Confirm details on the retailer's
-  website before purchasing.
- </p>
-</main>
-
-<div class="modal" id="modal" onclick="outsideClose(event)">
- <div class="modal-box">
-  <button class="close" onclick="closeModal()">×</button>
-  <div id="modalContent"></div>
- </div>
-</div>
-
-<footer>
- <strong>CompareX — Compare. Choose. Save.</strong>
- <p>We may earn commissions from qualifying purchases through affiliate links,
- at no extra cost to you.</p>
- <p>Prices, offers, images and availability should be verified on the
- respective retailer's website.</p>
- <p>CompareX is an independent comparison website and is not affiliated
- with or endorsed by Amazon.</p>
-</footer>
-
-<script>
-const AMAZON_LINK =
-"https://www.amazon.in/dp/B0H4LBXQDC/ref=cm_sw_r_as_gl_apa_gl_i_dl_VGWWJH81XPGNZ97PK6SD?linkCode=ml1&tag=comparex20-21&linkId=8ab9ceb1e08119b37bcd1dd94a1393dd";
-
-const categories = [
-"All","Mobiles","Laptops","Audio","Gaming","Shoes","Slippers",
-"Fashion","Makeup","Beauty","Perfume","Home","Grocery","Books"
-];
-
-let activeCategory = "All";
-let wishlist = [];
-let wishlistOnly = false;
-
-/*
- Add verified product information below.
- The Amazon link is connected, but the actual title, price and image
- for ASIN B0H4LBXQDC have not been verified here.
-*/
-const products = [
- {
-  id:1,
-  name:"Amazon Product — B0H4LBXQDC",
-  category:"All",
-  price:null,
-  image:"",
-  store:"Amazon India",
-  link:AMAZON_LINK,
-  description:"Open Amazon to view the latest product details, price, offers and availability."
- },
-
- {
-  id:2,name:"Samsung Galaxy M35 5G",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Samsung+Galaxy+M35+5G"
- },
- {
-  id:3,name:"OnePlus Nord CE",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=OnePlus+Nord+CE"
- },
- {
-  id:4,name:"Apple iPhone 15",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Apple+iPhone+15"
- },
- {
-  id:5,name:"Redmi Note 13",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Redmi+Note+13"
- },
- {
-  id:6,name:"Realme Narzo 70",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Realme+Narzo+70"
- },
- {
-  id:7,name:"Vivo T3x 5G",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Vivo+T3x+5G"
- },
- {
-  id:8,name:"Motorola G85 5G",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Moto+G85+5G"
- },
- {
-  id:9,name:"Nothing Phone 2a",
-  category:"Mobiles",price:null,image:"",
-  store:"Amazon India",
-  link:"https://www.amazon.in/s?k=Nothing+Phone+2a"
- }
-];
-
-function money(price){
- return price == null ? "Check latest price" :
-  "₹" + Number(price).toLocaleString("en-IN");
-}
-
-function renderCategories(){
- document.getElementById("categories").innerHTML =
- categories.map(c => `
- <button class="cat ${activeCategory===c?"active":""}"
- onclick="setCategory('${c}')">${c}</button>
- `).join("");
-}
-
-function setCategory(c){
- activeCategory=c;
- wishlistOnly=false;
- renderCategories();
- renderProducts();
-}
-
-function renderProducts(){
- const q=document.getElementById("search").value.toLowerCase().trim();
- const min=document.getElementById("minPrice").value;
- const max=document.getElementById("maxPrice").value;
- const sort=document.getElementById("sort").value;
-
- let list=products.filter(p=>{
-  const matchesSearch=(p.name+" "+p.category+" "+p.store)
-   .toLowerCase().includes(q);
-  const matchesCategory=activeCategory==="All" ||
-   p.category===activeCategory;
-  const matchesWishlist=!wishlistOnly || wishlist.includes(p.id);
-  const matchesMin=min==="" || (p.price!=null && p.price>=Number(min));
-  const matchesMax=max==="" || (p.price!=null && p.price<=Number(max));
-  return matchesSearch && matchesCategory &&
-   matchesWishlist && matchesMin && matchesMax;
- });
-
- if(sort==="low") list.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));
- if(sort==="high") list.sort((a,b)=>(b.price??-Infinity)-(a.price??-Infinity));
- if(sort==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
-
- document.getElementById("listTitle").textContent=
-  wishlistOnly?"Your Wishlist":activeCategory==="All"?"All Products":activeCategory;
-
- const container=document.getElementById("products");
-
- if(!list.length){
-  container.innerHTML='<p class="empty">No matching products found.</p>';
-  return;
- }
-
- container.innerHTML=list.map(p=>`
- <article class="product">
-  <button class="heart" onclick="toggleWish(${p.id})"
-   aria-label="Add to wishlist">
-   ${wishlist.includes(p.id)?"❤️":"♡"}
-  </button>
-
-  <div class="product-img">
-   ${p.image
-    ? `<img src="${escapeAttr(p.image)}" alt="${escapeAttr(p.name)}"
-        onerror="this.parentElement.innerHTML='<div class=&quot;placeholder&quot;>Image unavailable</div>'">`
-    : `<div class="placeholder">🛍️<br>Product image<br>
-       <span class="muted">Add verified image URL</span></div>`
-   }
-  </div>
-
-  <div class="product-info">
-   <h3>${escapeHTML(p.name)}</h3>
-   <div class="muted">${escapeHTML(p.store||"Online Store")}</div>
-   <div class="price">${money(p.price)}</div>
-   <div class="muted">Price and availability: check retailer</div>
-
-   <div class="actions">
-    <button class="btn primary" onclick="buyNow(${p.id})">Buy Now ↗</button>
-    <button class="btn secondary" onclick="showDetails(${p.id})">Details</button>
+   <div class="tagline">
+    Compare. Choose. Save.
    </div>
   </div>
- </article>
- `).join("");
-}
 
-function escapeHTML(s){
- return String(s??"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[c]);
-}
+  <div class="controls">
 
-function escapeAttr(s){return escapeHTML(s);}
-
-function buyNow(id){
- const p=products.find(x=>x.id===id);
- if(!p || !p.link) return;
- window.open(p.link,"_blank","noopener,noreferrer");
-}
-
-function showDetails(id){
- const p=products.find(x=>x.id===id);
- if(!p)return;
-
- document.getElementById("modalContent").innerHTML=`
-  <h2>${escapeHTML(p.name)}</h2>
-  <p><strong>Store:</strong> ${escapeHTML(p.store||"Online Store")}</p>
-  <p><strong>Price:</strong> ${money(p.price)}</p>
-  <p>${escapeHTML(p.description||
-   "Check the retailer website for verified specifications and offers.")}</p>
-  <p class="muted">The latest price and availability are not verified by CompareX.</p>
-  <button class="btn primary" style="width:100%;margin-top:12px"
-   onclick="buyNow(${p.id})">View on ${escapeHTML(p.store||"Store")} ↗</button>
- `;
- document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
- document.getElementById("modal").style.display="none";
-}
-function outsideClose(e){
- if(e.target.id==="modal")closeModal();
-}
-
-function toggleWish(id){
- if(wishlist.includes(id)){
-  wishlist=wishlist.filter(x=>x!==id);
- }else{
-  wishlist.push(id);
- }
- document.getElementById("wishCount").textContent=wishlist.length;
- renderProducts();
-}
-
-function showWishlist(){
- wishlistOnly=!wishlistOnly;
- activeCategory="All";
- renderCategories();
- renderProducts();
-}
-
-function toggleDark(){
- document.body.classList.toggle("dark");
-}
-
-function resetFilters(){
- document.getElementById("search").value="";
- document.getElementById("minPrice").value="";
- document.getElementById("maxPrice").value="";
- document.getElementById("sort").value="default";
- activeCategory="All";
- wishlistOnly=false;
- renderCategories();
- renderProducts();
-}
-
-renderCategories();
-renderProducts();
-</script>
-</body>
-</html>
+  

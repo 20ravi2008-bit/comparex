@@ -22,7 +22,6 @@
   --muted:#6b7280;
   --border:#e5e7eb;
   --success:#16a34a;
-  --danger:#ef4444;
 }
 
 body{
@@ -116,25 +115,17 @@ header{
 .search-box{
   max-width:700px;
   margin:auto;
-  position:relative;
 }
 
 .search-box input{
   width:100%;
-  padding:17px 50px 17px 20px;
+  padding:17px 20px;
   border:2px solid var(--border);
   border-radius:14px;
   font-size:16px;
   outline:none;
   background:var(--card);
   color:var(--text);
-}
-
-.search-icon{
-  position:absolute;
-  right:18px;
-  top:15px;
-  font-size:21px;
 }
 
 /* CATEGORIES */
@@ -145,10 +136,6 @@ header{
   overflow-x:auto;
   padding:20px 6%;
   background:var(--card);
-}
-
-.categories::-webkit-scrollbar{
-  height:4px;
 }
 
 .categories button{
@@ -185,14 +172,13 @@ header{
   border-radius:9px;
   background:var(--card);
   color:var(--text);
-  outline:none;
 }
 
 .reset{
   padding:11px 18px;
   border:0;
   border-radius:9px;
-  background:var(--danger);
+  background:#ef4444;
   color:white;
   cursor:pointer;
 }
@@ -267,7 +253,6 @@ header{
 .product-info h3{
   margin:6px 0;
   font-size:17px;
-  line-height:1.3;
 }
 
 .rating{
@@ -384,20 +369,6 @@ header{
   margin-top:10px;
 }
 
-.offer-info{
-  flex:1;
-}
-
-.store{
-  font-weight:bold;
-}
-
-.offer-price{
-  color:var(--success);
-  font-weight:bold;
-  margin-top:4px;
-}
-
 .buy{
   background:var(--success);
   color:white;
@@ -405,7 +376,6 @@ header{
   border-radius:8px;
   text-decoration:none;
   font-weight:bold;
-  white-space:nowrap;
 }
 
 /* COMPARE BAR */
@@ -440,11 +410,6 @@ header{
   width:100%;
   border-collapse:collapse;
   margin-top:15px;
-  min-width:600px;
-}
-
-.compare-wrapper{
-  overflow-x:auto;
 }
 
 .compare-table th,
@@ -454,79 +419,11 @@ header{
   text-align:center;
 }
 
-.compare-table th{
-  background:rgba(37,99,235,.08);
-}
-
 .compare-table img{
   width:100px;
   height:80px;
   object-fit:cover;
   border-radius:8px;
-}
-
-.best-price{
-  color:var(--success);
-  font-weight:bold;
-}
-
-/* WISHLIST MODAL */
-
-.wishlist-list{
-  display:grid;
-  gap:12px;
-  margin-top:20px;
-}
-
-.wishlist-item{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  border:1px solid var(--border);
-  padding:12px;
-  border-radius:12px;
-}
-
-.wishlist-item img{
-  width:70px;
-  height:70px;
-  object-fit:cover;
-  border-radius:8px;
-}
-
-.wishlist-item-info{
-  flex:1;
-}
-
-.wishlist-remove{
-  border:0;
-  background:var(--danger);
-  color:white;
-  padding:8px 12px;
-  border-radius:7px;
-  cursor:pointer;
-}
-
-/* TOAST */
-
-.toast{
-  position:fixed;
-  bottom:80px;
-  left:50%;
-  transform:translateX(-50%) translateY(20px);
-  background:#111827;
-  color:white;
-  padding:12px 18px;
-  border-radius:10px;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:3000;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
 }
 
 /* FOOTER */
@@ -547,42 +444,12 @@ footer p{
 
 @media(max-width:650px){
 
-  header{
-    padding:15px 4%;
-  }
-
   .nav{
     flex-wrap:wrap;
   }
 
-  .logo{
-    font-size:24px;
-  }
-
-  .hero{
-    padding:40px 15px;
-  }
-
   .hero h1{
     font-size:30px;
-  }
-
-  .categories{
-    padding:15px 4%;
-  }
-
-  .filters{
-    padding:15px 4%;
-  }
-
-  .filters select,
-  .filters input{
-    flex:1;
-    min-width:130px;
-  }
-
-  .container{
-    padding:10px 4% 100px;
   }
 
   .modal-product{
@@ -606,10 +473,6 @@ footer p{
     font-size:14px;
   }
 
-  .price{
-    font-size:17px;
-  }
-
   .card-buttons{
     flex-direction:column;
   }
@@ -618,20 +481,13 @@ footer p{
     flex-direction:column;
     text-align:center;
   }
-
-  .wishlist-item{
-    flex-wrap:wrap;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-
 <div class="nav">
 
 <div>
@@ -641,34 +497,18 @@ footer p{
 
 <div class="header-buttons">
 
-<button
-class="icon-btn"
-onclick="toggleDark()"
-title="Dark Mode">
-🌙
-</button>
+<button class="icon-btn" onclick="toggleDark()">🌙</button>
 
-<button
-class="icon-btn"
-onclick="showWishlist()"
-title="Wishlist">
-❤️
-</button>
+<button class="icon-btn" onclick="showWishlist()">❤️</button>
 
 </div>
 
 </div>
-
 </header>
-
-
-<!-- HERO -->
 
 <section class="hero">
 
-<h1>
-Find the Best <span>Price</span>
-</h1>
+<h1>Find the Best <span>Price</span></h1>
 
 <p>
 Compare products, prices and stores before you buy.
@@ -682,22 +522,13 @@ id="search"
 placeholder="Search phones, laptops, shoes, perfume..."
 oninput="applyFilters()">
 
-<span class="search-icon">
-🔍
-</span>
-
 </div>
 
 </section>
 
-
-<!-- CATEGORIES -->
-
 <div class="categories" id="categories">
 
-<button
-class="active"
-onclick="setCategory('All',this)">
+<button class="active" onclick="setCategory('All',this)">
 All
 </button>
 
@@ -755,9 +586,6 @@ All
 
 </div>
 
-
-<!-- FILTERS -->
-
 <div class="filters">
 
 <select id="sort" onchange="applyFilters()">
@@ -792,45 +620,25 @@ id="maxPrice"
 placeholder="Max ₹"
 oninput="applyFilters()">
 
-<button
-class="reset"
-onclick="resetFilters()">
+<button class="reset" onclick="resetFilters()">
 Reset
 </button>
 
 </div>
 
-
-<!-- PRODUCTS -->
-
 <main class="container">
 
-<div
-class="result-count"
-id="resultCount">
-</div>
+<div class="result-count" id="resultCount"></div>
 
-<div
-class="product-grid"
-id="productGrid">
-</div>
+<div class="product-grid" id="productGrid"></div>
 
 </main>
 
-
-<!-- PRODUCT MODAL -->
-
-<div
-class="modal"
-id="productModal">
+<div class="modal" id="productModal">
 
 <div class="modal-box">
 
-<button
-class="close"
-onclick="closeProduct()">
-×
-</button>
+<button class="close" onclick="closeProduct()">×</button>
 
 <div id="productDetails"></div>
 
@@ -838,24 +646,13 @@ onclick="closeProduct()">
 
 </div>
 
-
-<!-- COMPARE MODAL -->
-
-<div
-class="modal"
-id="compareModal">
+<div class="modal" id="compareModal">
 
 <div class="modal-box">
 
-<button
-class="close"
-onclick="closeCompare()">
-×
-</button>
+<button class="close" onclick="closeCompare()">×</button>
 
-<h2>
-⚖️ Compare Products
-</h2>
+<h2>⚖️ Compare Products</h2>
 
 <div id="compareContent"></div>
 
@@ -863,40 +660,7 @@ onclick="closeCompare()">
 
 </div>
 
-
-<!-- WISHLIST MODAL -->
-
-<div
-class="modal"
-id="wishlistModal">
-
-<div class="modal-box">
-
-<button
-class="close"
-onclick="closeWishlist()">
-×
-</button>
-
-<h2>
-❤️ My Wishlist
-</h2>
-
-<div
-class="wishlist-list"
-id="wishlistContent">
-</div>
-
-</div>
-
-</div>
-
-
-<!-- COMPARE BAR -->
-
-<div
-class="compare-bar"
-id="compareBar">
+<div class="compare-bar" id="compareBar">
 
 <span id="compareText">
 0 products selected
@@ -908,26 +672,11 @@ Compare Now
 
 </div>
 
-
-<!-- TOAST -->
-
-<div
-class="toast"
-id="toast">
-</div>
-
-
-<!-- FOOTER -->
-
 <footer>
 
-<h2>
-CompareX
-</h2>
+<h2>CompareX</h2>
 
-<p>
-Compare. Choose. Save.
-</p>
+<p>Compare. Choose. Save.</p>
 
 <p>
 Find products. Compare prices. Make smarter choices.
@@ -939,12 +688,9 @@ Prices and availability may change on store websites.
 
 </footer>
 
-
 <script>
 
-/* ==========================================
-   PRODUCT DATABASE
-========================================== */
+/* PRODUCT DATABASE */
 
 const products = [
 
@@ -1045,7 +791,7 @@ Camera:"50 MP",
 Video:"4K"
 },
 offers:[
-["Amazon",36700,"https://www.amazon.in/s?k=Nothing+Phone+4a+12GB+256GB+White"]
+["Amazon",36700,"https://link.amazon/B06cFijEC"]
 ]
 },
 
@@ -1611,27 +1357,17 @@ offers:[
 
 ];
 
-
-/* ==========================================
-   VARIABLES
-========================================== */
+/* VARIABLES */
 
 let currentCategory="All";
-
-let compareList=
-JSON.parse(
-localStorage.getItem("comparexCompare") || "[]"
-);
+let compareList=[];
 
 let wishlist=
 JSON.parse(
 localStorage.getItem("comparexWishlist") || "[]"
 );
 
-
-/* ==========================================
-   LOWEST PRICE
-========================================== */
+/* LOWEST PRICE */
 
 function getLowestPrice(product){
 
@@ -1641,32 +1377,7 @@ return Math.min(
 
 }
 
-
-/* ==========================================
-   TOAST
-========================================== */
-
-function showToast(message){
-
-const toast=
-document.getElementById("toast");
-
-toast.innerText=message;
-
-toast.classList.add("show");
-
-setTimeout(()=>{
-
-toast.classList.remove("show");
-
-},2000);
-
-}
-
-
-/* ==========================================
-   DISPLAY PRODUCTS
-========================================== */
+/* DISPLAY PRODUCTS */
 
 function displayProducts(list){
 
@@ -1687,12 +1398,8 @@ padding:50px">
 
 <h2>😕 No products found</h2>
 
-<p style="
-margin-top:10px;
-color:var(--muted)">
-
+<p style="margin-top:10px;color:var(--muted)">
 Try another search, category or price range.
-
 </p>
 
 </div>
@@ -1703,9 +1410,7 @@ return;
 
 }
 
-
 grid.innerHTML=
-
 list.map(p=>{
 
 const isWish=
@@ -1726,14 +1431,11 @@ ${isWish?'♥':'♡'}
 
 </button>
 
-
 <img
 class="product-img"
 src="${p.image}"
 alt="${p.name}"
-loading="lazy"
-onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
-
+loading="lazy">
 
 <div class="product-info">
 
@@ -1759,13 +1461,9 @@ ${p.name}
 
 <div class="card-buttons">
 
-<button
-onclick="openProduct(${p.id})">
-
+<button onclick="openProduct(${p.id})">
 View Details
-
 </button>
-
 
 <button
 class="compare-btn"
@@ -1787,10 +1485,7 @@ ${added?"✓ Added":"⚖️ Compare"}
 
 }
 
-
-/* ==========================================
-   SEARCH + FILTER + SORT
-========================================== */
+/* SEARCH FILTER SORT */
 
 function applyFilters(){
 
@@ -1800,26 +1495,21 @@ document.getElementById("search")
 .toLowerCase()
 .trim();
 
-
 const min=
 Number(
 document.getElementById("minPrice").value
 ) || 0;
 
-
 const maxInput=
 document.getElementById("maxPrice").value;
-
 
 const max=
 maxInput
 ? Number(maxInput)
 : Infinity;
 
-
 const sort=
 document.getElementById("sort").value;
-
 
 let result=
 products.filter(p=>{
@@ -1827,7 +1517,6 @@ products.filter(p=>{
 const matchesCategory=
 currentCategory==="All" ||
 p.category===currentCategory;
-
 
 const matchesSearch=
 (
@@ -1840,19 +1529,15 @@ p.category
 .toLowerCase()
 .includes(search);
 
-
 const price=
 getLowestPrice(p);
 
-
-return
-matchesCategory &&
+return matchesCategory &&
 matchesSearch &&
 price>=min &&
 price<=max;
 
 });
-
 
 if(sort==="low"){
 
@@ -1864,7 +1549,6 @@ getLowestPrice(b)
 
 }
 
-
 if(sort==="high"){
 
 result.sort(
@@ -1875,7 +1559,6 @@ getLowestPrice(a)
 
 }
 
-
 if(sort==="rating"){
 
 result.sort(
@@ -1885,52 +1568,38 @@ b.rating-a.rating
 
 }
 
-
 displayProducts(result);
 
 }
 
-
-/* ==========================================
-   CATEGORY
-========================================== */
+/* CATEGORY */
 
 function setCategory(category,button){
 
 currentCategory=category;
 
-
 document
 .querySelectorAll(".categories button")
 .forEach(
 b=>b.classList.remove("active")
 );
 
-
 button.classList.add("active");
-
 
 applyFilters();
 
 }
 
-
-/* ==========================================
-   RESET
-========================================== */
+/* RESET */
 
 function resetFilters(){
 
 document.getElementById("search").value="";
-
 document.getElementById("minPrice").value="";
-
 document.getElementById("maxPrice").value="";
-
 document.getElementById("sort").value="default";
 
 currentCategory="All";
-
 
 document
 .querySelectorAll(".categories button")
@@ -1938,22 +1607,15 @@ document
 b=>b.classList.remove("active")
 );
 
-
 document
 .querySelector(".categories button")
 .classList.add("active");
 
-
 displayProducts(products);
-
-showToast("Filters reset");
 
 }
 
-
-/* ==========================================
-   PRODUCT DETAILS
-========================================== */
+/* PRODUCT DETAILS */
 
 function openProduct(id){
 
@@ -1962,13 +1624,10 @@ products.find(x=>x.id===id);
 
 if(!p)return;
 
-
 const lowest=
 getLowestPrice(p);
 
-
 let specs="";
-
 
 Object.entries(p.specs)
 .forEach(([key,value])=>{
@@ -1987,33 +1646,23 @@ specs+=`
 
 });
 
-
 let offers="";
 
-
 p.offers.forEach(o=>{
-
-const isLowest=
-o[1]===lowest;
-
 
 offers+=`
 
 <div class="offer">
 
-<div class="offer-info">
+<div>
 
-<div class="store">
-${o[0]}
-</div>
+<strong>${o[0]}</strong>
 
-<div class="offer-price">
+<br>
+
 ₹${o[1].toLocaleString("en-IN")}
-${isLowest?" • Lowest":""}
-</div>
 
 </div>
-
 
 <a
 class="buy"
@@ -2031,16 +1680,13 @@ Buy Now ↗
 
 });
 
-
 document.getElementById("productDetails").innerHTML=`
 
 <div class="modal-product">
 
 <img
 src="${p.image}"
-alt="${p.name}"
-onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
-
+alt="${p.name}">
 
 <div>
 
@@ -2068,18 +1714,15 @@ Lowest listed price
 
 </div>
 
-
 <h3 style="margin-top:25px">
 Specifications
 </h3>
-
 
 <table class="spec-table">
 
 ${specs}
 
 </table>
-
 
 <div class="offers">
 
@@ -2093,12 +1736,10 @@ ${offers}
 
 `;
 
-
 document.getElementById("productModal")
 .style.display="flex";
 
 }
-
 
 function closeProduct(){
 
@@ -2107,10 +1748,7 @@ document.getElementById("productModal")
 
 }
 
-
-/* ==========================================
-   COMPARE
-========================================== */
+/* COMPARE */
 
 function toggleCompare(id){
 
@@ -2121,13 +1759,13 @@ compareList.filter(
 x=>x!==id
 );
 
-showToast("Removed from comparison");
-
 }else{
 
 if(compareList.length>=3){
 
-showToast("Maximum 3 products allowed");
+alert(
+"You can compare maximum 3 products."
+);
 
 return;
 
@@ -2135,33 +1773,17 @@ return;
 
 compareList.push(id);
 
-showToast("Added to comparison");
-
 }
 
-
-localStorage.setItem(
-"comparexCompare",
-JSON.stringify(compareList)
-);
-
-
 updateCompareBar();
-
 applyFilters();
 
 }
-
-
-/* ==========================================
-   COMPARE BAR
-========================================== */
 
 function updateCompareBar(){
 
 const bar=
 document.getElementById("compareBar");
-
 
 if(compareList.length===0){
 
@@ -2171,7 +1793,6 @@ bar.style.display="none";
 
 bar.style.display="flex";
 
-
 document.getElementById("compareText")
 .innerText=
 `${compareList.length} product${compareList.length>1?"s":""} selected`;
@@ -2180,29 +1801,22 @@ document.getElementById("compareText")
 
 }
 
-
-/* ==========================================
-   OPEN COMPARE
-========================================== */
-
 function openCompare(){
 
 if(compareList.length<2){
 
-showToast("Select at least 2 products");
+alert(
+"Please select at least 2 products to compare."
+);
 
 return;
 
 }
 
-
 const selected=
-compareList
-.map(id=>
-products.find(p=>p.id===id)
-)
-.filter(Boolean);
-
+compareList.map(
+id=>products.find(p=>p.id===id)
+);
 
 const allSpecs=[
 
@@ -2214,10 +1828,7 @@ p=>Object.keys(p.specs)
 
 ];
 
-
 let html=`
-
-<div class="compare-wrapper">
 
 <table class="compare-table">
 
@@ -2227,14 +1838,11 @@ let html=`
 Feature
 </th>
 
-
 ${selected.map(p=>`
 
 <th>
 
-<img
-src="${p.image}"
-alt="${p.name}">
+<img src="${p.image}">
 
 <br>
 
@@ -2246,13 +1854,11 @@ ${p.name}
 
 </tr>
 
-
 <tr>
 
 <td>
 Rating
 </td>
-
 
 ${selected.map(p=>`
 
@@ -2264,23 +1870,15 @@ ${selected.map(p=>`
 
 </tr>
 
-
 <tr>
 
 <td>
 Lowest Price
 </td>
 
-
 ${selected.map(p=>`
 
-<td class="${
-getLowestPrice(p)===
-Math.min(
-...selected.map(x=>getLowestPrice(x))
-)
-?"best-price":""
-}">
+<td>
 
 <strong>
 ₹${getLowestPrice(p).toLocaleString("en-IN")}
@@ -2294,7 +1892,6 @@ Math.min(
 
 `;
 
-
 allSpecs.forEach(spec=>{
 
 html+=`
@@ -2304,7 +1901,6 @@ html+=`
 <td>
 ${spec}
 </td>
-
 
 ${selected.map(p=>`
 
@@ -2320,7 +1916,6 @@ ${p.specs[spec] || "-"}
 
 });
 
-
 html+=`
 
 <tr>
@@ -2328,7 +1923,6 @@ html+=`
 <td>
 Stores
 </td>
-
 
 ${selected.map(p=>`
 
@@ -2340,55 +1934,17 @@ ${p.offers.map(o=>o[0]).join(" / ")}
 
 </tr>
 
-
-<tr>
-
-<td>
-Action
-</td>
-
-
-${selected.map(p=>`
-
-<td>
-
-<button
-onclick="openProduct(${p.id})"
-style="
-border:0;
-background:var(--primary);
-color:white;
-padding:8px 12px;
-border-radius:7px;
-cursor:pointer">
-
-View
-
-</button>
-
-</td>
-
-`).join("")}
-
-</tr>
-
-
 </table>
-
-</div>
 
 `;
 
-
 document.getElementById("compareContent")
 .innerHTML=html;
-
 
 document.getElementById("compareModal")
 .style.display="flex";
 
 }
-
 
 function closeCompare(){
 
@@ -2397,10 +1953,7 @@ document.getElementById("compareModal")
 
 }
 
-
-/* ==========================================
-   WISHLIST
-========================================== */
+/* WISHLIST */
 
 function toggleWishlist(id){
 
@@ -2411,170 +1964,65 @@ wishlist.filter(
 x=>x!==id
 );
 
-showToast("Removed from wishlist");
-
 }else{
 
 wishlist.push(id);
 
-showToast("❤️ Added to wishlist");
-
 }
-
 
 localStorage.setItem(
 "comparexWishlist",
 JSON.stringify(wishlist)
 );
 
-
 applyFilters();
 
 }
 
-
 function showWishlist(){
-
-const modal=
-document.getElementById("wishlistModal");
-
-const content=
-document.getElementById("wishlistContent");
-
 
 if(wishlist.length===0){
 
-content.innerHTML=`
+alert(
+"❤️ Your wishlist is empty."
+);
 
-<div style="
-text-align:center;
-padding:40px 10px">
+return;
 
-<h3>
-❤️ Wishlist is empty
-</h3>
-
-<p style="
-margin-top:10px;
-color:var(--muted)">
-
-Add products using the heart button.
-
-</p>
-
-</div>
-
-`;
-
-}else{
+}
 
 const list=
 products.filter(
 p=>wishlist.includes(p.id)
 );
 
+displayProducts(list);
 
-content.innerHTML=
-list.map(p=>`
+window.scrollTo({
 
-<div class="wishlist-item">
+top:
+document.querySelector(".container")
+.offsetTop-80,
 
-<img
-src="${p.image}"
-alt="${p.name}">
+behavior:"smooth"
 
-
-<div class="wishlist-item-info">
-
-<strong>
-${p.name}
-</strong>
-
-<div style="
-margin-top:5px;
-color:var(--success);
-font-weight:bold">
-
-₹${getLowestPrice(p).toLocaleString("en-IN")}
-
-</div>
-
-</div>
-
-
-<button
-class="wishlist-remove"
-onclick="removeWishlist(${p.id})">
-
-Remove
-
-</button>
-
-</div>
-
-`).join("");
+});
 
 }
 
-
-modal.style.display="flex";
-
-}
-
-
-function removeWishlist(id){
-
-wishlist=
-wishlist.filter(
-x=>x!==id
-);
-
-
-localStorage.setItem(
-"comparexWishlist",
-JSON.stringify(wishlist)
-);
-
-
-showWishlist();
-
-applyFilters();
-
-showToast("Removed from wishlist");
-
-}
-
-
-function closeWishlist(){
-
-document.getElementById("wishlistModal")
-.style.display="none";
-
-}
-
-
-/* ==========================================
-   DARK MODE
-========================================== */
+/* DARK MODE */
 
 function toggleDark(){
 
 document.body
 .classList.toggle("dark");
 
-
 localStorage.setItem(
 "comparexDark",
 document.body.classList.contains("dark")
 );
 
-
 }
-
-
-/* ==========================================
-   LOAD DARK MODE
-========================================== */
 
 if(
 localStorage.getItem("comparexDark")==="true"
@@ -2584,10 +2032,7 @@ document.body.classList.add("dark");
 
 }
 
-
-/* ==========================================
-   CLOSE MODALS
-========================================== */
+/* MODAL OUTSIDE CLICK */
 
 window.onclick=function(e){
 
@@ -2600,7 +2045,6 @@ closeProduct();
 
 }
 
-
 if(
 e.target===
 document.getElementById("compareModal")
@@ -2610,22 +2054,9 @@ closeCompare();
 
 }
 
-
-if(
-e.target===
-document.getElementById("wishlistModal")
-){
-
-closeWishlist();
-
-}
-
 };
 
-
-/* ==========================================
-   ESC KEY
-========================================== */
+/* ESC KEY */
 
 document.addEventListener(
 "keydown",
@@ -2634,22 +2065,15 @@ function(e){
 if(e.key==="Escape"){
 
 closeProduct();
-
 closeCompare();
-
-closeWishlist();
 
 }
 
 });
 
-
-/* ==========================================
-   START
-========================================== */
+/* START */
 
 displayProducts(products);
-
 updateCompareBar();
 
 </script>

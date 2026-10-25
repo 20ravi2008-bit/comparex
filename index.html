@@ -22,6 +22,7 @@
   --muted:#6b7280;
   --border:#e5e7eb;
   --success:#16a34a;
+  --danger:#ef4444;
 }
 
 body{
@@ -86,6 +87,10 @@ header{
   font-size:16px;
 }
 
+.icon-btn:hover{
+  background:rgba(255,255,255,.3);
+}
+
 /* HERO */
 
 .hero{
@@ -115,6 +120,7 @@ header{
 .search-box{
   max-width:700px;
   margin:auto;
+  position:relative;
 }
 
 .search-box input{
@@ -128,6 +134,10 @@ header{
   color:var(--text);
 }
 
+.search-box input:focus{
+  border-color:var(--primary);
+}
+
 /* CATEGORIES */
 
 .categories{
@@ -136,6 +146,11 @@ header{
   overflow-x:auto;
   padding:20px 6%;
   background:var(--card);
+  scrollbar-width:none;
+}
+
+.categories::-webkit-scrollbar{
+  display:none;
 }
 
 .categories button{
@@ -172,13 +187,14 @@ header{
   border-radius:9px;
   background:var(--card);
   color:var(--text);
+  outline:none;
 }
 
 .reset{
   padding:11px 18px;
   border:0;
   border-radius:9px;
-  background:#ef4444;
+  background:var(--danger);
   color:white;
   cursor:pointer;
 }
@@ -186,7 +202,7 @@ header{
 /* PRODUCTS */
 
 .container{
-  padding:10px 6% 100px;
+  padding:10px 6% 110px;
 }
 
 .result-count{
@@ -233,6 +249,7 @@ header{
   cursor:pointer;
   font-size:20px;
   box-shadow:0 2px 8px rgba(0,0,0,.15);
+  z-index:2;
 }
 
 .wishlist.active{
@@ -253,6 +270,7 @@ header{
 .product-info h3{
   margin:6px 0;
   font-size:17px;
+  min-height:40px;
 }
 
 .rating{
@@ -272,6 +290,12 @@ header{
   font-weight:bold;
 }
 
+.best-store{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:11px;
+}
+
 .card-buttons{
   display:flex;
   gap:8px;
@@ -288,9 +312,18 @@ header{
   color:white;
 }
 
+.card-buttons button:hover{
+  opacity:.9;
+}
+
 .card-buttons button.compare-btn{
   background:transparent;
   color:var(--primary);
+}
+
+.card-buttons button.compare-btn.selected{
+  background:var(--primary);
+  color:white;
 }
 
 /* MODAL */
@@ -369,6 +402,22 @@ header{
   margin-top:10px;
 }
 
+.offer.best{
+  border:2px solid var(--success);
+  background:rgba(22,163,74,.08);
+}
+
+.offer-price{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.best-label{
+  color:var(--success);
+  font-size:11px;
+  font-weight:bold;
+}
+
 .buy{
   background:var(--success);
   color:white;
@@ -376,6 +425,7 @@ header{
   border-radius:8px;
   text-decoration:none;
   font-weight:bold;
+  white-space:nowrap;
 }
 
 /* COMPARE BAR */
@@ -395,6 +445,11 @@ header{
   gap:15px;
 }
 
+.compare-actions{
+  display:flex;
+  gap:10px;
+}
+
 .compare-bar button{
   background:#2563eb;
   color:white;
@@ -404,12 +459,17 @@ header{
   cursor:pointer;
 }
 
+.compare-bar .clear-btn{
+  background:#374151;
+}
+
 /* COMPARE */
 
 .compare-table{
   width:100%;
   border-collapse:collapse;
   margin-top:15px;
+  min-width:600px;
 }
 
 .compare-table th,
@@ -419,11 +479,20 @@ header{
   text-align:center;
 }
 
+.compare-table th{
+  background:rgba(37,99,235,.08);
+}
+
 .compare-table img{
   width:100px;
   height:80px;
   object-fit:cover;
   border-radius:8px;
+  margin-bottom:7px;
+}
+
+.compare-wrapper{
+  overflow-x:auto;
 }
 
 /* FOOTER */
@@ -440,20 +509,54 @@ footer p{
   margin-top:8px;
 }
 
+/* EMPTY */
+
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:50px 20px;
+}
+
+.empty h2{
+  margin-bottom:10px;
+}
+
+.empty p{
+  color:var(--muted);
+}
+
 /* RESPONSIVE */
 
 @media(max-width:650px){
 
+  header{
+    padding:15px 5%;
+  }
+
   .nav{
     flex-wrap:wrap;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .hero{
+    padding:40px 15px;
   }
 
   .hero h1{
     font-size:30px;
   }
 
-  .modal-product{
-    grid-template-columns:1fr;
+  .filters{
+    padding:15px 5%;
+  }
+
+  .filters select,
+  .filters input{
+    flex:1;
+    min-width:120px;
   }
 
   .product-grid{
@@ -471,6 +574,11 @@ footer p{
 
   .product-info h3{
     font-size:14px;
+    min-height:34px;
+  }
+
+  .price{
+    font-size:17px;
   }
 
   .card-buttons{
@@ -480,7 +588,21 @@ footer p{
   .compare-bar{
     flex-direction:column;
     text-align:center;
+    padding:12px 5%;
   }
+
+  .modal-product{
+    grid-template-columns:1fr;
+  }
+
+  .modal-box{
+    padding:20px 15px;
+  }
+
+  .offer{
+    flex-wrap:wrap;
+  }
+
 }
 </style>
 </head>
@@ -488,6 +610,7 @@ footer p{
 <body>
 
 <header>
+
 <div class="nav">
 
 <div>
@@ -497,18 +620,25 @@ footer p{
 
 <div class="header-buttons">
 
-<button class="icon-btn" onclick="toggleDark()">🌙</button>
+<button class="icon-btn" onclick="toggleDark()" title="Dark Mode">
+🌙
+</button>
 
-<button class="icon-btn" onclick="showWishlist()">❤️</button>
+<button class="icon-btn" onclick="showWishlist()" title="Wishlist">
+❤️
+</button>
 
 </div>
 
 </div>
+
 </header>
 
 <section class="hero">
 
-<h1>Find the Best <span>Price</span></h1>
+<h1>
+Find the Best <span>Price</span>
+</h1>
 
 <p>
 Compare products, prices and stores before you buy.
@@ -520,7 +650,7 @@ Compare products, prices and stores before you buy.
 type="text"
 id="search"
 placeholder="Search phones, laptops, shoes, perfume..."
-oninput="applyFilters">
+oninput="applyFilters()">
 
 </div>
 
@@ -634,6 +764,8 @@ Reset
 
 </main>
 
+<!-- PRODUCT MODAL -->
+
 <div class="modal" id="productModal">
 
 <div class="modal-box">
@@ -645,6 +777,8 @@ Reset
 </div>
 
 </div>
+
+<!-- COMPARE MODAL -->
 
 <div class="modal" id="compareModal">
 
@@ -660,15 +794,25 @@ Reset
 
 </div>
 
+<!-- COMPARE BAR -->
+
 <div class="compare-bar" id="compareBar">
 
 <span id="compareText">
 0 products selected
 </span>
 
+<div class="compare-actions">
+
+<button class="clear-btn" onclick="clearCompare()">
+Clear
+</button>
+
 <button onclick="openCompare()">
 Compare Now
 </button>
+
+</div>
 
 </div>
 
@@ -690,7 +834,9 @@ Prices and availability may change on store websites.
 
 <script>
 
-/* PRODUCT DATABASE */
+/* ================================
+   PRODUCT DATABASE
+================================ */
 
 const products = [
 
@@ -773,8 +919,6 @@ offers:[
 ["Flipkart",15299,"https://www.flipkart.com/search?q=Redmi%20Note%2013"]
 ]
 },
-
-/* UPDATED NOTHING PHONE */
 
 {
 id:5,
@@ -933,7 +1077,7 @@ Waterproof:"Yes"
 },
 offers:[
 ["Amazon",2999,"https://www.amazon.in/s?k=JBL+Bluetooth+Speaker"],
-["Flipkart",3199,"https://www.flipkart.com/search?q=JBL%20Bluetooth%20Speaker"]
+["Flipkart",3199,"https://www.flipkart.com/search?q=JBL+Bluetooth+Speaker"]
 ]
 },
 
@@ -1359,7 +1503,10 @@ offers:[
 
 ];
 
-/* VARIABLES */
+
+/* ================================
+   VARIABLES
+================================ */
 
 let currentCategory="All";
 
@@ -1370,7 +1517,10 @@ JSON.parse(
 localStorage.getItem("comparexWishlist") || "[]"
 );
 
-/* LOWEST PRICE */
+
+/* ================================
+   LOWEST PRICE
+================================ */
 
 function getLowestPrice(product){
 
@@ -1380,7 +1530,24 @@ return Math.min(
 
 }
 
-/* DISPLAY PRODUCTS */
+
+/* ================================
+   BEST STORE
+================================ */
+
+function getBestOffer(product){
+
+return product.offers.reduce(
+(best,current)=>
+current[1] < best[1] ? current : best
+);
+
+}
+
+
+/* ================================
+   DISPLAY PRODUCTS
+================================ */
 
 function displayProducts(list){
 
@@ -1388,20 +1555,17 @@ const grid=
 document.getElementById("productGrid");
 
 document.getElementById("resultCount").innerText=
-`${list.length} products found`;
+`${list.length} product${list.length!==1?"s":""} found`;
 
 if(list.length===0){
 
 grid.innerHTML=`
 
-<div style="
-grid-column:1/-1;
-text-align:center;
-padding:50px">
+<div class="empty">
 
 <h2>😕 No products found</h2>
 
-<p style="margin-top:10px;color:var(--muted)">
+<p>
 Try another search, category or price range.
 </p>
 
@@ -1422,13 +1586,17 @@ wishlist.includes(p.id);
 const added=
 compareList.includes(p.id);
 
+const best=
+getBestOffer(p);
+
 return `
 
 <div class="product-card">
 
 <button
 class="wishlist ${isWish?'active':''}"
-onclick="toggleWishlist(${p.id})">
+onclick="toggleWishlist(${p.id})"
+title="Wishlist">
 
 ${isWish?'♥':'♡'}
 
@@ -1438,7 +1606,8 @@ ${isWish?'♥':'♡'}
 class="product-img"
 src="${p.image}"
 alt="${p.name}"
-loading="lazy">
+loading="lazy"
+onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
 
 <div class="product-info">
 
@@ -1462,6 +1631,10 @@ ${p.name}
 ✓ Lowest price
 </div>
 
+<div class="best-store">
+Best deal: ${best[0]}
+</div>
+
 <div class="card-buttons">
 
 <button onclick="openProduct(${p.id})">
@@ -1469,7 +1642,7 @@ View Details
 </button>
 
 <button
-class="compare-btn"
+class="compare-btn ${added?'selected':''}"
 onclick="toggleCompare(${p.id})">
 
 ${added?"✓ Added":"⚖️ Compare"}
@@ -1488,7 +1661,10 @@ ${added?"✓ Added":"⚖️ Compare"}
 
 }
 
-/* SEARCH FILTER SORT */
+
+/* ================================
+   SEARCH / FILTER / SORT
+================================ */
 
 function applyFilters(){
 
@@ -1527,7 +1703,9 @@ p.name+
 " "+
 p.brand+
 " "+
-p.category
+p.category+
+" "+
+Object.values(p.specs).join(" ")
 )
 .toLowerCase()
 .includes(search);
@@ -1542,6 +1720,7 @@ price<=max;
 
 });
 
+
 if(sort==="low"){
 
 result.sort(
@@ -1551,6 +1730,7 @@ getLowestPrice(b)
 );
 
 }
+
 
 if(sort==="high"){
 
@@ -1562,6 +1742,7 @@ getLowestPrice(a)
 
 }
 
+
 if(sort==="rating"){
 
 result.sort(
@@ -1571,11 +1752,15 @@ b.rating-a.rating
 
 }
 
+
 displayProducts(result);
 
 }
 
-/* CATEGORY */
+
+/* ================================
+   CATEGORY
+================================ */
 
 function setCategory(category,button){
 
@@ -1593,7 +1778,10 @@ applyFilters();
 
 }
 
-/* RESET */
+
+/* ================================
+   RESET
+================================ */
 
 function resetFilters(){
 
@@ -1621,7 +1809,10 @@ displayProducts(products);
 
 }
 
-/* PRODUCT DETAILS */
+
+/* ================================
+   PRODUCT DETAILS
+================================ */
 
 function openProduct(id){
 
@@ -1632,6 +1823,9 @@ if(!p)return;
 
 const lowest=
 getLowestPrice(p);
+
+const best=
+getBestOffer(p);
 
 let specs="";
 
@@ -1652,21 +1846,32 @@ specs+=`
 
 });
 
+
 let offers="";
 
-p.offers.forEach(o=>{
+p.offers
+.slice()
+.sort((a,b)=>a[1]-b[1])
+.forEach(o=>{
+
+const isBest=
+o[1]===lowest;
 
 offers+=`
 
-<div class="offer">
+<div class="offer ${isBest?'best':''}">
 
 <div>
 
 <strong>${o[0]}</strong>
 
-<br>
+${isBest
+?`<div class="best-label">✓ BEST PRICE</div>`
+:""}
 
+<div class="offer-price">
 ₹${o[1].toLocaleString("en-IN")}
+</div>
 
 </div>
 
@@ -1686,13 +1891,15 @@ Buy Now ↗
 
 });
 
+
 document.getElementById("productDetails").innerHTML=`
 
 <div class="modal-product">
 
 <img
 src="${p.image}"
-alt="${p.name}">
+alt="${p.name}"
+onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
 
 <div>
 
@@ -1713,7 +1920,7 @@ ${p.name}
 </h2>
 
 <p style="color:var(--muted)">
-Lowest listed price
+Lowest listed price at ${best[0]}
 </p>
 
 </div>
@@ -1747,6 +1954,11 @@ document.getElementById("productModal")
 
 }
 
+
+/* ================================
+   CLOSE PRODUCT
+================================ */
+
 function closeProduct(){
 
 document.getElementById("productModal")
@@ -1754,7 +1966,10 @@ document.getElementById("productModal")
 
 }
 
-/* COMPARE */
+
+/* ================================
+   COMPARE
+================================ */
 
 function toggleCompare(id){
 
@@ -1787,6 +2002,7 @@ applyFilters();
 
 }
 
+
 function updateCompareBar(){
 
 const bar=
@@ -1808,6 +2024,22 @@ document.getElementById("compareText")
 
 }
 
+
+/* CLEAR COMPARE */
+
+function clearCompare(){
+
+compareList=[];
+
+updateCompareBar();
+
+applyFilters();
+
+}
+
+
+/* OPEN COMPARE */
+
 function openCompare(){
 
 if(compareList.length<2){
@@ -1825,6 +2057,7 @@ compareList.map(
 id=>products.find(p=>p.id===id)
 );
 
+
 const allSpecs=[
 
 ...new Set(
@@ -1835,7 +2068,10 @@ p=>Object.keys(p.specs)
 
 ];
 
+
 let html=`
+
+<div class="compare-wrapper">
 
 <table class="compare-table">
 
@@ -1849,7 +2085,9 @@ ${selected.map(p=>`
 
 <th>
 
-<img src="${p.image}">
+<img
+src="${p.image}"
+alt="${p.name}">
 
 <br>
 
@@ -1860,6 +2098,7 @@ ${p.name}
 `).join("")}
 
 </tr>
+
 
 <tr>
 
@@ -1877,6 +2116,7 @@ ${selected.map(p=>`
 
 </tr>
 
+
 <tr>
 
 <td>
@@ -1887,9 +2127,15 @@ ${selected.map(p=>`
 
 <td>
 
-<strong>
+<strong style="color:var(--success)">
 ₹${getLowestPrice(p).toLocaleString("en-IN")}
 </strong>
+
+<br>
+
+<small>
+${getBestOffer(p)[0]}
+</small>
 
 </td>
 
@@ -1898,6 +2144,7 @@ ${selected.map(p=>`
 </tr>
 
 `;
+
 
 allSpecs.forEach(spec=>{
 
@@ -1923,6 +2170,7 @@ ${p.specs[spec] || "-"}
 
 });
 
+
 html+=`
 
 <tr>
@@ -1941,9 +2189,39 @@ ${p.offers.map(o=>o[0]).join(" / ")}
 
 </tr>
 
+
+<tr>
+
+<td>
+Buy
+</td>
+
+${selected.map(p=>`
+
+<td>
+
+<a
+class="buy"
+href="${getBestOffer(p)[2]}"
+target="_blank"
+rel="noopener noreferrer">
+
+Best Deal ↗
+
+</a>
+
+</td>
+
+`).join("")}
+
+</tr>
+
 </table>
 
+</div>
+
 `;
+
 
 document.getElementById("compareContent")
 .innerHTML=html;
@@ -1953,6 +2231,11 @@ document.getElementById("compareModal")
 
 }
 
+
+/* ================================
+   CLOSE COMPARE
+================================ */
+
 function closeCompare(){
 
 document.getElementById("compareModal")
@@ -1960,7 +2243,10 @@ document.getElementById("compareModal")
 
 }
 
-/* WISHLIST */
+
+/* ================================
+   WISHLIST
+================================ */
 
 function toggleWishlist(id){
 
@@ -1985,6 +2271,9 @@ JSON.stringify(wishlist)
 applyFilters();
 
 }
+
+
+/* SHOW WISHLIST */
 
 function showWishlist(){
 
@@ -2017,7 +2306,10 @@ behavior:"smooth"
 
 }
 
-/* DARK MODE */
+
+/* ================================
+   DARK MODE
+================================ */
 
 function toggleDark(){
 
@@ -2031,6 +2323,7 @@ document.body.classList.contains("dark")
 
 }
 
+
 if(
 localStorage.getItem("comparexDark")==="true"
 ){
@@ -2039,7 +2332,10 @@ document.body.classList.add("dark");
 
 }
 
-/* MODAL OUTSIDE CLICK */
+
+/* ================================
+   MODAL OUTSIDE CLICK
+================================ */
 
 window.onclick=function(e){
 
@@ -2063,7 +2359,10 @@ closeCompare();
 
 };
 
-/* ESC KEY */
+
+/* ================================
+   ESC KEY
+================================ */
 
 document.addEventListener(
 "keydown",
@@ -2079,7 +2378,10 @@ closeCompare();
 
 });
 
-/* START */
+
+/* ================================
+   START
+================================ */
 
 displayProducts(products);
 

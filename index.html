@@ -1,547 +1,82 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CompareX - Compare. Choose. Save.</title>
-
 <style>
-*{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
-
-:root{
- --primary:#2563eb;
- --secondary:#7c3aed;
- --bg:#f5f7fb;
- --card:#fff;
- --text:#111827;
- --muted:#6b7280;
- --border:#e5e7eb;
- --success:#16a34a;
- --danger:#ef4444;
-}
-
-body{
- font-family:Arial,sans-serif;
- background:var(--bg);
- color:var(--text);
- transition:.3s;
-}
-
-body.dark{
- --bg:#0f172a;
- --card:#1e293b;
- --text:#f8fafc;
- --muted:#cbd5e1;
- --border:#334155;
-}
-
-/* HEADER */
-
-header{
- background:linear-gradient(135deg,#2563eb,#7c3aed);
- color:white;
- padding:16px 6%;
- position:sticky;
- top:0;
- z-index:1000;
- box-shadow:0 3px 15px rgba(0,0,0,.15);
-}
-
-.nav{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px;
-}
-
-.logo{
- font-size:28px;
- font-weight:bold;
-}
-
-.logo span{
- color:#fde047;
-}
-
-.tagline{
- font-size:12px;
- opacity:.9;
- margin-top:2px;
-}
-
-.header-buttons{
- display:flex;
- gap:10px;
-}
-
-.icon-btn{
- border:0;
- background:rgba(255,255,255,.18);
- color:white;
- padding:10px 13px;
- border-radius:10px;
- cursor:pointer;
- font-size:16px;
-}
-
-/* HERO */
-
-.hero{
- text-align:center;
- padding:55px 20px;
- background:linear-gradient(135deg,#eff6ff,#f5f3ff);
-}
-
-.dark .hero{
- background:linear-gradient(135deg,#111827,#1e1b4b);
-}
-
-.hero h1{
- font-size:42px;
- margin-bottom:12px;
-}
-
-.hero h1 span{
- color:var(--primary);
-}
-
-.hero p{
- color:var(--muted);
- margin-bottom:25px;
-}
-
-.search-box{
- max-width:700px;
- margin:auto;
-}
-
-.search-box input{
- width:100%;
- padding:17px 20px;
- border:2px solid var(--border);
- border-radius:14px;
- font-size:16px;
- outline:none;
- background:var(--card);
- color:var(--text);
-}
-
-/* CATEGORIES */
-
-.categories{
- display:flex;
- gap:10px;
- overflow-x:auto;
- padding:20px 6%;
- background:var(--card);
- scrollbar-width:none;
-}
-
-.categories::-webkit-scrollbar{
- display:none;
-}
-
-.categories button{
- border:1px solid var(--border);
- background:var(--card);
- color:var(--text);
- padding:10px 17px;
- border-radius:30px;
- cursor:pointer;
- white-space:nowrap;
-}
-
-.categories button.active,
-.categories button:hover{
- background:var(--primary);
- color:white;
- border-color:var(--primary);
-}
-
-/* FILTERS */
-
-.filters{
- padding:20px 6%;
- display:flex;
- flex-wrap:wrap;
- gap:12px;
- align-items:center;
-}
-
-.filters select,
-.filters input{
- padding:11px 14px;
- border:1px solid var(--border);
- border-radius:9px;
- background:var(--card);
- color:var(--text);
- outline:none;
-}
-
-.reset{
- padding:11px 18px;
- border:0;
- border-radius:9px;
- background:var(--danger);
- color:white;
- cursor:pointer;
-}
-
-/* PRODUCTS */
-
-.container{
- padding:10px 6% 100px;
-}
-
-.result-count{
- margin-bottom:18px;
- color:var(--muted);
-}
-
-.product-grid{
- display:grid;
- grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
- gap:20px;
-}
-
-.product-card{
- background:var(--card);
- border:1px solid var(--border);
- border-radius:16px;
- overflow:hidden;
- transition:.25s;
- position:relative;
-}
-
-.product-card:hover{
- transform:translateY(-5px);
- box-shadow:0 12px 30px rgba(0,0,0,.12);
-}
-
-.product-img{
- width:100%;
- height:200px;
- object-fit:cover;
- background:#f1f5f9;
-}
-
-.wishlist{
- position:absolute;
- top:10px;
- right:10px;
- width:38px;
- height:38px;
- border:0;
- border-radius:50%;
- background:white;
- cursor:pointer;
- font-size:20px;
- box-shadow:0 2px 8px rgba(0,0,0,.15);
- z-index:2;
-}
-
-.wishlist.active{
- color:#ef4444;
-}
-
-.product-info{
- padding:15px;
-}
-
-.brand{
- color:var(--primary);
- font-size:12px;
- font-weight:bold;
- text-transform:uppercase;
-}
-
-.product-info h3{
- margin:6px 0;
- font-size:17px;
-}
-
-.rating{
- color:#f59e0b;
- font-size:14px;
-}
-
-.price{
- font-size:20px;
- font-weight:bold;
- margin:8px 0;
-}
-
-.lowest{
- color:var(--success);
- font-size:12px;
- font-weight:bold;
-}
-
-.card-buttons{
- display:flex;
- gap:8px;
- margin-top:12px;
-}
-
-.card-buttons button{
- flex:1;
- padding:10px 5px;
- border-radius:8px;
- cursor:pointer;
- border:1px solid var(--primary);
- background:var(--primary);
- color:white;
-}
-
-.card-buttons button.compare-btn{
- background:transparent;
- color:var(--primary);
-}
-
-/* MODAL */
-
-.modal{
- display:none;
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.7);
- z-index:2000;
- align-items:center;
- justify-content:center;
- padding:20px;
-}
-
-.modal-box{
- background:var(--card);
- color:var(--text);
- width:min(850px,100%);
- max-height:90vh;
- overflow:auto;
- border-radius:18px;
- padding:25px;
- position:relative;
-}
-
-.close{
- position:absolute;
- right:18px;
- top:15px;
- border:0;
- background:none;
- color:var(--text);
- font-size:27px;
- cursor:pointer;
-}
-
-.modal-product{
- display:grid;
- grid-template-columns:280px 1fr;
- gap:25px;
-}
-
-.modal-product img{
- width:100%;
- border-radius:12px;
-}
-
-.spec-table,
-.compare-table{
- width:100%;
- border-collapse:collapse;
- margin-top:20px;
-}
-
-.spec-table td,
-.compare-table th,
-.compare-table td{
- border:1px solid var(--border);
- padding:10px;
-}
-
-.spec-table td:first-child{
- font-weight:bold;
-}
-
-.offers{
- margin-top:20px;
-}
-
-.offer{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- padding:13px;
- border:1px solid var(--border);
- border-radius:10px;
- margin-top:10px;
-}
-
-.buy{
- background:var(--success);
- color:white;
- padding:9px 15px;
- border-radius:8px;
- text-decoration:none;
- font-weight:bold;
- white-space:nowrap;
-}
-
-/* COMPARE BAR */
-
-.compare-bar{
- display:none;
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:#111827;
- color:white;
- padding:14px 6%;
- z-index:1500;
- justify-content:space-between;
- align-items:center;
- gap:15px;
-}
-
-.compare-bar button{
- background:#2563eb;
- color:white;
- border:0;
- padding:10px 18px;
- border-radius:8px;
- cursor:pointer;
-}
-
-.compare-table{
- margin-top:15px;
-}
-
-.compare-table th,
-.compare-table td{
- text-align:center;
-}
-
-.compare-table img{
- width:100px;
- height:80px;
- object-fit:cover;
- border-radius:8px;
-}
-
-/* FOOTER */
-
-footer{
- background:#111827;
- color:white;
- padding:35px 6%;
- text-align:center;
-}
-
-footer p{
- color:#cbd5e1;
- margin-top:8px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:650px){
-
- .nav{
-  flex-wrap:wrap;
- }
-
- .hero{
-  padding:40px 15px;
- }
-
- .hero h1{
-  font-size:30px;
- }
-
- .modal-product{
-  grid-template-columns:1fr;
- }
-
- .product-grid{
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
- }
-
- .product-img{
-  height:150px;
- }
-
- .product-info{
-  padding:10px;
- }
-
- .product-info h3{
-  font-size:14px;
- }
-
- .card-buttons{
-  flex-direction:column;
- }
-
- .compare-bar{
-  flex-direction:column;
-  text-align:center;
- }
-
- .offer{
-  flex-wrap:wrap;
- }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#2563eb;--secondary:#7c3aed;--bg:#f5f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--border:#e5e7eb;--success:#16a34a;--danger:#ef4444}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);transition:.3s}
+body.dark{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#cbd5e1;--border:#334155}
+header{background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;padding:16px 6%;position:sticky;top:0;z-index:1000;box-shadow:0 3px 15px #0002}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.logo{font-size:28px;font-weight:bold}.logo span{color:#fde047}
+.tagline{font-size:12px;opacity:.9;margin-top:2px}
+.header-buttons{display:flex;gap:10px}
+.icon-btn{border:0;background:#ffffff30;color:white;padding:10px 13px;border-radius:10px;cursor:pointer;font-size:16px}
+.hero{text-align:center;padding:55px 20px;background:linear-gradient(135deg,#eff6ff,#f5f3ff)}
+.dark .hero{background:linear-gradient(135deg,#111827,#1e1b4b)}
+.hero h1{font-size:42px;margin-bottom:12px}.hero h1 span{color:var(--primary)}
+.hero p{color:var(--muted);margin-bottom:25px}
+.search-box{max-width:700px;margin:auto}
+.search-box input{width:100%;padding:17px 20px;border:2px solid var(--border);border-radius:14px;font-size:16px;outline:none;background:var(--card);color:var(--text)}
+.categories{display:flex;gap:10px;overflow-x:auto;padding:20px 6%;background:var(--card);scrollbar-width:none}
+.categories::-webkit-scrollbar{display:none}
+.categories button{border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 17px;border-radius:30px;cursor:pointer;white-space:nowrap}
+.categories button.active,.categories button:hover{background:var(--primary);color:white;border-color:var(--primary)}
+.filters{padding:20px 6%;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.filters select,.filters input{padding:11px 14px;border:1px solid var(--border);border-radius:9px;background:var(--card);color:var(--text);outline:none;max-width:100%}
+.reset{padding:11px 18px;border:0;border-radius:9px;background:var(--danger);color:white;cursor:pointer}
+.container{padding:10px 6% 100px}.result-count{margin-bottom:18px;color:var(--muted)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:.25s;position:relative}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0002}
+.product-img{width:100%;height:200px;object-fit:cover;background:#f1f5f9}
+.wishlist{position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:white;cursor:pointer;font-size:20px;box-shadow:0 2px 8px #0002;z-index:2}
+.wishlist.active{color:#ef4444}
+.product-info{padding:15px}.brand{color:var(--primary);font-size:12px;font-weight:bold;text-transform:uppercase}
+.product-info h3{margin:6px 0;font-size:17px}.rating{color:#f59e0b;font-size:14px}
+.price{font-size:20px;font-weight:bold;margin:8px 0}.lowest{color:var(--success);font-size:12px;font-weight:bold}
+.card-buttons{display:flex;gap:8px;margin-top:12px}
+.card-buttons button{flex:1;padding:10px 5px;border-radius:8px;cursor:pointer;border:1px solid var(--primary);background:var(--primary);color:white}
+.card-buttons button.compare-btn{background:transparent;color:var(--primary)}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:2000;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:var(--card);color:var(--text);width:min(850px,100%);max-height:90vh;overflow:auto;border-radius:18px;padding:25px;position:relative}
+.close{position:absolute;right:18px;top:10px;border:0;background:none;color:var(--text);font-size:27px;cursor:pointer}
+.modal-product{display:grid;grid-template-columns:280px 1fr;gap:25px}
+.modal-product img{width:100%;border-radius:12px}
+.spec-table,.compare-table{width:100%;border-collapse:collapse;margin-top:20px}
+.spec-table td,.compare-table th,.compare-table td{border:1px solid var(--border);padding:10px}
+.spec-table td:first-child{font-weight:bold}
+.offers{margin-top:20px}
+.offer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px;border:1px solid var(--border);border-radius:10px;margin-top:10px}
+.buy{background:var(--success);color:white;padding:9px 15px;border-radius:8px;text-decoration:none;font-weight:bold;white-space:nowrap}
+.compare-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#111827;color:white;padding:14px 6%;z-index:1500;justify-content:space-between;align-items:center;gap:15px}
+.compare-bar button{background:#2563eb;color:white;border:0;padding:10px 18px;border-radius:8px;cursor:pointer}
+.compare-table th,.compare-table td{text-align:center}.compare-table img{width:100px;height:80px;object-fit:cover;border-radius:8px}
+footer{background:#111827;color:white;padding:35px 6%;text-align:center}
+footer p{color:#cbd5e1;margin-top:8px}
+@media(max-width:650px){.hero{padding:40px 15px}.hero h1{font-size:30px}.modal-product{grid-template-columns:1fr}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-img{height:150px}.product-info{padding:10px}.product-info h3{font-size:14px}.card-buttons{flex-direction:column}.compare-bar{flex-direction:column;text-align:center}.offer{flex-wrap:wrap}}
 </style>
 </head>
-
 <body>
-
-<header>
-<div class="nav">
-
-<div>
-<div class="logo">Compare<span>X</span></div>
-<div class="tagline">Compare. Choose. Save.</div>
-</div>
-
+<header><div class="nav">
+<div><div class="logo">Compare<span>X</span></div><div class="tagline">Compare. Choose. Save.</div></div>
 <div class="header-buttons">
-
-<button class="icon-btn" onclick="toggleDark()">🌙</button>
-
-<button class="icon-btn" onclick="showWishlist()">❤️</button>
-
+<button class="icon-btn" onclick="toggleDark()">🌙 Theme</button>
+<button class="icon-btn" onclick="showWishlist()">❤️ Wishlist</button>
 </div>
-
-</div>
-</header>
+</div></header>
 
 <section class="hero">
-
 <h1>Find the Best <span>Price</span></h1>
-
 <p>Compare products, prices and stores before you buy.</p>
-
-<div class="search-box">
-
-<input
- type="text"
- id="search"
- placeholder="Search phones, laptops, shoes, perfume..."
- oninput="applyFilters()">
-
-</div>
-
+<div class="search-box"><input id="search" placeholder="Search phones, laptops, shoes, perfume..." oninput="applyFilters()"></div>
 </section>
 
 <div class="categories" id="categories">
-
 <button class="active" onclick="setCategory('All',this)">All</button>
 <button onclick="setCategory('Mobiles',this)">📱 Mobiles</button>
 <button onclick="setCategory('Laptops',this)">💻 Laptops</button>
@@ -556,1494 +91,233 @@ footer p{
 <button onclick="setCategory('Home',this)">🏠 Home</button>
 <button onclick="setCategory('Grocery',this)">🛒 Grocery</button>
 <button onclick="setCategory('Books',this)">📚 Books</button>
-
 </div>
 
 <div class="filters">
-
 <select id="sort" onchange="applyFilters()">
 <option value="default">Sort: Recommended</option>
 <option value="low">Price: Low → High</option>
 <option value="high">Price: High → Low</option>
 <option value="rating">Rating: High → Low</option>
 </select>
-
-<input
- type="number"
- id="minPrice"
- placeholder="Min ₹"
- oninput="applyFilters()">
-
-<input
- type="number"
- id="maxPrice"
- placeholder="Max ₹"
- oninput="applyFilters()">
-
+<input type="number" id="minPrice" placeholder="Min ₹" oninput="applyFilters()">
+<input type="number" id="maxPrice" placeholder="Max ₹" oninput="applyFilters()">
 <button class="reset" onclick="resetFilters()">Reset</button>
-
 </div>
 
 <main class="container">
-
 <div class="result-count" id="resultCount"></div>
-
 <div class="product-grid" id="productGrid"></div>
-
 </main>
 
-<!-- PRODUCT MODAL -->
-
-<div class="modal" id="productModal">
-
-<div class="modal-box">
-
+<div class="modal" id="productModal"><div class="modal-box">
 <button class="close" onclick="closeProduct()">×</button>
-
 <div id="productDetails"></div>
+</div></div>
 
-</div>
-
-</div>
-
-<!-- COMPARE MODAL -->
-
-<div class="modal" id="compareModal">
-
-<div class="modal-box">
-
+<div class="modal" id="compareModal"><div class="modal-box">
 <button class="close" onclick="closeCompare()">×</button>
-
 <h2>⚖️ Compare Products</h2>
-
 <div id="compareContent"></div>
-
-</div>
-
-</div>
-
-<!-- COMPARE BAR -->
+</div></div>
 
 <div class="compare-bar" id="compareBar">
-
 <span id="compareText">0 products selected</span>
-
 <button onclick="openCompare()">Compare Now</button>
-
 </div>
 
-<footer>
-
-<h2>CompareX</h2>
-
+<footer><h2>CompareX</h2>
 <p>Compare. Choose. Save.</p>
-
 <p>Find products. Compare prices. Make smarter choices.</p>
-
-<p style="font-size:11px;margin-top:15px">
-Prices and availability may change on store websites.
-</p>
-
+<p style="font-size:11px;margin-top:15px">Prices and availability may change on store websites. As an Amazon Associate, we may earn from qualifying purchases.</p>
 </footer>
 
 <script>
-
-/* =========================================================
-   AMAZON ASSOCIATES
-   ========================================================= */
-
-const AMAZON_TAG = "comparex20-21";
-
-/*
- Automatically adds your Amazon Associates tracking tag.
- Existing tag will be replaced so duplicate tags won't occur.
-*/
+/* IMPORTANT: Use the exact Tracking ID shown in your Associates Tracking ID dropdown. */
+const AMAZON_TAG="comparex200d-21";
 
 function makeAmazonAffiliate(url){
-
- if(!url) return "#";
-
- if(!url.includes("amazon.in")){
-  return url;
- }
-
+ if(!url)return "#";
  try{
-
-  const u = new URL(url);
-
+  const u=new URL(url);
+  if(u.hostname!=="amazon.in"&&!u.hostname.endsWith(".amazon.in"))return url;
   u.searchParams.set("tag",AMAZON_TAG);
-
   return u.toString();
-
- }catch(error){
-
-  const separator = url.includes("?") ? "&" : "?";
-
-  return url + separator + "tag=" + AMAZON_TAG;
-
- }
-
+ }catch(e){return url;}
 }
 
-
-/* =========================================================
-   PRODUCT DATABASE
-   ========================================================= */
-
-const products = [
-
-{
-id:1,
-brand:"Samsung",
-name:"Samsung Galaxy M35 5G",
-category:"Mobiles",
-price:19999,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
-specs:{
-Display:"6.6 inch",
-RAM:"6 GB",
-Storage:"128 GB",
-Battery:"6000 mAh"
-},
-offers:[
-["Amazon",19999,"https://www.amazon.in/s?k=Samsung+Galaxy+M35+5G"],
-["Flipkart",20499,"https://www.flipkart.com/search?q=Samsung%20Galaxy%20M35%205G"]
-]
-},
-
-{
-id:2,
-brand:"OnePlus",
-name:"OnePlus Nord CE",
-category:"Mobiles",
-price:18999,
-rating:4.3,
-image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800",
-specs:{
-Display:"6.7 inch",
-RAM:"8 GB",
-Storage:"128 GB",
-Battery:"5000 mAh"
-},
-offers:[
-["Amazon",18999,"https://www.amazon.in/s?k=OnePlus+Nord+CE"],
-["Flipkart",19499,"https://www.flipkart.com/search?q=OnePlus%20Nord%20CE"]
-]
-},
-
-{
-id:3,
-brand:"Apple",
-name:"iPhone 15",
-category:"Mobiles",
-price:59999,
-rating:4.7,
-image:"https://images.unsplash.com/photo-1592286927505-2fdc6c9c3f8e?w=800",
-specs:{
-Display:"6.1 inch",
-RAM:"6 GB",
-Storage:"128 GB",
-Battery:"3349 mAh"
-},
-offers:[
-["Amazon",59999,"https://www.amazon.in/s?k=iPhone+15"],
-["Flipkart",60499,"https://www.flipkart.com/search?q=iPhone%2015"]
-]
-},
-
-{
-id:4,
-brand:"Xiaomi",
-name:"Redmi Note 13",
-category:"Mobiles",
-price:14999,
-rating:4.2,
-image:"https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800",
-specs:{
-Display:"6.67 inch",
-RAM:"6 GB",
-Storage:"128 GB",
-Battery:"5000 mAh"
-},
-offers:[
-["Amazon",14999,"https://www.amazon.in/s?k=Redmi+Note+13"],
-["Flipkart",15299,"https://www.flipkart.com/search?q=Redmi%20Note%2013"]
-]
-},
-
-{
-id:5,
-brand:"Nothing",
-name:"Nothing Phone 4a (12GB 256GB White)",
-category:"Mobiles",
-price:36700,
-rating:4.0,
-image:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800",
-specs:{
-Display:"6.77 inch",
-RAM:"12 GB",
-Storage:"256 GB",
-Battery:"5000 mAh",
-Camera:"50 MP",
-Video:"4K"
-},
-offers:[
-["Amazon",36700,"https://www.amazon.in/dp/B06cFijEC"]
-]
-},
-
-{
-id:6,
-brand:"HP",
-name:"HP 15 Laptop",
-category:"Laptops",
-price:55999,
-rating:4.3,
-image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
-specs:{
-Processor:"Intel i5",
-RAM:"16 GB",
-Storage:"512 GB SSD",
-Display:"15.6 inch"
-},
-offers:[
-["Amazon",55999,"https://www.amazon.in/s?k=HP+15+laptop"],
-["Flipkart",56999,"https://www.flipkart.com/search?q=HP%2015%20laptop"]
-]
-},
-
-{
-id:7,
-brand:"Lenovo",
-name:"Lenovo IdeaPad Slim",
-category:"Laptops",
-price:52999,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=800",
-specs:{
-Processor:"Intel i5",
-RAM:"16 GB",
-Storage:"512 GB SSD",
-Display:"15.6 inch"
-},
-offers:[
-["Amazon",52999,"https://www.amazon.in/s?k=Lenovo+IdeaPad+Slim"],
-["Flipkart",53999,"https://www.flipkart.com/search?q=Lenovo%20IdeaPad"]
-]
-},
-
-{
-id:8,
-brand:"ASUS",
-name:"ASUS Vivobook 15",
-category:"Laptops",
-price:54999,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800",
-specs:{
-Processor:"Intel i5",
-RAM:"16 GB",
-Storage:"512 GB SSD",
-Display:"15.6 inch"
-},
-offers:[
-["Amazon",54999,"https://www.amazon.in/s?k=ASUS+Vivobook+15"],
-["Flipkart",55999,"https://www.flipkart.com/search?q=ASUS%20Vivobook%2015"]
-]
-},
-
-{
-id:9,
-brand:"Apple",
-name:"MacBook Air M2",
-category:"Laptops",
-price:79999,
-rating:4.8,
-image:"https://images.unsplash.com/photo-1517336714739-489689fd1ca8?w=800",
-specs:{
-Processor:"Apple M2",
-RAM:"8 GB",
-Storage:"256 GB SSD",
-Display:"13.6 inch"
-},
-offers:[
-["Amazon",79999,"https://www.amazon.in/s?k=MacBook+Air+M2"],
-["Flipkart",80999,"https://www.flipkart.com/search?q=MacBook%20Air%20M2"]
-]
-},
-
-{
-id:10,
-brand:"Sony",
-name:"Sony WH-CH520",
-category:"Audio",
-price:4499,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
-specs:{
-Type:"Wireless",
-Battery:"50 Hours",
-Bluetooth:"5.2",
-Mic:"Yes"
-},
-offers:[
-["Amazon",4499,"https://www.amazon.in/s?k=Sony+WH-CH520"],
-["Flipkart",4699,"https://www.flipkart.com/search?q=Sony%20WH-CH520"]
-]
-},
-
-{
-id:11,
-brand:"boAt",
-name:"boAt Airdopes Alpha",
-category:"Audio",
-price:999,
-rating:4.2,
-image:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800",
-specs:{
-Type:"TWS",
-Battery:"35 Hours",
-Bluetooth:"5.3",
-Mic:"Yes"
-},
-offers:[
-["Amazon",999,"https://www.amazon.in/s?k=boAt+Airdopes+Alpha"],
-["Flipkart",1099,"https://www.flipkart.com/search?q=boAt%20Airdopes%20Alpha"]
-]
-},
-
-{
-id:12,
-brand:"JBL",
-name:"JBL Bluetooth Speaker",
-category:"Audio",
-price:2999,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800",
-specs:{
-Type:"Portable Speaker",
-Battery:"12 Hours",
-Bluetooth:"5.1",
-Waterproof:"Yes"
-},
-offers:[
-["Amazon",2999,"https://www.amazon.in/s?k=JBL+Bluetooth+Speaker"],
-["Flipkart",3199,"https://www.flipkart.com/search?q=JBL%20Bluetooth%20Speaker"]
-]
-},
-
-{
-id:13,
-brand:"Redragon",
-name:"Mechanical Gaming Keyboard",
-category:"Gaming",
-price:2499,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
-specs:{
-Switch:"Mechanical",
-RGB:"Yes",
-Connection:"USB",
-Keys:"87"
-},
-offers:[
-["Amazon",2499,"https://www.amazon.in/s?k=Redragon+mechanical+keyboard"],
-["Flipkart",2699,"https://www.flipkart.com/search?q=mechanical%20gaming%20keyboard"]
-]
-},
-
-{
-id:14,
-brand:"Logitech",
-name:"Logitech Gaming Mouse",
-category:"Gaming",
-price:1499,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=800",
-specs:{
-DPI:"8000 DPI",
-Buttons:"6",
-Connection:"USB",
-RGB:"Yes"
-},
-offers:[
-["Amazon",1499,"https://www.amazon.in/s?k=Logitech+gaming+mouse"],
-["Flipkart",1599,"https://www.flipkart.com/search?q=Logitech%20gaming%20mouse"]
-]
-},
-
-{
-id:15,
-brand:"Nike",
-name:"Nike Running Shoes",
-category:"Shoes",
-price:4999,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
-specs:{
-Type:"Running",
-Material:"Mesh",
-Sole:"Rubber",
-Gender:"Men"
-},
-offers:[
-["Myntra",4999,"https://www.myntra.com/nike-running-shoes"],
-["Amazon",5199,"https://www.amazon.in/s?k=Nike+running+shoes"]
-]
-},
-
-{
-id:16,
-brand:"Adidas",
-name:"Adidas Casual Shoes",
-category:"Shoes",
-price:3999,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800",
-specs:{
-Type:"Casual",
-Material:"Synthetic",
-Sole:"Rubber",
-Gender:"Unisex"
-},
-offers:[
-["Myntra",3999,"https://www.myntra.com/adidas-casual-shoes"],
-["Amazon",4199,"https://www.amazon.in/s?k=Adidas+casual+shoes"]
-]
-},
-
-{
-id:17,
-brand:"Puma",
-name:"Puma Sports Shoes",
-category:"Shoes",
-price:3499,
-rating:4.3,
-image:"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800",
-specs:{
-Type:"Sports",
-Material:"Mesh",
-Sole:"Rubber",
-Gender:"Men"
-},
-offers:[
-["Myntra",3499,"https://www.myntra.com/puma-sports-shoes"],
-["Amazon",3699,"https://www.amazon.in/s?k=Puma+sports+shoes"]
-]
-},
-
-{
-id:18,
-brand:"Crocs",
-name:"Crocs Classic Clogs",
-category:"Slippers",
-price:2999,
-rating:4.7,
-image:"https://images.unsplash.com/photo-1603487742131-4160ec999306?w=800",
-specs:{
-Type:"Clogs",
-Material:"Croslite",
-Waterproof:"Yes",
-Gender:"Unisex"
-},
-offers:[
-["Amazon",2999,"https://www.amazon.in/s?k=Crocs+Classic+Clogs"],
-["Myntra",3199,"https://www.myntra.com/crocs"]
-]
-},
-
-{
-id:19,
-brand:"Bata",
-name:"Bata Comfort Slippers",
-category:"Slippers",
-price:699,
-rating:4.2,
-image:"https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=800",
-specs:{
-Type:"Slippers",
-Material:"Synthetic",
-Sole:"EVA",
-Gender:"Men"
-},
-offers:[
-["Amazon",699,"https://www.amazon.in/s?k=Bata+slippers"],
-["Flipkart",749,"https://www.flipkart.com/search?q=Bata%20slippers"]
-]
-},
-
-{
-id:20,
-brand:"Levi's",
-name:"Levi's Men's Jeans",
-category:"Fashion",
-price:2499,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=800",
-specs:{
-Type:"Jeans",
-Material:"Denim",
-Fit:"Regular",
-Gender:"Men"
-},
-offers:[
-["Myntra",2499,"https://www.myntra.com/levis-jeans"],
-["Amazon",2599,"https://www.amazon.in/s?k=Levis+mens+jeans"]
-]
-},
-
-{
-id:21,
-brand:"Puma",
-name:"Puma Cotton T-Shirt",
-category:"Fashion",
-price:999,
-rating:4.3,
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",
-specs:{
-Type:"T-Shirt",
-Material:"Cotton",
-Fit:"Regular",
-Gender:"Men"
-},
-offers:[
-["Myntra",999,"https://www.myntra.com/puma-tshirts"],
-["Amazon",1099,"https://www.amazon.in/s?k=Puma+cotton+tshirt"]
-]
-},
-
-{
-id:22,
-brand:"Maybelline",
-name:"Maybelline Fit Me Foundation",
-category:"Makeup",
-price:499,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800",
-specs:{
-Type:"Foundation",
-Finish:"Natural",
-Skin:"All Skin Types",
-Size:"30 ml"
-},
-offers:[
-["Nykaa",499,"https://www.nykaa.com/search/result/?q=Maybelline+Fit+Me"],
-["Amazon",519,"https://www.amazon.in/s?k=Maybelline+Fit+Me"]
-]
-},
-
-{
-id:23,
-brand:"Lakme",
-name:"Lakme Eyeconic Kajal",
-category:"Makeup",
-price:199,
-rating:4.3,
-image:"https://images.unsplash.com/photo-1631214524020-7e18db7c9e8e?w=800",
-specs:{
-Type:"Kajal",
-Finish:"Matte",
-Waterproof:"Yes",
-Size:"0.35 g"
-},
-offers:[
-["Nykaa",199,"https://www.nykaa.com/search/result/?q=Lakme+Eyeconic+Kajal"],
-["Amazon",219,"https://www.amazon.in/s?k=Lakme+Eyeconic+Kajal"]
-]
-},
-
-{
-id:24,
-brand:"Minimalist",
-name:"Minimalist Face Serum",
-category:"Beauty",
-price:599,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=800",
-specs:{
-Type:"Face Serum",
-Size:"30 ml",
-Skin:"All Skin Types",
-Usage:"Daily"
-},
-offers:[
-["Nykaa",599,"https://www.nykaa.com/search/result/?q=Minimalist+serum"],
-["Amazon",629,"https://www.amazon.in/s?k=Minimalist+serum"]
-]
-},
-
-{
-id:25,
-brand:"Nivea",
-name:"Nivea Body Lotion",
-category:"Beauty",
-price:299,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800",
-specs:{
-Type:"Body Lotion",
-Size:"400 ml",
-Skin:"Normal",
-Usage:"Daily"
-},
-offers:[
-["Amazon",299,"https://www.amazon.in/s?k=Nivea+body+lotion"],
-["Flipkart",319,"https://www.flipkart.com/search?q=Nivea%20body%20lotion"]
-]
-},
-
-{
-id:26,
-brand:"Wild Stone",
-name:"Wild Stone Perfume",
-category:"Perfume",
-price:499,
-rating:4.2,
-image:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=800",
-specs:{
-Type:"Eau de Parfum",
-Volume:"100 ml",
-Fragrance:"Woody",
-Gender:"Men"
-},
-offers:[
-["Amazon",499,"https://www.amazon.in/s?k=Wild+Stone+perfume"],
-["Flipkart",529,"https://www.flipkart.com/search?q=Wild%20Stone%20perfume"]
-]
-},
-
-{
-id:27,
-brand:"Skinn",
-name:"Skinn by Titan Perfume",
-category:"Perfume",
-price:1999,
-rating:4.6,
-image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800",
-specs:{
-Type:"Eau de Parfum",
-Volume:"100 ml",
-Fragrance:"Woody",
-Gender:"Unisex"
-},
-offers:[
-["Amazon",1999,"https://www.amazon.in/s?k=Skinn+Titan+perfume"],
-["Flipkart",2099,"https://www.flipkart.com/search?q=Skinn%20Titan%20perfume"]
-]
-},
-
-{
-id:28,
-brand:"Prestige",
-name:"Prestige Electric Kettle",
-category:"Home",
-price:1299,
-rating:4.3,
-image:"https://images.unsplash.com/photo-1594213114663-d94db9b171a9?w=800",
-specs:{
-Capacity:"1.5 L",
-Power:"1500 W",
-Material:"Stainless Steel",
-Warranty:"1 Year"
-},
-offers:[
-["Amazon",1299,"https://www.amazon.in/s?k=Prestige+electric+kettle"],
-["Flipkart",1399,"https://www.flipkart.com/search?q=Prestige%20electric%20kettle"]
-]
-},
-
-{
-id:29,
-brand:"Philips",
-name:"Philips Mixer Grinder",
-category:"Home",
-price:2499,
-rating:4.4,
-image:"https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800",
-specs:{
-Power:"500 W",
-Jars:"3",
-Speed:"3 Speed",
-Warranty:"2 Years"
-},
-offers:[
-["Amazon",2499,"https://www.amazon.in/s?k=Philips+mixer+grinder"],
-["Flipkart",2599,"https://www.flipkart.com/search?q=Philips%20mixer%20grinder"]
-]
-},
-
-{
-id:30,
-brand:"India Gate",
-name:"Basmati Rice 5kg",
-category:"Grocery",
-price:699,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800",
-specs:{
-Weight:"5 kg",
-Type:"Basmati Rice",
-Pack:"Pouch",
-Vegetarian:"Yes"
-},
-offers:[
-["Amazon",699,"https://www.amazon.in/s?k=India+Gate+Basmati+Rice"],
-["Flipkart",729,"https://www.flipkart.com/search?q=India%20Gate%20Basmati%20Rice"]
-]
-},
-
-{
-id:31,
-brand:"Tata",
-name:"Tata Salt 1kg",
-category:"Grocery",
-price:30,
-rating:4.6,
-image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800",
-specs:{
-Weight:"1 kg",
-Type:"Iodised Salt",
-Pack:"Pouch",
-Vegetarian:"Yes"
-},
-offers:[
-["Amazon",30,"https://www.amazon.in/s?k=Tata+Salt+1kg"],
-["Flipkart",32,"https://www.flipkart.com/search?q=Tata%20Salt%201kg"]
-]
-},
-
-{
-id:32,
-brand:"Programming",
-name:"Java Programming Book",
-category:"Books",
-price:499,
-rating:4.5,
-image:"https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800",
-specs:{
-Language:"English",
-Level:"Beginner",
-Subject:"Java",
-Format:"Paperback"
-},
-offers:[
-["Amazon",499,"https://www.amazon.in/s?k=Java+programming+book+beginner"],
-["Flipkart",529,"https://www.flipkart.com/search?q=Java%20programming%20book"]
-]
-},
-
-{
-id:33,
-brand:"Programming",
-name:"Python Programming Book",
-category:"Books",
-price:449,
-rating:4.6,
-image:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800",
-specs:{
-Language:"English",
-Level:"Beginner",
-Subject:"Python",
-Format:"Paperback"
-},
-offers:[
-["Amazon",449,"https://www.amazon.in/s?k=Python+programming+book+beginner"],
-["Flipkart",479,"https://www.flipkart.com/search?q=Python%20programming%20book"]
-]
-}
-
+const products=[
+{id:1,brand:"Samsung",name:"Samsung Galaxy M35 5G",category:"Mobiles",price:19999,rating:4.4,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",specs:{Display:"6.6 inch",RAM:"6 GB",Storage:"128 GB",Battery:"6000 mAh"},offers:[["Amazon",19999,"https://www.amazon.in/s?k=Samsung+Galaxy+M35+5G"],["Flipkart",20499,"https://www.flipkart.com/search?q=Samsung%20Galaxy%20M35%205G"]]},
+{id:2,brand:"OnePlus",name:"OnePlus Nord CE",category:"Mobiles",price:18999,rating:4.3,image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800",specs:{Display:"6.7 inch",RAM:"8 GB",Storage:"128 GB",Battery:"5000 mAh"},offers:[["Amazon",18999,"https://www.amazon.in/s?k=OnePlus+Nord+CE"],["Flipkart",19499,"https://www.flipkart.com/search?q=OnePlus%20Nord%20CE"]]},
+{id:3,brand:"Apple",name:"iPhone 15",category:"Mobiles",price:59999,rating:4.7,image:"https://images.unsplash.com/photo-1592286927505-2fdc6c9c3f8e?w=800",specs:{Display:"6.1 inch",RAM:"6 GB",Storage:"128 GB",Video:"4K"},offers:[["Amazon",59999,"https://www.amazon.in/s?k=iPhone+15"],["Flipkart",60499,"https://www.flipkart.com/search?q=iPhone%2015"]]},
+{id:4,brand:"Xiaomi",name:"Redmi Note 13",category:"Mobiles",price:14999,rating:4.2,image:"https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800",specs:{Display:"6.67 inch",RAM:"6 GB",Storage:"128 GB",Battery:"5000 mAh"},offers:[["Amazon",14999,"https://www.amazon.in/s?k=Redmi+Note+13"],["Flipkart",15299,"https://www.flipkart.com/search?q=Redmi%20Note%2013"]]},
+{id:5,brand:"Nothing",name:"Nothing Phone 4a",category:"Mobiles",price:36700,rating:4,image:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800",specs:{Display:"Verify on store",RAM:"12 GB (listed sample)",Storage:"256 GB (listed sample)"},offers:[["Amazon",36700,"https://www.amazon.in/s?k=Nothing+Phone+4a+12GB+256GB"]]},
+{id:6,brand:"HP",name:"HP 15 Laptop",category:"Laptops",price:55999,rating:4.3,image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",specs:{Processor:"Intel i5 (sample)",RAM:"16 GB",Storage:"512 GB SSD",Display:"15.6 inch"},offers:[["Amazon",55999,"https://www.amazon.in/s?k=HP+15+laptop"],["Flipkart",56999,"https://www.flipkart.com/search?q=HP%2015%20laptop"]]},
+{id:7,brand:"Lenovo",name:"Lenovo IdeaPad Slim",category:"Laptops",price:52999,rating:4.4,image:"https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=800",specs:{Processor:"Intel i5 (sample)",RAM:"16 GB",Storage:"512 GB SSD"},offers:[["Amazon",52999,"https://www.amazon.in/s?k=Lenovo+IdeaPad+Slim"],["Flipkart",53999,"https://www.flipkart.com/search?q=Lenovo%20IdeaPad"]]},
+{id:8,brand:"ASUS",name:"ASUS Vivobook 15",category:"Laptops",price:54999,rating:4.5,image:"https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800",specs:{Processor:"Intel i5 (sample)",RAM:"16 GB",Storage:"512 GB SSD"},offers:[["Amazon",54999,"https://www.amazon.in/s?k=ASUS+Vivobook+15"],["Flipkart",55999,"https://www.flipkart.com/search?q=ASUS%20Vivobook%2015"]]},
+{id:9,brand:"Apple",name:"MacBook Air M2",category:"Laptops",price:79999,rating:4.8,image:"https://images.unsplash.com/photo-1517336714739-489689fd1ca8?w=800",specs:{Processor:"Apple M2",RAM:"8 GB",Storage:"256 GB SSD"},offers:[["Amazon",79999,"https://www.amazon.in/s?k=MacBook+Air+M2"],["Flipkart",80999,"https://www.flipkart.com/search?q=MacBook%20Air%20M2"]]},
+{id:10,brand:"Sony",name:"Sony WH-CH520",category:"Audio",price:4499,rating:4.5,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",specs:{Type:"Wireless",Battery:"50 hours",Bluetooth:"5.2"},offers:[["Amazon",4499,"https://www.amazon.in/s?k=Sony+WH-CH520"],["Flipkart",4699,"https://www.flipkart.com/search?q=Sony%20WH-CH520"]]},
+{id:11,brand:"boAt",name:"boAt Airdopes Alpha",category:"Audio",price:999,rating:4.2,image:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800",specs:{Type:"TWS",Battery:"35 hours",Bluetooth:"5.3"},offers:[["Amazon",999,"https://www.amazon.in/s?k=boAt+Airdopes+Alpha"],["Flipkart",1099,"https://www.flipkart.com/search?q=boAt%20Airdopes%20Alpha"]]},
+{id:12,brand:"JBL",name:"JBL Bluetooth Speaker",category:"Audio",price:2999,rating:4.5,image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800",specs:{Type:"Portable speaker",Battery:"Check store listing"},offers:[["Amazon",2999,"https://www.amazon.in/s?k=JBL+Bluetooth+Speaker"],["Flipkart",3199,"https://www.flipkart.com/search?q=JBL%20Bluetooth%20Speaker"]]},
+{id:13,brand:"Redragon",name:"Mechanical Gaming Keyboard",category:"Gaming",price:2499,rating:4.4,image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",specs:{Switch:"Mechanical",RGB:"Yes",Connection:"USB"},offers:[["Amazon",2499,"https://www.amazon.in/s?k=Redragon+mechanical+keyboard"],["Flipkart",2699,"https://www.flipkart.com/search?q=mechanical%20gaming%20keyboard"]]},
+{id:14,brand:"Logitech",name:"Logitech Gaming Mouse",category:"Gaming",price:1499,rating:4.5,image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=800",specs:{DPI:"Check model",Buttons:"6 (sample)",Connection:"USB"},offers:[["Amazon",1499,"https://www.amazon.in/s?k=Logitech+gaming+mouse"],["Flipkart",1599,"https://www.flipkart.com/search?q=Logitech%20gaming%20mouse"]]},
+{id:15,brand:"Nike",name:"Nike Running Shoes",category:"Shoes",price:4999,rating:4.5,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",specs:{Type:"Running",Material:"Mesh (sample)",Sole:"Rubber (sample)"},offers:[["Myntra",4999,"https://www.myntra.com/nike-running-shoes"],["Amazon",5199,"https://www.amazon.in/s?k=Nike+running+shoes"]]},
+{id:16,brand:"Adidas",name:"Adidas Casual Shoes",category:"Shoes",price:3999,rating:4.4,image:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800",specs:{Type:"Casual",Sole:"Rubber (sample)"},offers:[["Myntra",3999,"https://www.myntra.com/adidas-casual-shoes"],["Amazon",4199,"https://www.amazon.in/s?k=Adidas+casual+shoes"]]},
+{id:17,brand:"Puma",name:"Puma Sports Shoes",category:"Shoes",price:3499,rating:4.3,image:"https://images.unsplash.com/photo-1552346154-21d32810aba3?w=800",specs:{Type:"Sports",Material:"Mesh (sample)"},offers:[["Myntra",3499,"https://www.myntra.com/puma-sports-shoes"],["Amazon",3699,"https://www.amazon.in/s?k=Puma+sports+shoes"]]},
+{id:18,brand:"Crocs",name:"Crocs Classic Clogs",category:"Slippers",price:2999,rating:4.7,image:"https://images.unsplash.com/photo-1603487742131-4160ec999306?w=800",specs:{Type:"Clogs",Waterproof:"Yes (sample)"},offers:[["Amazon",2999,"https://www.amazon.in/s?k=Crocs+Classic+Clogs"],["Myntra",3199,"https://www.myntra.com/crocs"]]},
+{id:19,brand:"Bata",name:"Bata Comfort Slippers",category:"Slippers",price:699,rating:4.2,image:"https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=800",specs:{Type:"Slippers",Sole:"EVA (sample)"},offers:[["Amazon",699,"https://www.amazon.in/s?k=Bata+slippers"],["Flipkart",749,"https://www.flipkart.com/search?q=Bata%20slippers"]]},
+{id:20,brand:"Levi's",name:"Levi's Men's Jeans",category:"Fashion",price:2499,rating:4.4,image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=800",specs:{Type:"Jeans",Material:"Denim",Fit:"Regular (sample)"},offers:[["Myntra",2499,"https://www.myntra.com/levis-jeans"],["Amazon",2599,"https://www.amazon.in/s?k=Levis+mens+jeans"]]},
+{id:21,brand:"Puma",name:"Puma Cotton T-Shirt",category:"Fashion",price:999,rating:4.3,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800",specs:{Type:"T-Shirt",Material:"Cotton (sample)"},offers:[["Myntra",999,"https://www.myntra.com/puma-tshirts"],["Amazon",1099,"https://www.amazon.in/s?k=Puma+cotton+tshirt"]]},
+{id:22,brand:"Maybelline",name:"Maybelline Fit Me Foundation",category:"Makeup",price:499,rating:4.4,image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800",specs:{Type:"Foundation",Size:"30 ml (check listing)"},offers:[["Nykaa",499,"https://www.nykaa.com/search/result/?q=Maybelline+Fit+Me"],["Amazon",519,"https://www.amazon.in/s?k=Maybelline+Fit+Me"]]},
+{id:23,brand:"Lakme",name:"Lakme Eyeconic Kajal",category:"Makeup",price:199,rating:4.3,image:"https://images.unsplash.com/photo-1631214524020-7e18db7c9e8e?w=800",specs:{Type:"Kajal",Waterproof:"Check product listing"},offers:[["Nykaa",199,"https://www.nykaa.com/search/result/?q=Lakme+Eyeconic+Kajal"],["Amazon",219,"https://www.amazon.in/s?k=Lakme+Eyeconic+Kajal"]]},
+{id:24,brand:"Minimalist",name:"Minimalist Face Serum",category:"Beauty",price:599,rating:4.5,image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=800",specs:{Type:"Face serum",Size:"30 ml (sample)"},offers:[["Nykaa",599,"https://www.nykaa.com/search/result/?q=Minimalist+serum"],["Amazon",629,"https://www.amazon.in/s?k=Minimalist+serum"]]},
+{id:25,brand:"Nivea",name:"Nivea Body Lotion",category:"Beauty",price:299,rating:4.4,image:"https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800",specs:{Type:"Body lotion",Size:"Check listing"},offers:[["Amazon",299,"https://www.amazon.in/s?k=Nivea+body+lotion"],["Flipkart",319,"https://www.flipkart.com/search?q=Nivea%20body%20lotion"]]},
+{id:26,brand:"Wild Stone",name:"Wild Stone Perfume",category:"Perfume",price:499,rating:4.2,image:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=800",specs:{Type:"Perfume",Volume:"Check listing"},offers:[["Amazon",499,"https://www.amazon.in/s?k=Wild+Stone+perfume"],["Flipkart",529,"https://www.flipkart.com/search?q=Wild%20Stone%20perfume"]]},
+{id:27,brand:"Skinn",name:"Skinn by Titan Perfume",category:"Perfume",price:1999,rating:4.6,image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800",specs:{Type:"Perfume",Volume:"Check listing"},offers:[["Amazon",1999,"https://www.amazon.in/s?k=Skinn+Titan+perfume"],["Flipkart",2099,"https://www.flipkart.com/search?q=Skinn%20Titan%20perfume"]]},
+{id:28,brand:"Prestige",name:"Prestige Electric Kettle",category:"Home",price:1299,rating:4.3,image:"https://images.unsplash.com/photo-1594213114663-d94db9b171a9?w=800",specs:{Capacity:"1.5 L (sample)",Power:"Check listing"},offers:[["Amazon",1299,"https://www.amazon.in/s?k=Prestige+electric+kettle"],["Flipkart",1399,"https://www.flipkart.com/search?q=Prestige%20electric%20kettle"]]},
+{id:29,brand:"Philips",name:"Philips Mixer Grinder",category:"Home",price:2499,rating:4.4,image:"https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800",specs:{Power:"Check listing",Jars:"Check listing"},offers:[["Amazon",2499,"https://www.amazon.in/s?k=Philips+mixer+grinder"],["Flipkart",2599,"https://www.flipkart.com/search?q=Philips%20mixer%20grinder"]]},
+{id:30,brand:"India Gate",name:"Basmati Rice 5kg",category:"Grocery",price:699,rating:4.5,image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800",specs:{Weight:"5 kg",Type:"Basmati rice"},offers:[["Amazon",699,"https://www.amazon.in/s?k=India+Gate+Basmati+Rice"],["Flipkart",729,"https://www.flipkart.com/search?q=India%20Gate%20Basmati%20Rice"]]},
+{id:31,brand:"Tata",name:"Tata Salt 1kg",category:"Grocery",price:30,rating:4.6,image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800",specs:{Weight:"1 kg",Type:"Iodised salt"},offers:[["Amazon",30,"https://www.amazon.in/s?k=Tata+Salt+1kg"],["Flipkart",32,"https://www.flipkart.com/search?q=Tata%20Salt%201kg"]]},
+{id:32,brand:"Programming",name:"Java Programming Book",category:"Books",price:499,rating:4.5,image:"https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800",specs:{Language:"English",Level:"Beginner",Subject:"Java"},offers:[["Amazon",499,"https://www.amazon.in/s?k=Java+programming+book+beginner"],["Flipkart",529,"https://www.flipkart.com/search?q=Java%20programming%20book"]]},
+{id:33,brand:"Programming",name:"Python Programming Book",category:"Books",price:449,rating:4.6,image:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800",specs:{Language:"English",Level:"Beginner",Subject:"Python"},offers:[["Amazon",449,"https://www.amazon.in/s?k=Python+programming+book+beginner"],["Flipkart",479,"https://www.flipkart.com/search?q=Python%20programming%20book"]]}
 ];
-
-
-/* =========================================================
-   VARIABLES
-   ========================================================= */
 
 let currentCategory="All";
 let compareList=[];
+let wishlist=JSON.parse(localStorage.getItem("comparexWishlist")||"[]");
 
-let wishlist=JSON.parse(
- localStorage.getItem("comparexWishlist") || "[]"
-);
-
-
-/* =========================================================
-   LOWEST PRICE
-   ========================================================= */
-
-function getLowestPrice(product){
-
- return Math.min(
-  ...product.offers.map(o=>o[1])
- );
-
-}
-
-
-/* =========================================================
-   DISPLAY PRODUCTS
-   ========================================================= */
+function getLowestPrice(p){return Math.min(...p.offers.map(o=>o[1]));}
+function money(n){return "₹"+Number(n).toLocaleString("en-IN");}
+function safeImage(url){return url||"https://placehold.co/500x400?text=CompareX";}
 
 function displayProducts(list){
-
  const grid=document.getElementById("productGrid");
-
- document.getElementById("resultCount").innerText=
- `${list.length} products found`;
-
- if(list.length===0){
-
-  grid.innerHTML=`
-  <div style="
-   grid-column:1/-1;
-   text-align:center;
-   padding:50px">
-
-   <h2>😕 No products found</h2>
-
-   <p style="margin-top:10px;color:var(--muted)">
-   Try another search, category or price range.
-   </p>
-
-  </div>`;
-
+ document.getElementById("resultCount").innerText=list.length+" products found";
+ if(!list.length){
+  grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:50px"><h2>😕 No products found</h2><p style="margin-top:10px;color:var(--muted)">Try another search, category or price range.</p></div>';
   return;
  }
-
- grid.innerHTML=list.map(p=>{
-
-  const isWish=wishlist.includes(p.id);
-  const added=compareList.includes(p.id);
-
-  return`
-
-  <div class="product-card">
-
-   <button
-    class="wishlist ${isWish?"active":""}"
-    onclick="toggleWishlist(${p.id})">
-
-    ${isWish?"♥":"♡"}
-
-   </button>
-
-   <img
-    class="product-img"
-    src="${p.image}"
-    alt="${p.name}"
-    loading="lazy"
-    onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
-
-   <div class="product-info">
-
-    <div class="brand">${p.brand}</div>
-
-    <h3>${p.name}</h3>
-
-    <div class="rating">⭐ ${p.rating}</div>
-
-    <div class="price">
-     ₹${getLowestPrice(p).toLocaleString("en-IN")}
-    </div>
-
-    <div class="lowest">
-     ✓ Lowest listed price
-    </div>
-
-    <div class="card-buttons">
-
-     <button onclick="openProduct(${p.id})">
-      View Details
-     </button>
-
-     <button
-      class="compare-btn"
-      onclick="toggleCompare(${p.id})">
-
-      ${added?"✓ Added":"⚖️ Compare"}
-
-     </button>
-
-    </div>
-
+ grid.innerHTML=list.map(p=>`
+ <div class="product-card">
+  <button class="wishlist ${wishlist.includes(p.id)?"active":""}" onclick="toggleWishlist(${p.id})">${wishlist.includes(p.id)?"♥":"♡"}</button>
+  <img class="product-img" src="${safeImage(p.image)}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/500x400?text=CompareX'">
+  <div class="product-info">
+   <div class="brand">${p.brand}</div><h3>${p.name}</h3>
+   <div class="rating">⭐ ${p.rating}</div>
+   <div class="price">${money(getLowestPrice(p))}</div>
+   <div class="lowest">✓ Lowest listed sample price</div>
+   <div class="card-buttons">
+    <button onclick="openProduct(${p.id})">View Details</button>
+    <button class="compare-btn" onclick="toggleCompare(${p.id})">${compareList.includes(p.id)?"✓ Added":"⚖️ Compare"}</button>
    </div>
-
-  </div>`;
-
- }).join("");
-
+  </div>
+ </div>`).join("");
 }
-
-
-/* =========================================================
-   SEARCH / FILTER / SORT
-   ========================================================= */
 
 function applyFilters(){
-
- const search=document
-  .getElementById("search")
-  .value
-  .toLowerCase()
-  .trim();
-
- const min=Number(
-  document.getElementById("minPrice").value
- ) || 0;
-
- const maxInput=document
-  .getElementById("maxPrice").value;
-
- const max=maxInput
-  ? Number(maxInput)
-  : Infinity;
-
- const sort=document
-  .getElementById("sort").value;
-
+ const search=document.getElementById("search").value.toLowerCase().trim();
+ const minValue=document.getElementById("minPrice").value;
+ const maxValue=document.getElementById("maxPrice").value;
+ const min=minValue===""?0:Number(minValue);
+ const max=maxValue===""?Infinity:Number(maxValue);
+ const sort=document.getElementById("sort").value;
  let result=products.filter(p=>{
-
-  const matchesCategory=
-   currentCategory==="All" ||
-   p.category===currentCategory;
-
-  const searchable=(
-   p.name+" "+
-   p.brand+" "+
-   p.category+" "+
-   Object.values(p.specs).join(" ")
-  ).toLowerCase();
-
-  const matchesSearch=
-   searchable.includes(search);
-
-  const price=getLowestPrice(p);
-
-  return matchesCategory &&
-   matchesSearch &&
-   price>=min &&
-   price<=max;
-
+  const text=(p.name+" "+p.brand+" "+p.category+" "+Object.values(p.specs).join(" ")).toLowerCase();
+  return (currentCategory==="All"||p.category===currentCategory)&&text.includes(search)&&getLowestPrice(p)>=min&&getLowestPrice(p)<=max;
  });
-
- if(sort==="low"){
-
-  result.sort((a,b)=>
-   getLowestPrice(a)-getLowestPrice(b)
-  );
-
- }
-
- if(sort==="high"){
-
-  result.sort((a,b)=>
-   getLowestPrice(b)-getLowestPrice(a)
-  );
-
- }
-
- if(sort==="rating"){
-
-  result.sort((a,b)=>
-   b.rating-a.rating
-  );
-
- }
-
+ if(sort==="low")result.sort((a,b)=>getLowestPrice(a)-getLowestPrice(b));
+ if(sort==="high")result.sort((a,b)=>getLowestPrice(b)-getLowestPrice(a));
+ if(sort==="rating")result.sort((a,b)=>b.rating-a.rating);
  displayProducts(result);
-
 }
-
-
-/* =========================================================
-   CATEGORY
-   ========================================================= */
 
 function setCategory(category,button){
-
  currentCategory=category;
-
- document
-  .querySelectorAll(".categories button")
-  .forEach(b=>b.classList.remove("active"));
-
+ document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
  button.classList.add("active");
-
  applyFilters();
-
 }
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
 function resetFilters(){
-
  document.getElementById("search").value="";
  document.getElementById("minPrice").value="";
  document.getElementById("maxPrice").value="";
  document.getElementById("sort").value="default";
-
  currentCategory="All";
-
- document
-  .querySelectorAll(".categories button")
-  .forEach(b=>b.classList.remove("active"));
-
- document
-  .querySelector(".categories button")
-  .classList.add("active");
-
- displayProducts(products);
-
+ document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
+ document.querySelector(".categories button").classList.add("active");
+ applyFilters();
 }
-
-
-/* =========================================================
-   PRODUCT DETAILS
-   ========================================================= */
 
 function openProduct(id){
-
- const p=products.find(x=>x.id===id);
-
- if(!p)return;
-
- const lowest=getLowestPrice(p);
-
- let specs="";
-
- Object.entries(p.specs).forEach(([key,value])=>{
-
-  specs+=`
-  <tr>
-   <td>${key}</td>
-   <td>${value}</td>
-  </tr>`;
-
- });
-
- let offers="";
-
- p.offers.forEach(o=>{
-
-  const affiliateURL=makeAmazonAffiliate(o[2]);
-
-  offers+=`
-
-  <div class="offer">
-
-   <div>
-
-    <strong>${o[0]}</strong>
-
-    <br>
-
-    ₹${o[1].toLocaleString("en-IN")}
-
-   </div>
-
-   <a
-    class="buy"
-    href="${affiliateURL}"
-    target="_blank"
-    rel="noopener noreferrer sponsored">
-
-    Buy Now ↗
-
-   </a>
-
-  </div>`;
-
- });
-
+ const p=products.find(x=>x.id===id);if(!p)return;
+ const specs=Object.entries(p.specs).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join("");
+ const offers=p.offers.map(o=>{
+  const url=makeAmazonAffiliate(o[2]);
+  return `<div class="offer"><div><strong>${o[0]}</strong><br>${money(o[1])}</div><a class="buy" href="${url}" target="_blank" rel="noopener noreferrer sponsored">Buy Now ↗</a></div>`;
+ }).join("");
  document.getElementById("productDetails").innerHTML=`
-
  <div class="modal-product">
-
-  <img
-   src="${p.image}"
-   alt="${p.name}"
-   onerror="this.src='https://via.placeholder.com/500x400?text=CompareX'">
-
-  <div>
-
-   <div class="brand">${p.brand}</div>
-
-   <h2>${p.name}</h2>
-
-   <p style="margin:10px 0">
-    ⭐ ${p.rating}
-   </p>
-
-   <h2 style="color:var(--success)">
-    ₹${lowest.toLocaleString("en-IN")}
-   </h2>
-
-   <p style="color:var(--muted)">
-    Lowest listed price
-   </p>
-
-  </div>
-
+ <img src="${safeImage(p.image)}" alt="${p.name}" onerror="this.onerror=null;this.src='https://placehold.co/500x400?text=CompareX'">
+ <div><div class="brand">${p.brand}</div><h2>${p.name}</h2><p style="margin:10px 0">⭐ ${p.rating}</p><h2 style="color:var(--success)">${money(getLowestPrice(p))}</h2><p style="color:var(--muted)">Lowest listed sample price</p></div>
  </div>
-
- <h3 style="margin-top:25px">
-  Specifications
- </h3>
-
- <table class="spec-table">
-  ${specs}
- </table>
-
- <div class="offers">
-
-  <h3>🛍️ Store Offers</h3>
-
-  ${offers}
-
- </div>
-
- `;
-
- document.getElementById("productModal")
-  .style.display="flex";
-
+ <h3 style="margin-top:25px">Specifications</h3><table class="spec-table">${specs}</table>
+ <div class="offers"><h3>🛍️ Store Offers</h3>${offers}</div>`;
+ document.getElementById("productModal").style.display="flex";
 }
-
-
-function closeProduct(){
-
- document.getElementById("productModal")
-  .style.display="none";
-
-}
-
-
-/* =========================================================
-   COMPARE
-   ========================================================= */
+function closeProduct(){document.getElementById("productModal").style.display="none";}
 
 function toggleCompare(id){
-
- if(compareList.includes(id)){
-
-  compareList=compareList.filter(
-   x=>x!==id
-  );
-
- }else{
-
-  if(compareList.length>=3){
-
-   alert(
-    "You can compare maximum 3 products."
-   );
-
-   return;
-
-  }
-
+ if(compareList.includes(id))compareList=compareList.filter(x=>x!==id);
+ else{
+  if(compareList.length>=3){alert("You can compare a maximum of 3 products.");return;}
   compareList.push(id);
-
  }
-
- updateCompareBar();
- applyFilters();
-
+ updateCompareBar();applyFilters();
 }
-
-
 function updateCompareBar(){
-
  const bar=document.getElementById("compareBar");
-
- if(compareList.length===0){
-
-  bar.style.display="none";
-
- }else{
-
-  bar.style.display="flex";
-
-  document.getElementById("compareText")
-   .innerText=
-   `${compareList.length} product${
-    compareList.length>1?"s":""
-   } selected`;
-
- }
-
+ bar.style.display=compareList.length?"flex":"none";
+ document.getElementById("compareText").innerText=compareList.length+" product"+(compareList.length===1?"":"s")+" selected";
 }
-
-
 function openCompare(){
-
- if(compareList.length<2){
-
-  alert(
-   "Please select at least 2 products to compare."
-  );
-
-  return;
-
- }
-
- const selected=compareList.map(
-  id=>products.find(p=>p.id===id)
- );
-
- const allSpecs=[
-  ...new Set(
-   selected.flatMap(
-    p=>Object.keys(p.specs)
-   )
-  )
- ];
-
- let html=`
-
- <table class="compare-table">
-
- <tr>
-
-  <th>Feature</th>
-
-  ${selected.map(p=>`
-
-   <th>
-
-    <img
-     src="${p.image}"
-     onerror="this.src='https://via.placeholder.com/100x80?text=Product'">
-
-    <br>
-
-    ${p.name}
-
-   </th>
-
-  `).join("")}
-
- </tr>
-
- <tr>
-
-  <td>Rating</td>
-
-  ${selected.map(p=>`
-
-   <td>⭐ ${p.rating}</td>
-
-  `).join("")}
-
- </tr>
-
- <tr>
-
-  <td>Lowest Price</td>
-
-  ${selected.map(p=>`
-
-   <td>
-
-    <strong>
-     ₹${getLowestPrice(p).toLocaleString("en-IN")}
-    </strong>
-
-   </td>
-
-  `).join("")}
-
- </tr>`;
-
- allSpecs.forEach(spec=>{
-
-  html+=`
-
-  <tr>
-
-   <td>${spec}</td>
-
-   ${selected.map(p=>`
-
-    <td>${p.specs[spec]||"-"}</td>
-
-   `).join("")}
-
-  </tr>`;
-
- });
-
- html+=`
-
- <tr>
-
-  <td>Stores</td>
-
-  ${selected.map(p=>`
-
-   <td>
-    ${p.offers.map(o=>o[0]).join(" / ")}
-   </td>
-
-  `).join("")}
-
- </tr>
-
- </table>`;
-
- document.getElementById("compareContent")
-  .innerHTML=html;
-
- document.getElementById("compareModal")
-  .style.display="flex";
-
+ if(compareList.length<2){alert("Please select at least 2 products to compare.");return;}
+ const selected=compareList.map(id=>products.find(p=>p.id===id)).filter(Boolean);
+ const allSpecs=[...new Set(selected.flatMap(p=>Object.keys(p.specs)))];
+ let html=`<table class="compare-table"><tr><th>Feature</th>${selected.map(p=>`<th><img src="${safeImage(p.image)}" alt="${p.name}"><br>${p.name}</th>`).join("")}</tr>`;
+ html+=`<tr><td>Rating</td>${selected.map(p=>`<td>⭐ ${p.rating}</td>`).join("")}</tr>`;
+ html+=`<tr><td>Lowest listed price</td>${selected.map(p=>`<td><strong>${money(getLowestPrice(p))}</strong></td>`).join("")}</tr>`;
+ allSpecs.forEach(s=>{html+=`<tr><td>${s}</td>${selected.map(p=>`<td>${p.specs[s]||"-"}</td>`).join("")}</tr>`;});
+ html+=`<tr><td>Stores</td>${selected.map(p=>`<td>${p.offers.map(o=>o[0]).join(" / ")}</td>`).join("")}</tr></table>`;
+ document.getElementById("compareContent").innerHTML=html;
+ document.getElementById("compareModal").style.display="flex";
 }
-
-
-function closeCompare(){
-
- document.getElementById("compareModal")
-  .style.display="none";
-
-}
-
-
-/* =========================================================
-   WISHLIST
-   ========================================================= */
+function closeCompare(){document.getElementById("compareModal").style.display="none";}
 
 function toggleWishlist(id){
-
- if(wishlist.includes(id)){
-
-  wishlist=wishlist.filter(
-   x=>x!==id
-  );
-
- }else{
-
-  wishlist.push(id);
-
- }
-
- localStorage.setItem(
-  "comparexWishlist",
-  JSON.stringify(wishlist)
- );
-
+ if(wishlist.includes(id))wishlist=wishlist.filter(x=>x!==id);
+ else wishlist.push(id);
+ localStorage.setItem("comparexWishlist",JSON.stringify(wishlist));
  applyFilters();
-
 }
-
-
 function showWishlist(){
-
- if(wishlist.length===0){
-
-  alert("❤️ Your wishlist is empty.");
-
-  return;
-
- }
-
- const list=products.filter(
-  p=>wishlist.includes(p.id)
- );
-
- displayProducts(list);
-
- window.scrollTo({
-  top:document.querySelector(".container")
-   .offsetTop-80,
-  behavior:"smooth"
- });
-
+ if(!wishlist.length){alert("❤️ Your wishlist is empty.");return;}
+ displayProducts(products.filter(p=>wishlist.includes(p.id)));
+ window.scrollTo({top:document.querySelector(".container").offsetTop-80,behavior:"smooth"});
 }
-
-
-/* =========================================================
-   DARK MODE
-   ========================================================= */
-
 function toggleDark(){
-
  document.body.classList.toggle("dark");
-
- localStorage.setItem(
-  "comparexDark",
-  document.body.classList.contains("dark")
- );
-
+ localStorage.setItem("comparexDark",document.body.classList.contains("dark"));
 }
+if(localStorage.getItem("comparexDark")==="true")document.body.classList.add("dark");
 
-
-if(
- localStorage.getItem("comparexDark")==="true"
-){
-
- document.body.classList.add("dark");
-
-}
-
-
-/* =========================================================
-   MODAL OUTSIDE CLICK
-   ========================================================= */
-
-window.onclick=function(e){
-
- if(
-  e.target===
-  document.getElementById("productModal")
- ){
-
-  closeProduct();
-
- }
-
- if(
-  e.target===
-  document.getElementById("compareModal")
- ){
-
-  closeCompare();
-
- }
-
-};
-
-
-/* =========================================================
-   ESC KEY
-   ========================================================= */
-
-document.addEventListener(
- "keydown",
- function(e){
-
-  if(e.key==="Escape"){
-
-   closeProduct();
-   closeCompare();
-
-  }
-
- }
-);
-
-
-/* =========================================================
-   START WEBSITE
-   ========================================================= */
+window.addEventListener("click",e=>{
+ if(e.target===document.getElementById("productModal"))closeProduct();
+ if(e.target===document.getElementById("compareModal"))closeCompare();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeProduct();closeCompare();}});
 
 displayProducts(products);
 updateCompareBar();
-
 </script>
-
 </body>
 </html>
